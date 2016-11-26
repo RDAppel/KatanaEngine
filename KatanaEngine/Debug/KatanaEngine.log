@@ -1,0 +1,20 @@
+﻿  Vector2.cpp
+  Texture.cpp
+  SpriteBatch.cpp
+  ScreenManager.cpp
+  Screen.cpp
+  Resource.cpp
+  RenderTarget.cpp
+  Point.cpp
+  MenuScreen.cpp
+  MenuItem.cpp
+  main.cpp
+  InputState.cpp
+  GameTime.cpp
+  Game.cpp
+  Font.cpp
+  Color.cpp
+  Animation.cpp
+  Generating Code...
+  KatanaEngine.vcxproj -> C:\Users\Ryan Appel\Desktop\ShurikenStudios.KatanaEngine\Debug\KatanaEngine.exe
+  KatanaEngine.vcxproj -> C:\Users\Ryan Appel\Desktop\ShurikenStudios.KatanaEngine\Debug\KatanaEngine.pdb (Partial PDB)
