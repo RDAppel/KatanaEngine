@@ -1,20 +1,38 @@
-﻿  Vector2.cpp
-  Texture.cpp
-  SpriteBatch.cpp
-  ScreenManager.cpp
-  Screen.cpp
-  Resource.cpp
-  RenderTarget.cpp
-  Point.cpp
-  MenuScreen.cpp
-  MenuItem.cpp
-  main.cpp
-  InputState.cpp
-  GameTime.cpp
-  Game.cpp
-  Font.cpp
-  Color.cpp
+﻿  KatanaEngine.cpp
+  Started precompiling header files for Katana Engine.
+  Standard Headers...
+                  ... Finished.
+  Allegro Specific Headers...
+                  ... Finished.
+  Math Specific Headers...
+                  ... Finished.
+  Input Specific Headers...
+                  ... Finished.
+  Resource Management Headers...
+                  ... Finished.
+  Graphics Management Headers...
+                  ... Finished.
+  Screen Management Headers...
+                  ... Finished.
+  Game Engine Headers...
+                  ... Finished.
+  Finished precompiling header files for Katana Engine.
   Animation.cpp
+  Color.cpp
+  Font.cpp
+  Game.cpp
+  GameTime.cpp
+  InputState.cpp
+  main.cpp
+  MenuItem.cpp
+  MenuScreen.cpp
+  Point.cpp
+  RenderTarget.cpp
+  Resource.cpp
+  Screen.cpp
+  ScreenManager.cpp
+  SpriteBatch.cpp
+  Texture.cpp
+  Vector2.cpp
   Generating Code...
-  KatanaEngine.vcxproj -> C:\Users\Ryan Appel\Desktop\ShurikenStudios.KatanaEngine\Debug\KatanaEngine.exe
-  KatanaEngine.vcxproj -> C:\Users\Ryan Appel\Desktop\ShurikenStudios.KatanaEngine\Debug\KatanaEngine.pdb (Partial PDB)
+  KatanaEngine.vcxproj -> C:\Users\Ryan\Desktop\KatanaEngine\Debug\KatanaEngine.exe
