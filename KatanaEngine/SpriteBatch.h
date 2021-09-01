@@ -1,6 +1,5 @@
-﻿/* ---------------------------------------------------------------  /
-
-	 ██╗  ██╗  █████╗  ████████╗  █████╗  ███╗   ██╗  █████╗ 
+﻿
+/*	 ██╗  ██╗  █████╗  ████████╗  █████╗  ███╗   ██╗  █████╗ 
 	 ██║ ██╔╝ ██╔══██╗ ╚══██╔══╝ ██╔══██╗ ████╗  ██║ ██╔══██╗
 	 █████╔╝  ███████║    ██║    ███████║ ██╔██╗ ██║ ███████║
 	 ██╔═██╗  ██╔══██║    ██║    ██╔══██║ ██║╚██╗██║ ██╔══██║
@@ -8,128 +7,197 @@
 	 ╚═╝  ╚═╝ ╚═╝  ╚═╝/\  ╚═╝    ╚═╝  ╚═╝ ╚═╝  ╚═══╝ ╚═╝  ╚═╝
    /vvvvvvvvvvvvvvvvvvv \=========================================,
    `^^^^^^^^^^^^^^^^^^^ /---------------------------------------"
-        Katana Engine \/ © 2012 - Shuriken Studios LLC
-
-
-   Author: Ryan Appel
-   Date: 5/8/2015
-
-   File: SpriteBatch.h
-   Description: Header file for rendering resources.
-
-/  --------------------------------------------------------------- */
+        Katana Engine \/ © 2012 - Shuriken Studios LLC              */
 
 #pragma once
 
-
-enum TextAlign { ALIGN_LEFT, ALIGN_CENTER, ALIGN_RIGHT };
-
-enum SpriteSortMode { SORTMODE_BACKTOFRONT, SORTMODE_DEFERRED, SORTMODE_FRONTTOBACK, SORTMODE_IMMEDIATE, SORTMODE_TEXTURE };
-
-enum BlendState { BLEND_ALPHA, BLEND_ADDITIVE };
-
-class SpriteBatch
+namespace KatanaEngine
 {
-
-public:
-
-	SpriteBatch() { m_isStarted = false; }
-	~SpriteBatch() { }
-
-	void Begin(SpriteSortMode sortMode = SORTMODE_DEFERRED, BlendState blendState = BLEND_ALPHA, ALLEGRO_TRANSFORM *transformation = NULL);
-	void End(bool test = false);
-	
-	void DrawString(Font *pFont, std::string *text, Vector2 position, Color color = Color::White,
-		TextAlign alignment = ALIGN_LEFT, float drawDepth = 0);
-	
-	void Draw(Texture *pTexture, Vector2 position, Region region, Color color = Color::White,
-		Vector2 origin = Vector2::Zero, Vector2 scale = Vector2::One, float rotation = 0, float drawDepth = 0);
-	
-	void Draw(Texture *pTexture, Vector2 position, Color color = Color::White,
-		Vector2 origin = Vector2::Zero, Vector2 scale = Vector2::One, float rotation = 0, float drawDepth = 0);
-
-	void Draw(Animation *pAnimation, Vector2 position, Color color = Color::White,
-		Vector2 origin = Vector2::Zero, Vector2 scale = Vector2::One, float rotation = 0, float drawDepth = 0);
-
-
-private:
-
-	
-
-	struct Drawable
+	/** @brief Defines the states for text alignment. */
+	enum class TextAlign
 	{
-		bool isBitmap;
-		ALLEGRO_COLOR color;
-		int x, y;
-		float depth;
-
-		union
-		{
-			struct
-			{
-				ALLEGRO_FONT *pFont;
-				std::string *text;
-				TextAlign align;
-			};
-
-			struct
-			{
-				ALLEGRO_BITMAP *pBitmap;
-				float rotation;
-				int cx, cy;
-				int sx, sy, sw, sh;
-				float scx, scy;
-				unsigned short id;
-			};
-
-		} Union;
-		
-		bool operator<(const Drawable& other) const
-		{
-			return (depth < other.depth);
-		}
+		LEFT,			/**< Align the text to the left. */
+		CENTER,			/**< Align the text to the center. */
+		RIGHT			/**< Align the text to the right. */
 	};
 
-	struct CompareBackToFront
+	/** @brief Defines the methods for sorting sprites before rendering.
+		@see SpriteBatch::Begin()
+		@see SpriteBatch::Draw() */
+	enum class SpriteSortMode
 	{
-		bool operator()(const Drawable* l, const Drawable* r)
+		BACK_TO_FRONT,	/**< Sprites rendered with a lower draw order will render behind those with a higher draw order. */
+		DEFERRED,		/**< Sprites rendered first will appear behind those rendered later. */
+		FRONT_TO_BACK,	/**< Sprites rendered with a higher draw order will render behind those with a lower draw order. */
+		IMMEDIATE,		/**< Sprites will not be batched, and will draw immediately. */
+		TEXTURE			/**< Sprites that share a texture will all be rendered together. */
+	};
+
+	/** @brief Defines the way in which textures blending will be calculated. */
+	enum class BlendState
+	{
+		ALPHA,			/**< Textures will be blended using premultiplied alpha blending. */
+		ADDITIVE		/**< Textures will be blended using additive blending. */
+	};
+
+	/** @brief Enables a group of sprites to be drawn using the same settings. */
+	class SpriteBatch
+	{
+
+	public:
+
+		SpriteBatch() { m_isStarted = false; }
+		~SpriteBatch() { }
+
+		/** @brief Begins a sprite batch operation.
+			@param sortMode Defines how to sort the sprites for rendering.
+			@param blendState Defines how to blend overlaping sprites.
+			@param pTransformation Defines a screen space transformation to use. */
+		void Begin(const SpriteSortMode sortMode = SpriteSortMode::DEFERRED,
+			const BlendState blendState = BlendState::ALPHA,
+			ALLEGRO_TRANSFORM *pTransformation = NULL);
+
+		/** @brief Flushes the sprite batch and restores the device state to how
+		it was before Begin was called. */
+		void End(/*bool test = false*/);
+
+		/** @brief Adds a string to a batch of sprites to be rendered.
+			@param pFont The font used to draw the text.
+			@param text The text to display.
+			@param position The screen position of the text.
+			@param color The color to tint the text. The default is Color::White (no tint).
+			@param alignment The prefered method of aligning the text. The default is
+			TextAlign::LEFT.
+			@param drawDepth The depth at which to render the sprite. This is determined
+			by the SpriteSortMode arguement that is passed to SpriteBatch::Begin(). The
+			default is zero.*/
+		void DrawString(const Font *pFont, std::string *text, const Vector2 position,
+			const Color color = Color::White, const TextAlign alignment = TextAlign::LEFT,
+			const float drawDepth = 0);
+
+		/** @brief Adds a sprite to a batch of sprites to be rendered. 
+			@param pTexture A pointer to the texture to render.
+			@param position The screen position of the sprite.
+			@param region The region of the texture to render.
+			@param color The color to tint the sprite. The default is Color::White (no tint).
+			@param origin The sprite's origin. The default is Vector2::Zero, which is the
+			upper left corner of the sprite.
+			@param scale The scale factor of the sprite. The default is Vector2::One.
+			@param rotation The rotation angle in radians. The default is zero.
+			@param drawDepth The depth at which to render the sprite. This is determined
+			by the SpriteSortMode arguement that is passed to SpriteBatch::Begin(). The
+			default is zero.*/
+		void Draw(const Texture *pTexture, const Vector2 position, const Region region,
+			const Color color = Color::White, const Vector2 origin = Vector2::ZERO, 
+			const Vector2 scale = Vector2::ONE, const float rotation = 0, 
+			const float drawDepth = 0);
+
+		/** @brief Adds a sprite to a batch of sprites to be rendered.
+			@param pTexture A pointer to the texture to render.
+			@param position The screen position of the sprite.
+			@param color The color to tint the sprite. The default is Color::White (no tint).
+			@param origin The sprite's origin. The default is Vector2::Zero, which is the
+			upper left corner of the sprite.
+			@param scale The scale factor of the sprite. The default is Vector2::One.
+			@param rotation The rotation angle in radians. The default is zero.
+			@param drawDepth The depth at which to render the sprite. This is determined
+			by the SpriteSortMode arguement that is passed to SpriteBatch::Begin(). The
+			default is zero.
+
+			@overload */
+		void Draw(const Texture *pTexture, const Vector2 position,
+			const Color color = Color::White, const Vector2 origin = Vector2::ZERO,
+			const Vector2 scale = Vector2::ONE, const float rotation = 0,
+			const float drawDepth = 0);
+
+		/** @brief Adds a sprite to a batch of sprites to be rendered.
+			@param pAnimation A pointer to the animation to render.
+			@param position The screen position of the sprite.
+			@param color The color to tint the sprite. The default is Color::White (no tint).
+			@param origin The sprite's origin. The default is Vector2::Zero, which is the
+			upper left corner of the sprite.
+			@param scale The scale factor of the sprite. The default is Vector2::One.
+			@param rotation The rotation angle in radians. The default is zero.
+			@param drawDepth The depth at which to render the sprite. This is determined
+			by the SpriteSortMode arguement that is passed to SpriteBatch::Begin(). The
+			default is zero.
+
+			@overload */
+		void Draw(Animation *pAnimation, const Vector2 position,
+			const Color color = Color::White, const Vector2 origin = Vector2::ZERO,
+			const Vector2 scale = Vector2::ONE, const float rotation = 0,
+			float drawDepth = 0);
+
+		/** @brief Gets the current settings from the sprite batch.
+			@param sortMode Defines how to sort the sprites for rendering.
+			@param blendState Defines how to blend overlaping sprites.
+			@param pTransformation Defines a screen space transformation to use. */
+		void GetBatchSettings(SpriteSortMode &sortMode, BlendState &blendState, ALLEGRO_TRANSFORM *pTransformation);
+
+
+	private:
+
+		struct Drawable
 		{
-			if (*l < *r)
+			bool isBitmap = false;
+			ALLEGRO_COLOR color = { };
+			int x = 0;
+			int y = 0;
+			float depth = 0;
+
+			union
 			{
-				return true;
+				struct
+				{
+					ALLEGRO_FONT *pFont;
+					std::string *text;
+					TextAlign align;
+				};
+
+				struct
+				{
+					ALLEGRO_BITMAP *pBitmap;
+					float rotation;
+					int cx, cy;
+					int sx, sy, sw, sh;
+					float scx, scy;
+					unsigned short id;
+				};
+
+			} Union;
+
+			bool operator<(const Drawable& other) const
+			{
+				return (depth < other.depth);
 			}
+		};
 
-			return false;
-		}
-	};
-
-	struct CompareFrontToBack
-	{
-		bool operator()(const Drawable* l, const Drawable* r)
+		struct CompareBackToFront
 		{
-			if (*r < *l)
-			{
+			bool operator()(const Drawable* l, const Drawable* r) { return (*l < *r); }
+		};
 
-				return true;
-			}
+		struct CompareFrontToBack
+		{
+			bool operator()(const Drawable* l, const Drawable* r) { return (*r < *l); }
+		};
 
-			return false;
-		}
+		std::vector<Drawable *> m_drawables;
+		std::vector<Drawable *> m_inactiveDrawables;
+		std::vector<Drawable *>::iterator m_it;
+
+		unsigned short m_lastID = 0;
+
+		SpriteSortMode m_sortMode = SpriteSortMode::DEFERRED;
+
+		BlendState m_blendState = BlendState::ALPHA;
+
+		ALLEGRO_TRANSFORM *m_pTransformation = nullptr;
+
+		bool m_isStarted = false;
+
+		void DrawBitmap(Drawable *drawable);
+		void DrawFont(Drawable *drawable);
+
 	};
-	
-	std::vector<Drawable *> m_drawables;
-	std::vector<Drawable *> m_inactiveDrawables;
-	std::vector<Drawable *>::iterator m_it;
-
-	unsigned short m_lastID;
-
-	SpriteSortMode m_sortMode;
-
-	ALLEGRO_TRANSFORM *m_transformation;
-
-	bool m_isStarted;
-	
-	void DrawBitmap(Drawable *drawable);
-	void DrawFont(Drawable *drawable);
-
-};
+}

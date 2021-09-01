@@ -5,10 +5,6 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
     <Filter Include="Source Files\Core">
       <UniqueIdentifier>{5412b08a-5c39-4276-81f6-953b6f3e5327}</UniqueIdentifier>
     </Filter>
@@ -59,9 +55,6 @@
     <ClCompile Include="Animation.cpp">
       <Filter>Source Files\Core\Resources</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ScreenManager.cpp">
       <Filter>Source Files\Screens</Filter>
     </ClCompile>
@@ -69,9 +62,6 @@
       <Filter>Source Files\Screens</Filter>
     </ClCompile>
     <ClCompile Include="Game.cpp">
-      <Filter>Source Files\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="KatanaEngine.cpp">
       <Filter>Source Files\Core</Filter>
     </ClCompile>
     <ClCompile Include="GameTime.cpp">
@@ -88,6 +78,24 @@
     </ClCompile>
     <ClCompile Include="MenuItem.cpp">
       <Filter>Source Files\Screens\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="MathUtil.cpp">
+      <Filter>Source Files\Core\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleManager.cpp">
+      <Filter>Source Files\Particles</Filter>
+    </ClCompile>
+    <ClCompile Include="Particle.cpp">
+      <Filter>Source Files\Particles</Filter>
+    </ClCompile>
+    <ClCompile Include="Emitter.cpp">
+      <Filter>Source Files\Particles</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleTemplate.cpp">
+      <Filter>Source Files\Particles</Filter>
+    </ClCompile>
+    <ClCompile Include="KatanaEngine.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -110,9 +118,6 @@
       <Filter>Source Files\Core\Input</Filter>
     </ClInclude>
     <ClInclude Include="MouseState.h">
-      <Filter>Source Files\Core\Input</Filter>
-    </ClInclude>
-    <ClInclude Include="ButtonState.h">
       <Filter>Source Files\Core\Input</Filter>
     </ClInclude>
     <ClInclude Include="GamePadState.h">
@@ -142,9 +147,6 @@
     <ClInclude Include="Game.h">
       <Filter>Source Files\Core</Filter>
     </ClInclude>
-    <ClInclude Include="KatanaEngine.h">
-      <Filter>Source Files\Core</Filter>
-    </ClInclude>
     <ClInclude Include="GameTime.h">
       <Filter>Source Files\Core</Filter>
     </ClInclude>
@@ -159,6 +161,27 @@
     </ClInclude>
     <ClInclude Include="MenuItem.h">
       <Filter>Source Files\Screens\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleManager.h">
+      <Filter>Source Files\Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="Particle.h">
+      <Filter>Source Files\Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="Emitter.h">
+      <Filter>Source Files\Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleTemplate.h">
+      <Filter>Source Files\Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyState.h">
+      <Filter>Source Files\Core\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="KatanaEngine.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RotatingParticle.h">
+      <Filter>Source Files\Particles</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,6 +1,6 @@
 ﻿/* ---------------------------------------------------------------  /
 
-	 ██╗  ██╗  █████╗  ████████╗  █████╗  ███╗   ██╗  █████╗ 
+	 ██╗  ██╗  █████╗  ████████╗  █████╗  ███╗   ██╗  █████╗
 	 ██║ ██╔╝ ██╔══██╗ ╚══██╔══╝ ██╔══██╗ ████╗  ██║ ██╔══██╗
 	 █████╔╝  ███████║    ██║    ███████║ ██╔██╗ ██║ ███████║
 	 ██╔═██╗  ██╔══██║    ██║    ██╔══██║ ██║╚██╗██║ ██╔══██║
@@ -8,55 +8,61 @@
 	 ╚═╝  ╚═╝ ╚═╝  ╚═╝/\  ╚═╝    ╚═╝  ╚═╝ ╚═╝  ╚═══╝ ╚═╝  ╚═╝
    /vvvvvvvvvvvvvvvvvvv \=========================================,
    `^^^^^^^^^^^^^^^^^^^ /---------------------------------------"
-        Katana Engine \/ © 2012 - Shuriken Studios LLC
-
-
-   Author: Ryan Appel
-   Date: 5/6/2015
-
-   File: ScreenManager.h
-   Description: Header file for screen management.
+		Katana Engine \/ © 2012 - Shuriken Studios LLC
 
 /  --------------------------------------------------------------- */
 
 #pragma once
 
-
-class Game;
-
-class ScreenManager
+namespace KatanaEngine
 {
-	friend class Game;
+	class Game;
 
-public:
+	/** @brief Updates, renders, and manages transitions between instances of the Screen class. */
+	class ScreenManager
+	{
+		friend class Game;
 
-	ScreenManager(Game *pGame);
-	virtual ~ScreenManager() { }
+	public:
 
-	bool InTransition() const { return false; }
+		/** @brief Instantiate a screen manager object.
+			@param pGame A pointer to the game instance. */
+		ScreenManager(Game *pGame);
+		virtual ~ScreenManager() { }
 
-	Game *GetGame() const { return m_pGame; }
+		/** @brief Gets a pointer to the Game.
+			@return A pointer to the game instance. */
+		Game *GetGame() const { return m_pGame; }
 
-	ResourceManager *GetResourceManager() const;
+		/** @brief Gets a pointer to the ResourceManager, for loading and managing resources.
+			@return A pointer to the game's ResourceManager instance. */
+		ResourceManager *GetResourceManager() const;
 
-	virtual void AddScreen(Screen *pScreen);
+		/** @brief Add a screen to be managed.
+			@param pScreen A pointer to the screen to be managed. */
+		virtual void AddScreen(Screen *pScreen);
 
-	virtual void Update(const GameTime *pGameTime);
+		/** @brief Called when the game has determined that screen logic needs to be processed.
+			@param pGameTime Timing values including time since last update. */
+		virtual void Update(const GameTime *pGameTime);
 
-	virtual void Draw(const GameTime *pGameTime);
+		/** @brief Called when the game determines it is time to draw a frame.
+			@param pSpriteBatch The game's sprite batch, used for rendering. */
+		virtual void Draw(SpriteBatch *pSpriteBatch);
 
 
-private:
+	private:
 
-	Game *m_pGame;
+		Game *m_pGame;
 
-	std::vector<Screen *> m_screens;
-	std::vector<Screen *> m_screensToAdd;
-	std::vector<Screen *> m_screensToRemove;
-	std::vector<Screen *> m_screensToDraw;
-	
-	std::vector<Screen *>::iterator m_it;
-	std::vector<Screen *>::reverse_iterator m_rit;
+		std::vector<Screen *> m_screens;
+		std::vector<Screen *> m_screensToAdd;
+		std::vector<Screen *> m_screensToRemove;
+		std::vector<Screen *> m_screensToDraw;
 
-	virtual void HandleInput(InputState *pInput);
-};
+		std::vector<Screen *>::iterator m_it;
+		std::vector<Screen *>::reverse_iterator m_rit;
+
+		virtual void HandleInput(const InputState *pInput);
+	};
+}

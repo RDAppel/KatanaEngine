@@ -1,6 +1,5 @@
-﻿/* ---------------------------------------------------------------  /
-
-	 ██╗  ██╗  █████╗  ████████╗  █████╗  ███╗   ██╗  █████╗ 
+﻿
+/*	 ██╗  ██╗  █████╗  ████████╗  █████╗  ███╗   ██╗  █████╗ 
 	 ██║ ██╔╝ ██╔══██╗ ╚══██╔══╝ ██╔══██╗ ████╗  ██║ ██╔══██╗
 	 █████╔╝  ███████║    ██║    ███████║ ██╔██╗ ██║ ███████║
 	 ██╔═██╗  ██╔══██║    ██║    ██╔══██║ ██║╚██╗██║ ██╔══██║
@@ -8,23 +7,20 @@
 	 ╚═╝  ╚═╝ ╚═╝  ╚═╝/\  ╚═╝    ╚═╝  ╚═╝ ╚═╝  ╚═══╝ ╚═╝  ╚═╝
    /vvvvvvvvvvvvvvvvvvv \=========================================,
    `^^^^^^^^^^^^^^^^^^^ /---------------------------------------"
-        Katana Engine \/ © 2012 - Shuriken Studios LLC
-
-
-   Author: Ryan Appel
-   Date: 5/8/2015
-
-   File: MouseState.h
-   Description: Header file for mouse states.
-
-/  --------------------------------------------------------------- */
+        Katana Engine \/ © 2012 - Shuriken Studios LLC              */
 
 #pragma once
 
-
-enum MouseButtons
+namespace KatanaEngine
 {
-	MOUSEBUTTON_LEFT = 1,
-	MOUSEBUTTON_RIGHT = 2,
-	MOUSEBUTTON_CENTER = 4
-};
+
+	/** @brief Defines the buttons for a mouse. */
+	enum class MouseButton
+	{
+		LEFT	= 1 << 0,	/**< Represents the Left mouse button. */
+		RIGHT	= 1 << 1,	/**< Represents the Right mouse button. */
+		CENTER	= 1 << 2,	/**< Represents the Center mouse button. */
+		BACK	= 1 << 3,	/**< Represents the Back mouse button. */
+		FORWARD	= 1 << 4	/**< Represents the Foreward mouse button. */
+	};
+}

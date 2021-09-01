@@ -1,6 +1,5 @@
-﻿/* ---------------------------------------------------------------  /
-
-	 ██╗  ██╗  █████╗  ████████╗  █████╗  ███╗   ██╗  █████╗ 
+﻿
+/*	 ██╗  ██╗  █████╗  ████████╗  █████╗  ███╗   ██╗  █████╗ 
 	 ██║ ██╔╝ ██╔══██╗ ╚══██╔══╝ ██╔══██╗ ████╗  ██║ ██╔══██╗
 	 █████╔╝  ███████║    ██║    ███████║ ██╔██╗ ██║ ███████║
 	 ██╔═██╗  ██╔══██║    ██║    ██╔══██║ ██║╚██╗██║ ██╔══██║
@@ -8,92 +7,89 @@
 	 ╚═╝  ╚═╝ ╚═╝  ╚═╝/\  ╚═╝    ╚═╝  ╚═╝ ╚═╝  ╚═══╝ ╚═╝  ╚═╝
    /vvvvvvvvvvvvvvvvvvv \=========================================,
    `^^^^^^^^^^^^^^^^^^^ /---------------------------------------"
-        Katana Engine \/ © 2012 - Shuriken Studios LLC
-
-
-   Author: Ryan Appel
-   Date: 5/6/2015
-
-   File: Point.cpp
-   Description: Source file for two-dimensional points.
-
-/  --------------------------------------------------------------- */
+        Katana Engine \/ © 2012 - Shuriken Studios LLC              */
 
 #include "KatanaEngine.h"
 
-
-const Point Point::Zero = Point(0, 0);
-const Point Point::One = Point(1, 1);
-const Point Point::UnitX = Point(1, 0);
-const Point Point::UnitY = Point(0, 1);
-
-
-Point::Point(const int x, const int y)
+namespace KatanaEngine
 {
-	X = x;
-	Y = y;
-}
+	const Point Point::Origin = Point(0, 0);
 
-void Point::Set(const int x, const int y)
-{
-	X = x;
-	Y = y;
-}
 
-void Point::Set(const Point point)
-{
-	X = point.X;
-	Y = point.Y;
-}
+	Point::Point(const int x, const int y)
+	{
+		X = x;
+		Y = y;
+	}
 
-Point &Point::operator=(const Point &p2)
-{
-	if (this == &p2)
+	void Point::Set(const int x, const int y)
+	{
+		X = x;
+		Y = y;
+	}
+
+	void Point::Set(const Point point)
+	{
+		X = point.X;
+		Y = point.Y;
+	}
+
+	std::string Point::ToString() const
+	{
+		std::ostringstream ss;
+		ss << "{ " << X << ", " << Y << " }";
+		return ss.str();
+	}
+
+	Point &Point::operator=(const Point &point)
+	{
+		if (this != &point)
+		{
+			X = point.X;
+			Y = point.Y;
+		}
+
 		return *this;
+	}
 
-	X = p2.X;
-	Y = p2.Y;
+	Point &Point::operator+=(const Point &point)
+	{
+		X += point.X;
+		Y += point.Y;
 
-	return *this;
-}
+		return *this;
+	}
 
-Point &Point::operator+=(const Point &p2)
-{
-	X += p2.X;
-	Y += p2.Y;
+	Point &Point::operator-=(const Point &point)
+	{
+		X -= point.X;
+		Y -= point.Y;
 
-	return *this;
-}
+		return *this;
+	}
 
-Point &Point::operator-=(const Point &p2)
-{
-	X -= p2.X;
-	Y -= p2.Y;
+	const Point Point::operator+(const Point &point) const
+	{
+		return Point(*this) += point;
+	}
 
-	return *this;
-}
+	const Point Point::operator-(const Point &point) const
+	{
+		return Point(*this) -= point;
+	}
 
-const Point Point::operator+(const Point &p2) const
-{
-	return Point(*this) += p2;
-}
+	bool Point::operator== (const Point &point) const
+	{
+		return ((X == point.X) && (Y == point.Y));
+	}
 
-const Point Point::operator-(const Point &p2) const
-{
-	return Point(*this) -= p2;
-}
+	bool Point::operator!= (const Point &point) const
+	{
+		return !((X == point.X) && (Y == point.Y));
+	}
 
-bool Point::operator== (const Point &p2) const
-{
-	return ((X == p2.X) && (Y == p2.Y));
-}
-
-bool Point::operator!= (const Point &p2) const
-{
-	return !((X == p2.X) && (Y == p2.Y));
-}
-
-const Vector2 Point::ToVector2() const
-{
-	return Vector2(X, Y);
+	const Vector2 Point::ToVector2() const
+	{
+		return Vector2(X, Y);
+	}
 }
