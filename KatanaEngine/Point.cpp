@@ -13,7 +13,7 @@
 
 namespace KatanaEngine
 {
-	const Point Point::Origin = Point(0, 0);
+	const Point Point::ORIGIN = Point(0, 0);
 
 
 	Point::Point(const int x, const int y)

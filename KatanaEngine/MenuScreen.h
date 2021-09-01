@@ -84,13 +84,11 @@ namespace KatanaEngine
 
 		std::vector<MenuItem *> m_menuItems;
 
-		unsigned int m_selectedItemIndex;
+		unsigned int m_selectedItemIndex = 0;
+		unsigned int m_displayCount = 0;
+		unsigned int m_displayStartIndex = 0;
 
-		unsigned int m_displayCount;
-
-		unsigned int m_displayStartIndex;
-
-		bool m_itemListWraps;
+		bool m_itemListWraps = false;
 
 	};
 }

@@ -91,17 +91,15 @@ namespace KatanaEngine
 
 		std::vector<Region *> m_frames;
 
-		Texture *m_pTexture;
+		Texture *m_pTexture = nullptr;
 
-		double m_secondsPerFrame;
+		double m_secondsPerFrame = 0;
+		double m_currentFrameTime = 0;
 
-		double m_currentFrameTime;
+		int m_currentIndex = 0;
+		int m_loopCounter = 0;
 
-		int m_currentIndex;
-
-		int m_loopCounter;
-
-		bool m_isPlaying;
+		bool m_isPlaying = false;
 
 	};
 }

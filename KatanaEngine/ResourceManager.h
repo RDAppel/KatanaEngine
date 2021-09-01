@@ -106,9 +106,9 @@ namespace KatanaEngine
 
 		std::vector<Resource *> m_clones;
 
-		std::string m_contentPath;
+		std::string m_contentPath = "..\\KatanaEngine";
 
-		unsigned short m_nextResourceID;
+		unsigned short m_nextResourceID = 0;
 
 	};
 }

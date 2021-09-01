@@ -28,7 +28,7 @@ namespace KatanaEngine
 		~Point() { };
 
 
-		static const Point Origin;	/**< @brief A point located at the origin. */
+		static const Point ORIGIN;	/**< @brief A point located at the origin. */
 
 
 		/** @brief Sets the components of the point.
@@ -94,8 +94,8 @@ namespace KatanaEngine
 		bool operator!=(const Point &point) const;
 
 
-		int X;	/**< @brief The x-coordinate of the point. */
-		int Y;	/**< @brief The y-coordinate of the point. */
+		int X = 0;	/**< @brief The x-coordinate of the point. */
+		int Y = 0;	/**< @brief The y-coordinate of the point. */
 
 	};
 }

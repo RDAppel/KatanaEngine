@@ -24,7 +24,6 @@ namespace KatanaEngine
 		m_itemListWraps = true;
 	}
 
-
 	MenuScreen::~MenuScreen()
 	{
 		std::vector<MenuItem *>::iterator it;
@@ -53,7 +52,7 @@ namespace KatanaEngine
 			}
 
 			if (pInput->IsNewKeyPress(Key::UP) ||
-				pInput->IsNewButtonPress(Button::DPAD_UP, playerIndexOut)) // TODO?: Make "IsMenuUp" in InputState ?
+				pInput->IsNewButtonPress(Button::DPAD_UP, playerIndexOut))
 			{
 				m_selectedItemIndex--;
 
@@ -63,7 +62,7 @@ namespace KatanaEngine
 				}
 			}
 			else if (pInput->IsNewKeyPress(Key::DOWN) ||
-				pInput->IsNewButtonPress(Button::DPAD_DOWN, playerIndexOut)) // TODO?: Make "IsMenuDown" in InputState ?
+				pInput->IsNewButtonPress(Button::DPAD_DOWN, playerIndexOut))
 			{
 				m_selectedItemIndex++;
 

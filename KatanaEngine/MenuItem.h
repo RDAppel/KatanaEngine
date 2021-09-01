@@ -137,29 +137,23 @@ namespace KatanaEngine
 
 	private:
 
-		int m_index;
+		int m_index = 0;
+		std::string m_text = "Menu Item";
 
-		std::string m_text;
+		void *m_onSelect = nullptr;
 
-		void *m_onSelect;
+		bool m_isSelected = false;
+		bool m_isDisplayed = false;
 
-		bool m_isSelected;
+		Font *m_pFont = nullptr;
+		Color m_color = Color::White;
+		float m_alpha = 1.0f;
+		Vector2 m_position = Vector2::ZERO;
+		Vector2 m_textOffset = Vector2::ZERO;
 
-		bool m_isDisplayed;
+		MenuScreen *m_pMenuScreen = nullptr;
 
-		Font *m_pFont;
-
-		Color m_color;
-
-		float m_alpha;
-
-		Vector2 m_position;
-
-		Vector2 m_textOffset;
-
-		MenuScreen *m_pMenuScreen;
-
-		TextAlign m_textAlign;
+		TextAlign m_textAlign = TextAlign::LEFT;
 
 	};
 }

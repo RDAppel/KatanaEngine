@@ -53,7 +53,7 @@ namespace KatanaEngine
 
 	private:
 
-		Game *m_pGame;
+		Game *m_pGame = nullptr;
 
 		std::vector<Screen *> m_screens;
 		std::vector<Screen *> m_screensToAdd;
