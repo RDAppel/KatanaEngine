@@ -15,7 +15,7 @@ namespace Test
 	{
 		m_pTheme = pResourceManager->Load<GUI::Theme>("GUI\\Theme01.thm");
 
-		m_pComponents = new GUI::ComponentCollection(GetGame());
+		m_pComponents = new GUI::ComponentCollection();
 		m_pComponents->SetTheme(m_pTheme);
 
 		m_pPanel = new GUI::Panel(m_pComponents);

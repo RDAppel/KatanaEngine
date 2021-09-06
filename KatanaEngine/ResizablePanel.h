@@ -27,7 +27,7 @@ namespace KatanaEngine
 
 		public:
 
-			ResizablePanel(Game *pGame);
+			ResizablePanel();
 
 			ResizablePanel(ComponentCollection *pCollection)
 				: Panel(pCollection)

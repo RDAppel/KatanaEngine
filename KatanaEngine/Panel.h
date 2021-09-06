@@ -26,10 +26,9 @@ namespace KatanaEngine
 
 		public:
 
-			Panel(Game *pGame) : Component(pGame) { }
+			Panel() { }
 
 			Panel(ComponentCollection *pCollection)
-				: Component(pCollection->GetGame())
 			{
 				pCollection->AddComponent(this);
 			}

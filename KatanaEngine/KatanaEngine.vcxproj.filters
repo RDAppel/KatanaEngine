@@ -225,5 +225,11 @@
     <ClInclude Include="ComponentCollection.h">
       <Filter>Source Files\GUI</Filter>
     </ClInclude>
+    <ClInclude Include="IService.h">
+      <Filter>Source Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="ServiceContainer.h">
+      <Filter>Source Files\Core</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

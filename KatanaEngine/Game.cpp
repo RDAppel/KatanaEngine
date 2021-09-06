@@ -43,8 +43,6 @@ namespace KatanaEngine
 		s_windowTitle = "";
 
 		m_pResourceManager = new ResourceManager();
-		m_pScreenManager = nullptr;
-		//m_pParticleManager = nullptr;
 
 		m_pSpriteBatch = new SpriteBatch();
 
@@ -60,30 +58,6 @@ namespace KatanaEngine
 		delete m_pSpriteBatch;
 		delete m_pInput;
 		delete m_pGameTime;
-	}
-
-
-	void Game::Update(const GameTime *pGameTime)
-	{
-		if (GetScreenManager())
-		{
-			GetScreenManager()->HandleInput(m_pInput);
-			GetScreenManager()->Update(m_pGameTime);
-		}
-		/*
-		if (GetParticleManager())
-		{
-			GetParticleManager()->Update(m_pGameTime);
-		}
-		*/
-	}
-
-	void Game::Draw(SpriteBatch *pSpriteBatch)
-	{
-		if (GetScreenManager())
-		{
-			GetScreenManager()->Draw(pSpriteBatch);
-		}
 	}
 
 
@@ -127,7 +101,7 @@ namespace KatanaEngine
 		al_register_event_source(pEventQueue, al_get_timer_event_source(pTimer));
 		al_register_event_source(pEventQueue, al_get_display_event_source(m_pDisplay));
 
-		m_pInput = new InputState();
+		m_pInput = new InputState(m_pDisplay);
 
 		ALLEGRO_EVENT_SOURCE *pKeyboardEventSource = al_get_keyboard_event_source();
 		if (pKeyboardEventSource)
@@ -175,7 +149,7 @@ namespace KatanaEngine
 
 			case ALLEGRO_EVENT_TIMER:
 				m_pGameTime->Update();
-				Update(m_pGameTime);
+				Update(m_pGameTime, m_pInput);
 				m_pInput->Update();
 				redraw = true;
 				break;
@@ -256,11 +230,10 @@ namespace KatanaEngine
 		m_inverseTargetFrames = 1.0 / frames;
 	}
 
-	void Game::ChangeMouseCursor(MouseCursor cursor)
+	bool Game::AddService(IService *pService)
 	{
-		if (m_pDisplay)
-		{
-			al_set_system_mouse_cursor(m_pDisplay, (ALLEGRO_SYSTEM_MOUSE_CURSOR)cursor);
-		}
+		bool added = ServiceContainer::AddService(pService);
+		if (added) pService->SetGame(this);
+		return added;
 	}
 }

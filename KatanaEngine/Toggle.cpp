@@ -31,7 +31,7 @@ namespace KatanaEngine
 					m_transitionDirection = m_value ? 1 : -1;
 				}
 
-				GetGame()->ChangeMouseCursor(MouseCursor::LINK);
+				pInput->SetMouseCursor(MouseCursor::LINK);
 			}
 		}
 

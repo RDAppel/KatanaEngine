@@ -13,7 +13,7 @@
 
 namespace KatanaEngine
 {
-	InputState::InputState()
+	InputState::InputState(ALLEGRO_DISPLAY *pDisplay)
 	{
 		al_install_keyboard();
 		al_install_mouse();
@@ -276,5 +276,13 @@ namespace KatanaEngine
 	int8_t InputState::GetGamePadIndex(ALLEGRO_JOYSTICK *pId)
 	{
 		return m_map[pId];
+	}
+
+	void InputState::SetMouseCursor(MouseCursor cursor) const
+	{
+		if (m_pDisplay)
+		{
+			al_set_system_mouse_cursor(m_pDisplay, (ALLEGRO_SYSTEM_MOUSE_CURSOR)cursor);
+		}
 	}
 }

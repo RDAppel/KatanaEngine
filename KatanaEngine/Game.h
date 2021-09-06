@@ -15,7 +15,7 @@ namespace KatanaEngine
 {
 	/** @brief Base class for all games. Provides graphics initialization, game loop, and rendering code. 
 		Inherit from this class when creating your own game. */
-	class Game
+	class Game : public ServiceContainer
 	{
 
 	public:
@@ -26,7 +26,6 @@ namespace KatanaEngine
 		/** @brief Runs the game instance.
 			@return Error code for exit status. */
 		virtual int Run();
-
 
 		/** @brief Gets the screen width in pixels.
 			@return The width in pixels. */
@@ -44,28 +43,8 @@ namespace KatanaEngine
 			@return The name of the game. */
 		virtual std::string GetName() const = 0;
 
-		/** @brief Sets the system mouse cursor.
-			@remark If the system does not support the cursor type another one will be selected. */
-		virtual void ChangeMouseCursor(MouseCursor cursor);
-
 		/** @brief Sets the color used to clear the back buffer. */
 		virtual void SetClearColor(const Color &color) { m_clearColor = color; }
-
-		/** @brief Gets a pointer to the ResourceManager, for loading and managing resources.
-			@return A pointer to the game's ResourceManager instance. */
-		virtual ResourceManager *GetResourceManager() const { return m_pResourceManager; }
-
-		/** @brief Gets a pointer to the ScreenManager, for managing game screens.
-			@return A pointer to the game's ScreenManager instance. */
-		virtual ScreenManager *GetScreenManager() const { return m_pScreenManager; }
-
-		/** @brief Gets a pointer to the ParticleManager, for managing particle effects.
-			@return A pointer to the game's ParticleManager instance. */
-		//virtual ParticleManager *GetParticleManager() const { return m_pParticleManager; }
-
-		/** @brief Gets a pointer to the SpriteBatch, for rendering.
-			@return A pointer to the game's SpriteBatch instance. */
-		virtual SpriteBatch *GetSpriteBatch() const { return m_pSpriteBatch; }
 
 		/** @brief Called when resources need to be loaded.
 			@param pResourceManager The game's resource manager, used for loading
@@ -76,19 +55,23 @@ namespace KatanaEngine
 			any game-specific resources. */
 		virtual void UnloadContent() { }
 
-		/** @brief Called when the game has determined that game logic needs to be processed.
-			@param pGameTime Timing values including time since last update. */
-		virtual void Update(const GameTime *pGameTime);
-
-		/** @brief Called when the game determines it is time to draw a frame.
-			@param pSpriteBatch The game's sprite batch, used for rendering. */
-		virtual void Draw(SpriteBatch *pSpriteBatch);
-
 		/** @brief Quits the game. */
 		virtual void Quit() { m_isRunning = false; }
 
+		/** @brief Add a service to the service container.
+			@remark This is an overload of ServiceContainer::AddService, so that
+			any added services can have a pointer to the game set.*/
+		virtual bool AddService(IService *pService);
+
+		/** @brief Gets a pointer to the ResourceManager, for loading game resources.
+			@return A pointer to the game's ResourceManager instance. */
+		virtual ResourceManager *GetResourceManager() const { return m_pResourceManager; }
 
 	protected:
+
+		/** @brief Gets a pointer to the SpriteBatch, for rendering.
+			@return A pointer to the game's SpriteBatch instance. */
+		virtual SpriteBatch *GetSpriteBatch() const { return m_pSpriteBatch; }
 
 		/** @brief Sets the screen resolution.
 			@param width The width of the screen in pixels.
@@ -112,12 +95,6 @@ namespace KatanaEngine
 			@param pFont A pointer to the font. */
 		virtual void SetFrameCounterFont(Font *pFont) { m_pFrameCounterFont = pFont; }
 
-		/** @brief Initializes the game's ScreenManager. */
-		virtual void InitializeScreenManager() { m_pScreenManager = new ScreenManager(this); }
-
-		/** @brief Initializes the game's ParticleManager. */
-		//virtual void InitializeParticleManager() { m_pParticleManager = new ParticleManager(this); }
-
 		/** @brief Displays the game's current frame rate. */
 		virtual void DisplayFrameRate();
 
@@ -130,6 +107,18 @@ namespace KatanaEngine
 		/** @brief Resets the game's timing values. */
 		virtual void ResetGameTime() { m_pGameTime = new GameTime(); }
 
+		/** @brief Creates and adds a screen manager service.
+			@returns A pointer to the screen manager instance. */
+		virtual ScreenManager *InitializeScreenManager()
+		{
+			ScreenManager *pScreenManager = new ScreenManager;
+			bool added = AddService(pScreenManager);
+
+			if (added) return pScreenManager;
+
+			delete pScreenManager;
+			return nullptr;			
+		}
 
 	private:
 
@@ -157,11 +146,7 @@ namespace KatanaEngine
 
 		GameTime *m_pGameTime = nullptr;
 		InputState *m_pInput = nullptr;
-
 		SpriteBatch *m_pSpriteBatch = nullptr;
-
-		ScreenManager *m_pScreenManager = nullptr;
-		//ParticleManager *m_pParticleManager;
 		ResourceManager *m_pResourceManager = nullptr;
 
 		Font *m_pFrameCounterFont = nullptr;

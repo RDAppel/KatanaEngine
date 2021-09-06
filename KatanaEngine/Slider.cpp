@@ -52,7 +52,7 @@ namespace KatanaEngine
 						m_dragOffset = mouse.X - buttonX;
 					}
 
-					GetGame()->ChangeMouseCursor(MouseCursor::LINK);
+					pInput->SetMouseCursor(MouseCursor::LINK);
 				}
 			}
 			else m_isMouseOverButton = false;

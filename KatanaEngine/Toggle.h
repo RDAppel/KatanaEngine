@@ -27,10 +27,9 @@ namespace KatanaEngine
 
 		public:
 
-			Toggle(Game *pGame) : Component(pGame) { }
+			Toggle() { }
 
 			Toggle(ComponentCollection *pCollection)
-				: Component(pCollection->GetGame())
 			{
 				pCollection->AddComponent(this);
 			}

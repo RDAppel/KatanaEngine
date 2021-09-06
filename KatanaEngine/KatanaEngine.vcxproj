@@ -240,6 +240,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GamePadState.h" />
     <ClInclude Include="GameTime.h" />
+    <ClInclude Include="IService.h" />
     <ClInclude Include="InputState.h" />
     <ClInclude Include="KatanaEngine.h" />
     <ClInclude Include="KeyState.h" />
@@ -259,6 +260,7 @@
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="Screen.h" />
     <ClInclude Include="ScreenManager.h" />
+    <ClInclude Include="ServiceContainer.h" />
     <ClInclude Include="Slider.h">
       <SubType>
       </SubType>

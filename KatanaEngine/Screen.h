@@ -83,10 +83,6 @@ namespace KatanaEngine
 			@return A pointer to the game's ScreenManager instance. */
 		virtual ScreenManager *GetScreenManager() { return m_pScreenManager; }
 
-		/** @brief Gets a pointer to the Game.
-			@return A pointer to the game instance. */
-		virtual Game *GetGame() const;
-
 		/** @brief Gets a pointer to the ParticleManager, for creating and managing particles.
 			@return A pointer to the game's ParticleManager instance. */
 		//virtual ParticleManager *GetParticleManager() const;

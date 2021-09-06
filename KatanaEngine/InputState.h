@@ -24,7 +24,7 @@ namespace KatanaEngine
 		/** @brief The maximum number of Xbox controllers that the system can manage. */
 		static const uint8_t MAX_NUM_GAMEPADSTATES = 4;
 
-		InputState();
+		InputState(ALLEGRO_DISPLAY *pDisplay);
 		virtual ~InputState() { }
 
 		/** @brief Determines if a keyboard key is currently being pressed down.
@@ -125,7 +125,14 @@ namespace KatanaEngine
 		GamePadState GetGamePadState(const int8_t gamePadIndex) const;
 
 
+		/** @brief Changes the mouse cursor.
+			@param cursor The cursor type to change to. */
+		virtual void SetMouseCursor(MouseCursor cursor) const;
+
+
 	private:
+
+		ALLEGRO_DISPLAY *m_pDisplay = nullptr;
 
 		ALLEGRO_KEYBOARD_STATE m_currentKeyboardState = { };
 		ALLEGRO_KEYBOARD_STATE m_previousKeyboardState = { };

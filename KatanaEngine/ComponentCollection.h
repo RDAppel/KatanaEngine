@@ -24,10 +24,8 @@ namespace KatanaEngine
 
 		public:
 
-			ComponentCollection(Game *pGame) { m_pGame = pGame; }
+			ComponentCollection() { }
 			virtual ~ComponentCollection();
-
-			virtual Game *GetGame() { return m_pGame; };
 
 			virtual Theme *GetTheme() { return m_pTheme; }
 
@@ -43,7 +41,6 @@ namespace KatanaEngine
 
 		private:
 
-			Game *m_pGame = nullptr;
 			Theme *m_pTheme = nullptr;
 
 			std::vector<Component *> m_components;

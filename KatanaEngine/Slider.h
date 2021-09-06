@@ -27,10 +27,9 @@ namespace KatanaEngine
 
 		public:
 
-			Slider(Game *pGame) : Component(pGame) { }
+			Slider() { }
 
 			Slider(ComponentCollection *pCollection)
-				: Component(pCollection->GetGame())
 			{
 				pCollection->AddComponent(this);
 			}

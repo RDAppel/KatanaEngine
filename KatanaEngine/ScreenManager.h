@@ -19,7 +19,7 @@ namespace KatanaEngine
 	class Game;
 
 	/** @brief Updates, renders, and manages transitions between instances of the Screen class. */
-	class ScreenManager
+	class ScreenManager : public IService
 	{
 		friend class Game;
 
@@ -27,16 +27,10 @@ namespace KatanaEngine
 
 		/** @brief Instantiate a screen manager object.
 			@param pGame A pointer to the game instance. */
-		ScreenManager(Game *pGame);
+		ScreenManager() { }
 		virtual ~ScreenManager() { }
 
-		/** @brief Gets a pointer to the Game.
-			@return A pointer to the game instance. */
-		Game *GetGame() const { return m_pGame; }
-
-		/** @brief Gets a pointer to the ResourceManager, for loading and managing resources.
-			@return A pointer to the game's ResourceManager instance. */
-		ResourceManager *GetResourceManager() const;
+		virtual std::string GetID() const { return "ScreenManager"; }
 
 		/** @brief Add a screen to be managed.
 			@param pScreen A pointer to the screen to be managed. */
@@ -52,8 +46,6 @@ namespace KatanaEngine
 
 
 	private:
-
-		Game *m_pGame = nullptr;
 
 		std::vector<Screen *> m_screens;
 		std::vector<Screen *> m_screensToAdd;

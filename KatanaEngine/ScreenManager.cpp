@@ -16,15 +16,6 @@
 
 namespace KatanaEngine
 {
-	ScreenManager::ScreenManager(Game *pGame)
-	{
-		m_pGame = pGame;
-	}
-
-	ResourceManager *ScreenManager::GetResourceManager() const
-	{
-		return GetGame()->GetResourceManager();
-	}
 
 	void ScreenManager::HandleInput(const InputState *pInput)
 	{
@@ -146,7 +137,7 @@ namespace KatanaEngine
 	void ScreenManager::AddScreen(Screen *pScreen)
 	{
 		pScreen->SetScreenManager(this);
-		pScreen->LoadContent(GetResourceManager());
+		pScreen->LoadContent(GetGame()->GetResourceManager());
 
 		m_screensToAdd.push_back(pScreen);
 	}

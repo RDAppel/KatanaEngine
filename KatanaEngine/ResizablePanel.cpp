@@ -24,8 +24,7 @@ namespace KatanaEngine
 		}
 
 		
-		ResizablePanel::ResizablePanel(Game *pGame)
-			: Panel(pGame)
+		ResizablePanel::ResizablePanel()
 		{
 			SetResizeCallback(OnResizeCallback);
 		}
@@ -36,7 +35,6 @@ namespace KatanaEngine
 			Panel::HandleInput(pInput);
 
 			Point mouse = pInput->GetMousePosition();
-			Game *pGame = GetGame();
 
 			const uint8_t TOP_MASK = 1 << 0;
 			const uint8_t LEFT_MASK = 1 << 1;
@@ -69,20 +67,20 @@ namespace KatanaEngine
 
 			if ((!hoverMask && m_specialCursor) && !m_dragMask)
 			{
-				pGame->ChangeMouseCursor(MouseCursor::DEFAULT);
+				pInput->SetMouseCursor(MouseCursor::DEFAULT);
 				m_specialCursor = false;
 			}
 			else
 			{
-				if (hoverMask == TOP_MASK) pGame->ChangeMouseCursor(MouseCursor::RESIZE_N);
-				if (hoverMask == LEFT_MASK) pGame->ChangeMouseCursor(MouseCursor::RESIZE_W);
-				if (hoverMask == RIGHT_MASK) pGame->ChangeMouseCursor(MouseCursor::RESIZE_E);
-				if (hoverMask == BOTTOM_MASK) pGame->ChangeMouseCursor(MouseCursor::RESIZE_S);
+				if (hoverMask == TOP_MASK) pInput->SetMouseCursor(MouseCursor::RESIZE_N);
+				if (hoverMask == LEFT_MASK) pInput->SetMouseCursor(MouseCursor::RESIZE_W);
+				if (hoverMask == RIGHT_MASK) pInput->SetMouseCursor(MouseCursor::RESIZE_E);
+				if (hoverMask == BOTTOM_MASK) pInput->SetMouseCursor(MouseCursor::RESIZE_S);
 
-				if (hoverMask == (TOP_MASK | LEFT_MASK)) pGame->ChangeMouseCursor(MouseCursor::RESIZE_NW);
-				if (hoverMask == (TOP_MASK | RIGHT_MASK)) pGame->ChangeMouseCursor(MouseCursor::RESIZE_NE);
-				if (hoverMask == (BOTTOM_MASK | LEFT_MASK)) pGame->ChangeMouseCursor(MouseCursor::RESIZE_SW);
-				if (hoverMask == (BOTTOM_MASK | RIGHT_MASK)) pGame->ChangeMouseCursor(MouseCursor::RESIZE_SE);
+				if (hoverMask == (TOP_MASK | LEFT_MASK)) pInput->SetMouseCursor(MouseCursor::RESIZE_NW);
+				if (hoverMask == (TOP_MASK | RIGHT_MASK)) pInput->SetMouseCursor(MouseCursor::RESIZE_NE);
+				if (hoverMask == (BOTTOM_MASK | LEFT_MASK)) pInput->SetMouseCursor(MouseCursor::RESIZE_SW);
+				if (hoverMask == (BOTTOM_MASK | RIGHT_MASK)) pInput->SetMouseCursor(MouseCursor::RESIZE_SE);
 
 				m_specialCursor = true;
 			}

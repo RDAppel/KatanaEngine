@@ -76,6 +76,10 @@
 #include "SpriteBatch.h"
 
 
+/* Interfaces */
+#include "IService.h"
+
+
 /* Particle Management */
 //#include "Particle.h"
 //#include "RotatingParticle.h"
@@ -103,4 +107,5 @@
 
 /* Game Engine */
 #include "GameTime.h"
+#include "ServiceContainer.h"
 #include "Game.h"

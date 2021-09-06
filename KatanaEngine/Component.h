@@ -26,7 +26,7 @@ namespace KatanaEngine
 
 		public:
 
-			Component(Game *pGame) { m_pGame = pGame; }
+			Component() { }
 
 			virtual void LoadContent(ResourceManager *pResourceManager) { }
 
@@ -64,8 +64,6 @@ namespace KatanaEngine
 
 		protected:
 
-			virtual Game *GetGame() { return m_pGame; }
-
 			virtual void SetHasFocus(bool hasFocus = true) { m_hasFocus = hasFocus; }
 
 
@@ -81,7 +79,6 @@ namespace KatanaEngine
 			Point m_size;
 
 			Theme *m_pTheme = nullptr;
-			Game *m_pGame = nullptr;
 		};
 	}
 }

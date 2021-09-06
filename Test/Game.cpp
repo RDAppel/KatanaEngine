@@ -8,12 +8,12 @@ namespace Test
 		SetScreenResolution(1600, 900);
 		SetFullScreen(false);
 
-		InitializeScreenManager();
+		m_pScreenManager = InitializeScreenManager();
 		//InitializeParticleManager();
 
 		SetResourceDirectory("..\\Test\\Content\\");
 
-		GetScreenManager()->AddScreen(new TestScreen);
+		m_pScreenManager->AddScreen(new TestScreen);
 
 		SetClearColor(Color(45.0f / 255, 45.0f / 255, 50.0f / 255));
 	}

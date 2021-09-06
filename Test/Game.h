@@ -16,5 +16,9 @@ namespace Test
 
 		virtual std::string GetName() const { return "Test"; }
 
+	private:
+
+		KatanaEngine::ScreenManager *m_pScreenManager = nullptr;
+
 	};
 }

@@ -123,11 +123,11 @@ namespace KatanaEngine
 		}
 	}
 
-	Game *Screen::GetGame() const
-	{
-		return m_pScreenManager->GetGame();
-	}
-	
+	//Game *Screen::GetGame() const
+	//{
+	//	return m_pScreenManager->GetGame();
+	//}
+
 	/*
 	ParticleManager *Screen::GetParticleManager() const
 	{
