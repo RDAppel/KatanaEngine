@@ -28,7 +28,7 @@
 #include <map>
 
 
-/* Allegro Specific */
+/* Allegro */
 #include <allegro5\allegro.h>
 #include <allegro5\allegro_native_dialog.h>
 #include <allegro5\allegro_font.h>
@@ -36,18 +36,27 @@
 #include <allegro5\allegro_image.h>
 #include <allegro5\allegro_audio.h>
 #include <allegro5\allegro_acodec.h>
+#include <allegro5\allegro_primitives.h>
 
 
-/* Math Specific */
+/* Timing */
+#include "GameTime.h"
+
+
+/* Math */
 #include "MathUtil.h"
+#include "Color.h"
 #include "Point.h"
 #include "Vector2.h"
-#include "GameTime.h"
 #include "Region.h"
-#include "Color.h"
+#include "Primitive.h"
+#include "Line.h"
+#include "Rectangle.h"
+#include "Circle.h"
+#include "Bezier.h"
 
 
-/* Input Specific */
+/* Input Handling */
 #include "KeyState.h"
 #include "GamepadState.h"
 #include "MouseState.h"
@@ -68,11 +77,11 @@
 
 
 /* Particle Management */
-#include "Particle.h"
-#include "RotatingParticle.h"
-#include "Emitter.h"
-#include "ParticleTemplate.h"
-#include "ParticleManager.h"
+//#include "Particle.h"
+//#include "RotatingParticle.h"
+//#include "Emitter.h"
+//#include "ParticleTemplate.h"
+//#include "ParticleManager.h"
 
 
 /* Screen Management */
@@ -81,6 +90,16 @@
 #include "MenuScreen.h"
 #include "ScreenManager.h"
 
+
+/* GUI */
+#include "EventHandlers.h"
+#include "Component.h"
+#include "ComponentCollection.h"
+#include "Panel.h"
+#include "Toggle.h"
+#include "Slider.h"
+#include "ResizablePanel.h"
+#include "Theme.h"
 
 /* Game Engine */
 #include "GameTime.h"

@@ -38,9 +38,9 @@ namespace KatanaEngine
 	{
 		if (!IsZero())
 		{
-			float len = Length();
-			X /= len;
-			Y /= len;
+			float length = Length();
+			X /= length;
+			Y /= length;
 		}
 	}
 	
@@ -64,12 +64,11 @@ namespace KatanaEngine
 		return pow((vector2.X - vector1.X), 2) + pow((vector2.Y - vector1.Y), 2);
 	}
 
-	Vector2 Vector2::Lerp(const Vector2 &start, const Vector2 &end, const float value)
+	Vector2 Vector2::Lerp(const Vector2 &start, const Vector2 &end,
+		const float value, const bool clamp)
 	{
-		if (value < 0) return start;
-		if (value > 1) return end;
-
-		return start + (end - start) * value;
+		float t = clamp ? Math::Clamp(0, 1, value) : value;
+		return start * (1 - t) + end * t;
 	}
 
 	Vector2 Vector2::GetRandom(bool normalize)
@@ -83,11 +82,24 @@ namespace KatanaEngine
 		return result;
 	}
 
+	Vector2 Vector2::GetNormal() const
+	{
+		if (IsZero()) return Vector2::ZERO;
+
+		float length = Length();
+		return Vector2(X / length, Y / length);
+	}
+
 	std::string Vector2::ToString() const
 	{
 		std::ostringstream ss;
 		ss << "{ " << X << ", " << Y << " }";
 		return ss.str();
+	}
+
+	const Point Vector2::ToPoint() const
+	{
+		return Point((int)X, (int)Y);
 	}
 
 	Vector2 &Vector2::operator=(const Vector2 &vector)
@@ -117,7 +129,7 @@ namespace KatanaEngine
 		return *this;
 	}
 
-	Vector2 &Vector2::operator*=(const float scalar)
+	Vector2 &Vector2::operator*=(const float &scalar)
 	{
 		X *= scalar;
 		Y *= scalar;
@@ -125,7 +137,7 @@ namespace KatanaEngine
 		return *this;
 	}
 
-	Vector2 &Vector2::operator/=(const float scalar)
+	Vector2 &Vector2::operator/=(const float &scalar)
 	{
 		X /= scalar;
 		Y /= scalar;
@@ -143,28 +155,51 @@ namespace KatanaEngine
 		return Vector2(*this) -= vector;
 	}
 
-	const Vector2 Vector2::operator*(const float scalar) const
-	{
-		return Vector2(*this) *= scalar;
-	}
-
-	const Vector2 Vector2::operator/(const float scalar) const
-	{
-		return Vector2(*this) /= scalar;
-	}
-
 	bool Vector2::operator==(const Vector2 &vector) const
 	{
-		return ((X == vector.X) && (Y == vector.Y));
+		return (X == vector.X && Y == vector.Y);
 	}
 
 	bool Vector2::operator!=(const Vector2 &vector) const
 	{
-		return !((X == vector.X) && (Y == vector.Y));
+		return (X != vector.X || Y != vector.Y);
 	}
 
-	const Point Vector2::ToPoint() const
+	// Scalar Operator Functions
+
+	/** @brief Multiplies a vector by a scalar.
+		@param scalar The scalar to multiply by.
+		@param vector The vector to scale.
+		@return Returns the resulting vector. */
+	Vector2 operator*(const float &scalar, const Vector2 &vector)
 	{
-		return Point((int)X, (int)Y);
+		return Vector2(vector.X * scalar, vector.Y * scalar);
+	}
+
+	/** @brief Multiplies a vector by a scalar.
+		@param vector The vector to scale.
+		@param scalar The scalar to multiply by.
+		@return Returns the resulting vector. */
+	Vector2 operator*(const Vector2 &vector, const float &scalar)
+	{
+		return Vector2(vector.X * scalar, vector.Y * scalar);
+	}
+
+	/** @brief Divides a vector by a scalar.
+		@param scalar The scalar to divided by.
+		@param vector The vector to scale.
+		@return Returns the resulting vector. */
+	Vector2 operator/(const float &scalar, const Vector2 &vector)
+	{
+		return Vector2(vector.X / scalar, vector.Y / scalar);
+	}
+
+	/** @brief Divides a vector by a scalar.
+		@param vector The vector to scale.
+		@param scalar The scalar to divided by.
+		@return Returns the resulting vector. */
+	Vector2 operator/(const Vector2 &vector, const float &scalar)
+	{
+		return Vector2(vector.X / scalar, vector.Y / scalar);
 	}
 }

@@ -25,7 +25,7 @@ namespace KatanaEngine
 
 		m_text = text;
 
-		m_color = Color::White;
+		m_color = Color::WHITE;
 		m_alpha = 1.0f;
 
 		m_position = Vector2::ZERO;

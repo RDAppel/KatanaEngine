@@ -28,11 +28,24 @@ namespace KatanaEngine
 
 
 		/** @brief Linearly interpolate between two values.
-			@param start The result when the value is zero.
-			@param end The result when the value is one.
-			@param value A value between 0 and 1 that will indicate the resulting weight between start and end.
-			@return Returns the interpolated value between start and end. */
-		static float Lerp(float start, float end, float value);
+			@param start The starting value.
+			@param end The end value.
+			@param value A value (t) that will indicate the resulting weight between start and end.
+			@param clamp If set to true the input value will be clamped between zero and one. If the input
+			value is not clamped, the return value may not be between start and end.
+			@return Returns the interpolated value. */
+		static float Lerp(const float start, const float end,
+			const float value, const bool clamp = false);
+
+		/** @brief Calculates the inverse of Lerp.
+			@param start The starting value.
+			@param end The end value.
+			@param value A value (usually between start and end) used to find the percentage.
+			@param clamp If set to true the input value will be clamped between start and end. If the input
+			value is not clamped, the return value may not be between one and zero.
+			@return Returns the inverse interpolated (t) value. */
+		static float InverseLerp(const float start, const float end,
+			const float value, const bool clamp = false);
 
 		/** @brief Get a random integer.
 			@param min The inclusive minimum number.

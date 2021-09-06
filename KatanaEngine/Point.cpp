@@ -41,6 +41,11 @@ namespace KatanaEngine
 		return ss.str();
 	}
 
+	const Vector2 Point::ToVector2() const
+	{
+		return Vector2(X, Y);
+	}
+
 	Point &Point::operator=(const Point &point)
 	{
 		if (this != &point)
@@ -88,8 +93,5 @@ namespace KatanaEngine
 		return !((X == point.X) && (Y == point.Y));
 	}
 
-	const Vector2 Point::ToVector2() const
-	{
-		return Vector2(X, Y);
-	}
+	Point::operator Vector2() const { return Vector2(X, Y); }
 }

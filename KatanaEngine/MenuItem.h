@@ -146,7 +146,7 @@ namespace KatanaEngine
 		bool m_isDisplayed = false;
 
 		Font *m_pFont = nullptr;
-		Color m_color = Color::White;
+		Color m_color = Color::WHITE;
 		float m_alpha = 1.0f;
 		Vector2 m_position = Vector2::ZERO;
 		Vector2 m_textOffset = Vector2::ZERO;

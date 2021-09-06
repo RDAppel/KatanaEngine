@@ -47,8 +47,8 @@ namespace KatanaEngine
 			@param line The line to remove the comments from. */
 		void ParseComments(std::string &line);
 
-		/** @brief Removes white-space at the front and end of a line of text.
-			@param line The line to remove the white-space from. */
+		/** @brief Removes WHITE-space at the front and end of a line of text.
+			@param line The line to remove the WHITE-space from. */
 		void TrimLine(std::string &line);
 
 		/** @brief Gets a pointer to the ResourceManager that was used to load the resource.

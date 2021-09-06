@@ -65,21 +65,21 @@ namespace KatanaEngine
 			@param pFont The font used to draw the text.
 			@param text The text to display.
 			@param position The screen position of the text.
-			@param color The color to tint the text. The default is Color::White (no tint).
+			@param color The color to tint the text. The default is Color::WHITE (no tint).
 			@param alignment The prefered method of aligning the text. The default is
 			TextAlign::LEFT.
 			@param drawDepth The depth at which to render the sprite. This is determined
 			by the SpriteSortMode arguement that is passed to SpriteBatch::Begin(). The
 			default is zero.*/
 		void DrawString(const Font *pFont, std::string *text, const Vector2 position,
-			const Color color = Color::White, const TextAlign alignment = TextAlign::LEFT,
+			const Color color = Color::WHITE, const TextAlign alignment = TextAlign::LEFT,
 			const float drawDepth = 0);
 
 		/** @brief Adds a sprite to a batch of sprites to be rendered. 
 			@param pTexture A pointer to the texture to render.
 			@param position The screen position of the sprite.
 			@param region The region of the texture to render.
-			@param color The color to tint the sprite. The default is Color::White (no tint).
+			@param color The color to tint the sprite. The default is Color::WHITE (no tint).
 			@param origin The sprite's origin. The default is Vector2::Zero, which is the
 			upper left corner of the sprite.
 			@param scale The scale factor of the sprite. The default is Vector2::One.
@@ -88,14 +88,14 @@ namespace KatanaEngine
 			by the SpriteSortMode arguement that is passed to SpriteBatch::Begin(). The
 			default is zero.*/
 		void Draw(const Texture *pTexture, const Vector2 position, const Region region,
-			const Color color = Color::White, const Vector2 origin = Vector2::ZERO, 
+			const Color color = Color::WHITE, const Vector2 origin = Vector2::ZERO, 
 			const Vector2 scale = Vector2::ONE, const float rotation = 0, 
 			const float drawDepth = 0);
 
 		/** @brief Adds a sprite to a batch of sprites to be rendered.
 			@param pTexture A pointer to the texture to render.
 			@param position The screen position of the sprite.
-			@param color The color to tint the sprite. The default is Color::White (no tint).
+			@param color The color to tint the sprite. The default is Color::WHITE (no tint).
 			@param origin The sprite's origin. The default is Vector2::Zero, which is the
 			upper left corner of the sprite.
 			@param scale The scale factor of the sprite. The default is Vector2::One.
@@ -106,14 +106,14 @@ namespace KatanaEngine
 
 			@overload */
 		void Draw(const Texture *pTexture, const Vector2 position,
-			const Color color = Color::White, const Vector2 origin = Vector2::ZERO,
+			const Color color = Color::WHITE, const Vector2 origin = Vector2::ZERO,
 			const Vector2 scale = Vector2::ONE, const float rotation = 0,
 			const float drawDepth = 0);
 
 		/** @brief Adds a sprite to a batch of sprites to be rendered.
 			@param pAnimation A pointer to the animation to render.
 			@param position The screen position of the sprite.
-			@param color The color to tint the sprite. The default is Color::White (no tint).
+			@param color The color to tint the sprite. The default is Color::WHITE (no tint).
 			@param origin The sprite's origin. The default is Vector2::Zero, which is the
 			upper left corner of the sprite.
 			@param scale The scale factor of the sprite. The default is Vector2::One.
@@ -124,7 +124,7 @@ namespace KatanaEngine
 
 			@overload */
 		void Draw(Animation *pAnimation, const Vector2 position,
-			const Color color = Color::White, const Vector2 origin = Vector2::ZERO,
+			const Color color = Color::WHITE, const Vector2 origin = Vector2::ZERO,
 			const Vector2 scale = Vector2::ONE, const float rotation = 0,
 			float drawDepth = 0);
 

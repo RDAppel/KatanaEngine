@@ -54,6 +54,31 @@ namespace KatanaEngine
 
 		virtual ~Region() { }
 
+
+		static bool TryParse(const std::string &line, Region &region)
+		{
+			if (line.empty()) return false;
+
+			std::stringstream ss(line);
+			std::string element;
+			int ints[4];
+			uint8_t index = 0;
+
+			while (std::getline(ss, element, ','))
+			{
+				ints[index] = atoi(element.c_str());
+				index++;
+			}
+			if (index < 4) return false;
+
+			region.X = ints[0];
+			region.Y = ints[1];
+			region.Width = ints[2];
+			region.Height = ints[3];
+
+			return true;
+		}
+
 		/** @brief Sets the components of the region.
 			@param x The left side of the region.
 			@param y The top side of the region.

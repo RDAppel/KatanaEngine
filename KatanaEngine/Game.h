@@ -44,6 +44,13 @@ namespace KatanaEngine
 			@return The name of the game. */
 		virtual std::string GetName() const = 0;
 
+		/** @brief Sets the system mouse cursor.
+			@remark If the system does not support the cursor type another one will be selected. */
+		virtual void ChangeMouseCursor(MouseCursor cursor);
+
+		/** @brief Sets the color used to clear the back buffer. */
+		virtual void SetClearColor(const Color &color) { m_clearColor = color; }
+
 		/** @brief Gets a pointer to the ResourceManager, for loading and managing resources.
 			@return A pointer to the game's ResourceManager instance. */
 		virtual ResourceManager *GetResourceManager() const { return m_pResourceManager; }
@@ -54,7 +61,7 @@ namespace KatanaEngine
 
 		/** @brief Gets a pointer to the ParticleManager, for managing particle effects.
 			@return A pointer to the game's ParticleManager instance. */
-		virtual ParticleManager *GetParticleManager() const { return m_pParticleManager; }
+		//virtual ParticleManager *GetParticleManager() const { return m_pParticleManager; }
 
 		/** @brief Gets a pointer to the SpriteBatch, for rendering.
 			@return A pointer to the game's SpriteBatch instance. */
@@ -109,7 +116,7 @@ namespace KatanaEngine
 		virtual void InitializeScreenManager() { m_pScreenManager = new ScreenManager(this); }
 
 		/** @brief Initializes the game's ParticleManager. */
-		virtual void InitializeParticleManager() { m_pParticleManager = new ParticleManager(this); }
+		//virtual void InitializeParticleManager() { m_pParticleManager = new ParticleManager(this); }
 
 		/** @brief Displays the game's current frame rate. */
 		virtual void DisplayFrameRate();
@@ -132,17 +139,21 @@ namespace KatanaEngine
 		static std::string s_windowTitle;
 		static std::string s_contentDirectory;
 
-		bool m_isInitialized = false;
-		bool m_isRunning = false;
-		bool m_isFullScreen = false;
-		bool m_requireOpenGL = false;
+		bool m_isInitialized;
+		bool m_isRunning;
+		bool m_isFullScreen;
+		bool m_requireOpenGL;
 
-		double m_targetFramesPerSecond = 0;
-		double m_inverseTargetFrames = 0;
-		double m_actualFramesPerSec = 0;
-		double m_currentTime = 0;
-		double m_previousTime = 0;
-		float m_frameCounter = 0;
+		double m_targetFramesPerSecond;
+		double m_inverseTargetFrames;
+		double m_actualFramesPerSec;
+		double m_currentTime;
+		double m_previousTime;
+		float m_frameCounter;
+
+		ALLEGRO_DISPLAY *m_pDisplay;
+
+		Color m_clearColor = Color::BLACK;
 
 		GameTime *m_pGameTime = nullptr;
 		InputState *m_pInput = nullptr;
@@ -150,7 +161,7 @@ namespace KatanaEngine
 		SpriteBatch *m_pSpriteBatch = nullptr;
 
 		ScreenManager *m_pScreenManager = nullptr;
-		ParticleManager *m_pParticleManager = nullptr;
+		//ParticleManager *m_pParticleManager;
 		ResourceManager *m_pResourceManager = nullptr;
 
 		Font *m_pFrameCounterFont = nullptr;

@@ -23,6 +23,9 @@ namespace KatanaEngine
 			s_alAddonInitialized = true;
 		}
 
+		m_width = 0;
+		m_height = 0;
+
 		m_pBitmap = nullptr;
 	}
 

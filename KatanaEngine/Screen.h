@@ -18,6 +18,7 @@ namespace KatanaEngine
 {
 	class ScreenManager;
 	class Screen;
+	class Game;
 
 	/** @brief Callback function for when Exit() is called on a screen and
 		it begins to transition out.
@@ -88,7 +89,7 @@ namespace KatanaEngine
 
 		/** @brief Gets a pointer to the ParticleManager, for creating and managing particles.
 			@return A pointer to the game's ParticleManager instance. */
-		virtual ParticleManager *GetParticleManager() const;
+		//virtual ParticleManager *GetParticleManager() const;
 
 		/** @brief Gets a pointer to the ScreenManager, for managing game screens.
 			@return A pointer to the game's ScreenManager instance. */
@@ -176,7 +177,7 @@ namespace KatanaEngine
 
 		/** @brief Get the color that will be used to tint the render target.
 			@return Returns the render target draw tint. */
-		virtual Color GetRenderTargetColor() const { return Color::White * GetAlpha(); }
+		virtual Color GetRenderTargetColor() const { return Color::WHITE * GetAlpha(); }
 
 
 	private:

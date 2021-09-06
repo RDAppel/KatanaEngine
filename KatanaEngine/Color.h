@@ -24,7 +24,7 @@ namespace KatanaEngine
 			@param green The green value of the color.
 			@param blue The blue value of the color.
 			@param alpha The alpha value (opacity) of the color. */
-		Color(const float red = 1, const float green = 1, const float blue = 1, const float alpha = 1);
+		Color(const float red = 1.0f, const float green = 1.0f, const float blue = 1.0f, const float alpha = 1.0f);
 
 
 		/** @brief Linearly interpolate between two colors.
@@ -33,6 +33,13 @@ namespace KatanaEngine
 			@param value A value between 0 and 1 that will indicate the resulting weight between start and end.
 			@return Returns the interpolated color value between start and end. */
 		static Color Lerp(const Color &start, const Color &end, const float value);
+
+		/** @brief Gets a string representation of the color.
+			@return Returns a string displaying the components of the color. */
+		std::string ToString() const;
+
+		/** @brief Prints the color to the console. */
+		void Display() const { std::cout << ToString() << std::endl; }
 
 		/** @brief Multiplies each component by a scale factor.
 			@param scalar The scale factor.
@@ -51,160 +58,163 @@ namespace KatanaEngine
 
 		/** @brief Get the color-equivalent allegro color.
 			@return Returns the mapped allegro color. */
-		ALLEGRO_COLOR GetAllegroColor() const { return al_map_rgba_f(red, green, blue, alpha); }
+		ALLEGRO_COLOR ToAllegroColor() const { return al_map_rgba_f(R, G, B, A); }
 
 		#pragma region Static Colors
-		static const Color AliceBlue;			/**< @brief AliceBlue */
-		static const Color AntiqueWhite;		/**< @brief AntiqueWhite */
-		static const Color Aqua;				/**< @brief Aqua */
-		static const Color Aquamarine;			/**< @brief Aquamarine */
-		static const Color Azure;				/**< @brief Azure */
-		static const Color Beige;				/**< @brief Beige */
-		static const Color Bisque;				/**< @brief Bisque */
-		static const Color Black;				/**< @brief Black */
-		static const Color BlanchedAlmond;		/**< @brief BlanchedAlmond */
-		static const Color Blue;				/**< @brief Blue */
-		static const Color BlueViolet;			/**< @brief BlueViolet */
-		static const Color Brown;				/**< @brief Brown */
-		static const Color Burlywood;			/**< @brief Burlywood */
-		static const Color CadetBlue;			/**< @brief CadetBlue */
-		static const Color Chartreuse;			/**< @brief Chartreuse */
-		static const Color Chocolate;			/**< @brief Chocolate */
-		static const Color Coral;				/**< @brief Coral */
-		static const Color Cornflower;			/**< @brief Cornflower */
-		static const Color Cornsilk;			/**< @brief Cornsilk */
-		static const Color Crimson;				/**< @brief Crimson */
-		static const Color Cyan;				/**< @brief Cyan */
-		static const Color DarkBlue;			/**< @brief DarkBlue */
-		static const Color DarkCyan;			/**< @brief DarkCyan */
-		static const Color DarkGoldenrod;		/**< @brief DarkGoldenrod */
-		static const Color DarkGray;			/**< @brief DarkGray */
-		static const Color DarkGreen;			/**< @brief DarkGreen */
-		static const Color DarkKhaki;			/**< @brief DarkKhaki */
-		static const Color DarkMagenta;			/**< @brief DarkMagenta */
-		static const Color DarkOliveGreen;		/**< @brief DarkOliveGreen */
-		static const Color DarkOrange;			/**< @brief DarkOrange */
-		static const Color DarkOrchid;			/**< @brief DarkOrchid */
-		static const Color DarkRed;				/**< @brief DarkRed */
-		static const Color DarkSalmon;			/**< @brief DarkSalmon */
-		static const Color DarkSeaGreen;		/**< @brief DarkSeaGreen */
-		static const Color DarkSlateBlue;		/**< @brief DarkSlateBlue */
-		static const Color DarkSlateGray;		/**< @brief DarkSlateGray */
-		static const Color DarkTurquoise;		/**< @brief DarkTurquoise */
-		static const Color DarkViolet;			/**< @brief DarkViolet */
-		static const Color DeepPink;			/**< @brief DeepPink */
-		static const Color DeepSkyBlue;			/**< @brief DeepSkyBlue */
-		static const Color DimGray;				/**< @brief DimGray */
-		static const Color DodgerBlue;			/**< @brief DodgerBlue */
-		static const Color Firebrick;			/**< @brief Firebrick */
-		static const Color FloralWhite;			/**< @brief FloralWhite */
-		static const Color ForestGreen;			/**< @brief ForestGreen */
-		static const Color Fuchsia;				/**< @brief Fuchsia */
-		static const Color Gainsboro;			/**< @brief Gainsboro */
-		static const Color GhostWhite;			/**< @brief GhostWhite */
-		static const Color Gold;				/**< @brief Gold */
-		static const Color Goldenrod;			/**< @brief Goldenrod */
-		static const Color Gray;				/**< @brief Gray */
-		static const Color WebGray;				/**< @brief WebGray */
-		static const Color Green;				/**< @brief Green */
-		static const Color WebGreen;			/**< @brief WebGreen */
-		static const Color GreenYellow;			/**< @brief GreenYellow */
-		static const Color Honeydew;			/**< @brief Honeydew */
-		static const Color HotPink;				/**< @brief HotPink */
-		static const Color IndianRed;			/**< @brief IndianRed */
-		static const Color Indigo;				/**< @brief Indigo */
-		static const Color Ivory;				/**< @brief Ivory */
-		static const Color Khaki;				/**< @brief Khaki */
-		static const Color Lavender;			/**< @brief Lavender */
-		static const Color LavenderBlush;		/**< @brief LavenderBlush */
-		static const Color LawnGreen;			/**< @brief LawnGreen */
-		static const Color LemonChiffon;		/**< @brief LemonChiffon */
-		static const Color LightBlue;			/**< @brief LightBlue */
-		static const Color LightCoral;			/**< @brief LightCoral */
-		static const Color LightCyan;			/**< @brief LightCyan */
-		static const Color LightGoldenrod;		/**< @brief LightGoldenrod */
-		static const Color LightGray;			/**< @brief LightGray */
-		static const Color LightGreen;			/**< @brief LightGreen */
-		static const Color LightPink;			/**< @brief LightPink */
-		static const Color LightSalmon;			/**< @brief LightSalmon */
-		static const Color LightSeaGreen;		/**< @brief LightSeaGreen */
-		static const Color LightSkyBlue;		/**< @brief LightSkyBlue */
-		static const Color LightSlateGray;		/**< @brief LightSlateGray */
-		static const Color LightSteelBlue;		/**< @brief LightSteelBlue */
-		static const Color LightYellow;			/**< @brief LightYellow */
-		static const Color Lime;				/**< @brief Lime */
-		static const Color LimeGreen;			/**< @brief LimeGreen */
-		static const Color Linen;				/**< @brief Linen */
-		static const Color Magenta;				/**< @brief Magenta */
-		static const Color Maroon;				/**< @brief Maroon */
-		static const Color WebMaroon;			/**< @brief WebMaroon */
-		static const Color MediumAquamarine;	/**< @brief MediumAquamarine */
-		static const Color MediumBlue;			/**< @brief MediumBlue */
-		static const Color MediumOrchid;		/**< @brief MediumOrchid */
-		static const Color MediumPurple;		/**< @brief MediumPurple */
-		static const Color MediumSeaGreen;		/**< @brief MediumSeaGreen */
-		static const Color MediumSlateBlue;		/**< @brief MediumSlateBlue */
-		static const Color MediumSpringGreen;	/**< @brief MediumSpringGreen */
-		static const Color MediumTurquoise;		/**< @brief MediumTurquoise */
-		static const Color MediumVioletRed;		/**< @brief MediumVioletRed */
-		static const Color MidnightBlue;		/**< @brief MidnightBlue */
-		static const Color MintCream;			/**< @brief MintCream */
-		static const Color MistyRose;			/**< @brief MistyRose */
-		static const Color Moccasin;			/**< @brief Moccasin */
-		static const Color NavajoWhite;			/**< @brief NavajoWhite */
-		static const Color NavyBlue;			/**< @brief NavyBlue */
-		static const Color OldLace;				/**< @brief OldLace */
-		static const Color Olive;				/**< @brief Olive */
-		static const Color OliveDrab;			/**< @brief OliveDrab */
-		static const Color Orange;				/**< @brief Orange */
-		static const Color OrangeRed;			/**< @brief OrangeRed */
-		static const Color Orchid;				/**< @brief Orchid */
-		static const Color PaleGoldenrod;		/**< @brief PaleGoldenrod */
-		static const Color PaleGreen;			/**< @brief PaleGreen */
-		static const Color PaleTurquoise;		/**< @brief PaleTurquoise */
-		static const Color PaleVioletRed;		/**< @brief PaleVioletRed */
-		static const Color PapayaWhip;			/**< @brief PapayaWhip */
-		static const Color PeachPuff;			/**< @brief PeachPuff */
-		static const Color Peru;				/**< @brief Peru */
-		static const Color Pink;				/**< @brief Pink */
-		static const Color Plum;			 	/**< @brief Plum */
-		static const Color PowderBlue;			/**< @brief PowderBlue */
-		static const Color Purple;				/**< @brief Purple */
-		static const Color WebPurple;			/**< @brief WebPurple */
-		static const Color RebeccaPurple;		/**< @brief RebeccaPurple */
-		static const Color Red;					/**< @brief Red */
-		static const Color RosyBrown;			/**< @brief RosyBrown */
-		static const Color RoyalBlue;			/**< @brief RoyalBlue */
-		static const Color SaddleBrown;			/**< @brief SaddleBrown */
-		static const Color Salmon;				/**< @brief Salmon */
-		static const Color SandyBrown;			/**< @brief SandyBrown */
-		static const Color SeaGreen;			/**< @brief SeaGreen */
-		static const Color Seashell;			/**< @brief Seashell */
-		static const Color Sienna;				/**< @brief Sienna */
-		static const Color Silver;				/**< @brief Silver */
-		static const Color SkyBlue;				/**< @brief SkyBlue */
-		static const Color SlateBlue;			/**< @brief SlateBlue */
-		static const Color SlateGray;			/**< @brief SlateGray */
-		static const Color Snow;				/**< @brief Snow */
-		static const Color SpringGreen;			/**< @brief SpringGreen */
-		static const Color SteelBlue;			/**< @brief SteelBlue */
-		static const Color Tan;					/**< @brief Tan */
-		static const Color Teal;				/**< @brief Teal */
-		static const Color Thistle;				/**< @brief Thistle */
-		static const Color Tomato;				/**< @brief Tomato */
-		static const Color Turquoise;			/**< @brief Turquoise */
-		static const Color Violet;				/**< @brief Violet */
-		static const Color Wheat;				/**< @brief Wheat */
-		static const Color White;				/**< @brief White */
-		static const Color WhiteSmoke;			/**< @brief WhiteSmoke */
-		static const Color Yellow;				/**< @brief Yellow */
-		static const Color YellowGreen;			/**< @brief YellowGreen */
+		static const Color ALICE_BLUE;			/**< @brief AliceBlue */
+		static const Color ANTIQUE_WHITE;		/**< @brief AntiqueWHITE */
+		static const Color AQUA;				/**< @brief Aqua */
+		static const Color AQUAMARINE;			/**< @brief Aquamarine */
+		static const Color AZURE;				/**< @brief Azure */
+		static const Color BEIGE;				/**< @brief Beige */
+		static const Color BISQUE;				/**< @brief Bisque */
+		static const Color BLACK;				/**< @brief Black */
+		static const Color BLANCHED_ALMOND;		/**< @brief BlanchedAlmond */
+		static const Color BLUE;				/**< @brief Blue */
+		static const Color BLUE_VIOLET;			/**< @brief BlueViolet */
+		static const Color BROWN;				/**< @brief Brown */
+		static const Color BURLYWOOD;			/**< @brief Burlywood */
+		static const Color CADET_BLUE;			/**< @brief CadetBlue */
+		static const Color CHARTREUSE;			/**< @brief Chartreuse */
+		static const Color CHOCOLATE;			/**< @brief Chocolate */
+		static const Color CORAL;				/**< @brief Coral */
+		static const Color CORNFLOWER;			/**< @brief Cornflower */
+		static const Color CORNSILK;			/**< @brief Cornsilk */
+		static const Color CRIMSON;				/**< @brief Crimson */
+		static const Color CYAN;				/**< @brief Cyan */
+		static const Color DARK_BLUE;			/**< @brief DarkBlue */
+		static const Color DARK_CYAN;			/**< @brief DarkCyan */
+		static const Color DARK_GOLDENROD;		/**< @brief DarkGoldenrod */
+		static const Color DARK_GRAY;			/**< @brief DarkGray */
+		static const Color DARK_GREEN;			/**< @brief DarkGreen */
+		static const Color DARK_KHAKI;			/**< @brief DarkKhaki */
+		static const Color DARK_MAGENTA;		/**< @brief DarkMagenta */
+		static const Color DARK_OLIVE_GREEN;	/**< @brief DarkOliveGreen */
+		static const Color DARK_ORANGE;			/**< @brief DarkOrange */
+		static const Color DARK_ORCHID;			/**< @brief DarkOrchid */
+		static const Color DARK_RED;			/**< @brief DarkRed */
+		static const Color DARK_SALMON;			/**< @brief DarkSalmon */
+		static const Color DARK_SEA_GREEN;		/**< @brief DarkSeaGreen */
+		static const Color DARK_SLATE_BLUE;		/**< @brief DarkSlateBlue */
+		static const Color DARK_SLATE_GRAY;		/**< @brief DarkSlateGray */
+		static const Color DARK_TURQUOISE;		/**< @brief DarkTurquoise */
+		static const Color DARK_VIOLET;			/**< @brief DarkViolet */
+		static const Color DEEP_PINK;			/**< @brief DeepPink */
+		static const Color DEEP_SKY_BLUE;		/**< @brief DeepSkyBlue */
+		static const Color DIM_GRAY;			/**< @brief DimGray */
+		static const Color DODGER_BLUE;			/**< @brief DodgerBlue */
+		static const Color FIREBRICK;			/**< @brief Firebrick */
+		static const Color FLORAL_WHITE;		/**< @brief FloralWHITE */
+		static const Color FOREST_GREEN;		/**< @brief ForestGreen */
+		static const Color FUCHSIA;				/**< @brief Fuchsia */
+		static const Color GAINSBORO;			/**< @brief Gainsboro */
+		static const Color GHOST_WHITE;			/**< @brief GhostWHITE */
+		static const Color GOLD;				/**< @brief Gold */
+		static const Color GOLDENROD;			/**< @brief Goldenrod */
+		static const Color GRAY;				/**< @brief Gray */
+		static const Color WEB_GRAY;			/**< @brief WebGray */
+		static const Color GREEN;				/**< @brief Green */
+		static const Color WEB_GREEN;			/**< @brief WebGreen */
+		static const Color GREEN_YELLOW;		/**< @brief GreenYellow */
+		static const Color HONEYDEW;			/**< @brief Honeydew */
+		static const Color HOT_PINK;			/**< @brief HotPink */
+		static const Color INDIAN_RED;			/**< @brief IndianRed */
+		static const Color INDIGO;				/**< @brief Indigo */
+		static const Color IVORY;				/**< @brief Ivory */
+		static const Color KHAKI;				/**< @brief Khaki */
+		static const Color LAVENDER;			/**< @brief Lavender */
+		static const Color LAVENDER_BLUSH;		/**< @brief LavenderBlush */
+		static const Color LAWN_GREEN;			/**< @brief LawnGreen */
+		static const Color LEMON_CHIFFON;		/**< @brief LemonChiffon */
+		static const Color LIGHT_BLUE;			/**< @brief LightBlue */
+		static const Color LIGHT_CORAL;			/**< @brief LightCoral */
+		static const Color LIGHT_CYAN;			/**< @brief LightCyan */
+		static const Color LIGHT_GOLDENROD;		/**< @brief LightGoldenrod */
+		static const Color LIGHT_GRAY;			/**< @brief LightGray */
+		static const Color LIGHT_GREEN;			/**< @brief LightGreen */
+		static const Color LIGHT_PINK;			/**< @brief LightPink */
+		static const Color LIGHT_SALMON;		/**< @brief LightSalmon */
+		static const Color LIGHT_SEA_GREEN;		/**< @brief LightSeaGreen */
+		static const Color LIGHT_SKY_BLUE;		/**< @brief LightSkyBlue */
+		static const Color LIGHT_SLATE_GRAY;	/**< @brief LightSlateGray */
+		static const Color LIGHT_STEEL_BLUE;	/**< @brief LightSteelBlue */
+		static const Color LIGHT_YELLOW;		/**< @brief LightYellow */
+		static const Color LIME;				/**< @brief Lime */
+		static const Color LIME_GREEN;			/**< @brief LimeGreen */
+		static const Color LINEN;				/**< @brief Linen */
+		static const Color MAGENTA;				/**< @brief Magenta */
+		static const Color MAROON;				/**< @brief Maroon */
+		static const Color WEB_MAROON;			/**< @brief WebMaroon */
+		static const Color MEDIUM_AQUAMARINE;	/**< @brief MediumAquamarine */
+		static const Color MEDIUM_BLUE;			/**< @brief MediumBlue */
+		static const Color MEDIUM_ORCHID;		/**< @brief MediumOrchid */
+		static const Color MEDIUM_PURPLE;		/**< @brief MediumPurple */
+		static const Color MEDIUM_SEA_GREEN;	/**< @brief MediumSeaGreen */
+		static const Color MEDIUM_SLATE_BLUE;	/**< @brief MediumSlateBlue */
+		static const Color MEDIUM_SPRING_GREEN;	/**< @brief MediumSpringGreen */
+		static const Color MEDIUM_TURQUOISE;	/**< @brief MediumTurquoise */
+		static const Color MEDIUM_VIOLET_RED;	/**< @brief MediumVioletRed */
+		static const Color MIDNIGHT_BLUE;		/**< @brief MidnightBlue */
+		static const Color MINT_CREAM;			/**< @brief MintCream */
+		static const Color MISTY_ROSE;			/**< @brief MistyRose */
+		static const Color MOCCASIN;			/**< @brief Moccasin */
+		static const Color NAVAJO_WHITE;		/**< @brief NavajoWHITE */
+		static const Color NAVY_BLUE;			/**< @brief NavyBlue */
+		static const Color OLD_LACE;			/**< @brief OldLace */
+		static const Color OLIVE;				/**< @brief Olive */
+		static const Color OLIVE_DRAB;			/**< @brief OliveDrab */
+		static const Color ORANGE;				/**< @brief Orange */
+		static const Color ORANGE_RED;			/**< @brief OrangeRed */
+		static const Color ORCHID;				/**< @brief Orchid */
+		static const Color PALE_GOLDENROD;		/**< @brief PaleGoldenrod */
+		static const Color PALE_GREEN;			/**< @brief PaleGreen */
+		static const Color PALE_TURQUOISE;		/**< @brief PaleTurquoise */
+		static const Color PALE_VIOLET_RED;		/**< @brief PaleVioletRed */
+		static const Color PAPAYA_WHIP;			/**< @brief PapayaWhip */
+		static const Color PEACH_PUFF;			/**< @brief PeachPuff */
+		static const Color PERU;				/**< @brief Peru */
+		static const Color PINK;				/**< @brief Pink */
+		static const Color PLUM;			 	/**< @brief Plum */
+		static const Color POWDER_BLUE;			/**< @brief PowderBlue */
+		static const Color PURPLE;				/**< @brief Purple */
+		static const Color WEB_PURPLE;			/**< @brief WebPurple */
+		static const Color REBECCA_PURPLE;		/**< @brief RebeccaPurple */
+		static const Color RED;					/**< @brief Red */
+		static const Color ROSY_BROWN;			/**< @brief RosyBrown */
+		static const Color ROYAL_BLUE;			/**< @brief RoyalBlue */
+		static const Color SADDLE_BROWN;		/**< @brief SaddleBrown */
+		static const Color SALMON;				/**< @brief Salmon */
+		static const Color SANDY_BROWN;			/**< @brief SandyBrown */
+		static const Color SEA_GREEN;			/**< @brief SeaGreen */
+		static const Color SEASHELL;			/**< @brief Seashell */
+		static const Color SIENNA;				/**< @brief Sienna */
+		static const Color SILVER;				/**< @brief Silver */
+		static const Color SKY_BLUE;			/**< @brief SkyBlue */
+		static const Color SLATE_BLUE;			/**< @brief SlateBlue */
+		static const Color SLATE_GRAY;			/**< @brief SlateGray */
+		static const Color SNOW;				/**< @brief Snow */
+		static const Color SPRING_GREEN;		/**< @brief SpringGreen */
+		static const Color STEEL_BLUE;			/**< @brief SteelBlue */
+		static const Color TAN;					/**< @brief Tan */
+		static const Color TEAL;				/**< @brief Teal */
+		static const Color THISTLE;				/**< @brief Thistle */
+		static const Color TOMATO;				/**< @brief Tomato */
+		static const Color TURQUOISE;			/**< @brief Turquoise */
+		static const Color VIOLET;				/**< @brief Violet */
+		static const Color WHEAT;				/**< @brief Wheat */
+		static const Color WHITE;				/**< @brief WHITE */
+		static const Color WHITE_SMOKE;			/**< @brief WHITESmoke */
+		static const Color YELLOW;				/**< @brief Yellow */
+		static const Color YELLOW_GREEN;		/**< @brief YellowGreen */
+
+		static const Color TRANSPARENT;			/**< @brief Transparent */
 		#pragma endregion
 
 
-	private:
-
-		float red, green, blue, alpha;
+		float R = 1.0f;
+		float G = 1.0f;
+		float B = 1.0f;
+		float A = 1.0f;
 
 	};
 }

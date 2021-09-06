@@ -141,7 +141,7 @@ namespace KatanaEngine
 		pDrawable->Union.pFont = pFont->GetAllegroFont();
 		pDrawable->Union.text = text;
 		pDrawable->Union.align = alignment;
-		pDrawable->color = color.GetAllegroColor();
+		pDrawable->color = color.ToAllegroColor();
 		pDrawable->x = position.X;
 		pDrawable->y = position.Y;
 		pDrawable->depth = drawDepth;
@@ -190,7 +190,7 @@ namespace KatanaEngine
 		pDrawable->Union.scy = scale.Y;
 		pDrawable->Union.rotation = rotation;
 		pDrawable->Union.id = pTexture->GetResourceID();
-		pDrawable->color = color.GetAllegroColor();
+		pDrawable->color = color.ToAllegroColor();
 		pDrawable->x = position.X;
 		pDrawable->y = position.Y;
 		pDrawable->depth = drawDepth;
@@ -234,7 +234,7 @@ namespace KatanaEngine
 		pDrawable->Union.scy = scale.Y;
 		pDrawable->Union.rotation = rotation;
 		pDrawable->Union.id = pTexture->GetResourceID();
-		pDrawable->color = color.GetAllegroColor();
+		pDrawable->color = color.ToAllegroColor();
 		pDrawable->x = position.X;
 		pDrawable->y = position.Y;
 		pDrawable->depth = drawDepth;

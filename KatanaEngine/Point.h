@@ -93,6 +93,10 @@ namespace KatanaEngine
 			@return Returns true if the points are not equal, false otherwise. */
 		bool operator!=(const Point &point) const;
 
+		/** @brief Allows for implicit cast to Vector2 type.
+			@return Returns true if the points are not equal, false otherwise. */
+		virtual operator Vector2() const;
+
 
 		int X = 0;	/**< @brief The x-coordinate of the point. */
 		int Y = 0;	/**< @brief The y-coordinate of the point. */

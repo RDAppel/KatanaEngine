@@ -131,6 +131,6 @@ namespace KatanaEngine
 		NUMLOCK,			/**< Represents the Num Lock Key on the keyboard. */
 		CAPSLOCK,			/**< Represents the Caps Lock Key on the keyboard. */
 
-		MAX				/**< Represents the Max value for all keys. */
+		MAX					/**< Represents the Max value for all keys. */
 	};
 }

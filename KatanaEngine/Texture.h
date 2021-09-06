@@ -23,8 +23,8 @@ namespace KatanaEngine
 		virtual ~Texture();
 
 		/** @brief Load the desired font into memory.
-			@param path The path to the desired font.
-			@param pManager A pointer to the ResourceManager that will manage the font.
+			@param path The path to the desired texture.
+			@param pManager A pointer to the ResourceManager that will manage the texture.
 			@return Returns true if the font was loaded, false otherwise. */
 		virtual bool Load(const std::string &path, ResourceManager *pManager);
 
@@ -70,8 +70,8 @@ namespace KatanaEngine
 		int m_width = 0;
 		int m_height = 0;
 
-		Vector2 m_size = Vector2::ZERO;
-		Vector2 m_center = Vector2::ZERO;
+		Vector2 m_size;
+		Vector2 m_center;
 
 	};
 }

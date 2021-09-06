@@ -128,10 +128,12 @@ namespace KatanaEngine
 		return m_pScreenManager->GetGame();
 	}
 	
+	/*
 	ParticleManager *Screen::GetParticleManager() const
 	{
 		return GetGame()->GetParticleManager();
 	}
+	*/
 
 	void Screen::SetPassthroughFlags(const bool draw, const bool update, const bool handleInput)
 	{

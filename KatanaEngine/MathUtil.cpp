@@ -20,12 +20,22 @@ namespace KatanaEngine
 	const float Math::NORMALIZE_PI_OVER4 = 0.70710678119f;
 	const float Math::INVERSE_180 = 1.0f / 180;
 
-	float Math::Lerp(float start, float end, float value)
+	float Math::Lerp(const float start, const float end,
+		const float value, const bool clamp)
 	{
-		if (value < 0) return start;
-		if (value > 1) return end;
+		if (start == end) return start;
 
-		return start + (end - start) * value;
+		float t = clamp ? Clamp(0, 1, value) : value;
+		return start * (1 - t) + end * t;
+	}
+
+	float Math::InverseLerp(const float start, const float end,
+		const float value, const bool clamp)
+	{
+		if (start == end) return start;
+
+		float v = clamp ? Clamp(start, end, value) : value;
+		return (v - start) / (end - start);
 	}
 
 	int Math::GetRandomInt(const int min, const int max)

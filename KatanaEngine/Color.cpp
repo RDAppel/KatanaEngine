@@ -14,171 +14,170 @@
 namespace KatanaEngine
 {
 #pragma region Static Color Definitions
-	const Color Color::AliceBlue = Color(0.94f, 0.97f, 1.0f);
-	const Color Color::AntiqueWhite = Color(0.98f, 0.92f, 0.84f);
-	const Color Color::Aqua = Color(0.0f, 1.0f, 1.0f);
-	const Color Color::Aquamarine = Color(0.5f, 1.0f, 0.83f);
-	const Color Color::Azure = Color(0.94f, 1.0f, 1.0f);
-	const Color Color::Beige = Color(0.96f, 0.96f, 0.86f);
-	const Color Color::Bisque = Color(1.0f, 0.89f, 0.77f);
-	const Color Color::Black = Color(0.0f, 0.0f, 0.0f);
-	const Color Color::BlanchedAlmond = Color(1.0f, 0.92f, 0.8f);
-	const Color Color::Blue = Color(0.0f, 0.0f, 1.0f);
-	const Color Color::BlueViolet = Color(0.54f, 0.17f, 0.89f);
-	const Color Color::Brown = Color(0.65f, 0.16f, 0.16f);
-	const Color Color::Burlywood = Color(0.87f, 0.72f, 0.53f);
-	const Color Color::CadetBlue = Color(0.37f, 0.62f, 0.63f);
-	const Color Color::Chartreuse = Color(0.5f, 1.0f, 0.0f);
-	const Color Color::Chocolate = Color(0.82f, 0.41f, 0.12f);
-	const Color Color::Coral = Color(1.0f, 0.5f, 0.31f);
-	const Color Color::Cornflower = Color(0.39f, 0.58f, 0.93f);
-	const Color Color::Cornsilk = Color(1.0f, 0.97f, 0.86f);
-	const Color Color::Crimson = Color(0.86f, 0.08f, 0.24f);
-	const Color Color::Cyan = Color(0.0f, 1.0f, 1.0f);
-	const Color Color::DarkBlue = Color(0.0f, 0.0f, 0.55f);
-	const Color Color::DarkCyan = Color(0.0f, 0.55f, 0.55f);
-	const Color Color::DarkGoldenrod = Color(0.72f, 0.53f, 0.04f);
-	const Color Color::DarkGray = Color(0.66f, 0.66f, 0.66f);
-	const Color Color::DarkGreen = Color(0.0f, 0.39f, 0.0f);
-	const Color Color::DarkKhaki = Color(0.74f, 0.72f, 0.42f);
-	const Color Color::DarkMagenta = Color(0.55f, 0.0f, 0.55f);
-	const Color Color::DarkOliveGreen = Color(0.33f, 0.42f, 0.18f);
-	const Color Color::DarkOrange = Color(1.0f, 0.55f, 0.0f);
-	const Color Color::DarkOrchid = Color(0.6f, 0.2f, 0.8f);
-	const Color Color::DarkRed = Color(0.55f, 0.0f, 0.0f);
-	const Color Color::DarkSalmon = Color(0.91f, 0.59f, 0.48f);
-	const Color Color::DarkSeaGreen = Color(0.56f, 0.74f, 0.56f);
-	const Color Color::DarkSlateBlue = Color(0.28f, 0.24f, 0.55f);
-	const Color Color::DarkSlateGray = Color(0.18f, 0.31f, 0.31f);
-	const Color Color::DarkTurquoise = Color(0.0f, 0.81f, 0.82f);
-	const Color Color::DarkViolet = Color(0.58f, 0.0f, 0.83f);
-	const Color Color::DeepPink = Color(1.0f, 0.08f, 0.58f);
-	const Color Color::DeepSkyBlue = Color(0.0f, 0.75f, 1.0f);
-	const Color Color::DimGray = Color(0.41f, 0.41f, 0.41f);
-	const Color Color::DodgerBlue = Color(0.12f, 0.56f, 1.0f);
-	const Color Color::Firebrick = Color(0.7f, 0.13f, 0.13f);
-	const Color Color::FloralWhite = Color(1.0f, 0.98f, 0.94f);
-	const Color Color::ForestGreen = Color(0.13f, 0.55f, 0.13f);
-	const Color Color::Fuchsia = Color(1.0f, 0.0f, 1.0f);
-	const Color Color::Gainsboro = Color(0.86f, 0.86f, 0.86f);
-	const Color Color::GhostWhite = Color(0.97f, 0.97f, 1.0f);
-	const Color Color::Gold = Color(1.0f, 0.84f, 0.0f);
-	const Color Color::Goldenrod = Color(0.85f, 0.65f, 0.13f);
-	const Color Color::Gray = Color(0.75f, 0.75f, 0.75f);
-	const Color Color::WebGray = Color(0.5f, 0.5f, 0.5f);
-	const Color Color::Green = Color(0.0f, 1.0f, 0.0f);
-	const Color Color::WebGreen = Color(0.0f, 0.5f, 0.0f);
-	const Color Color::GreenYellow = Color(0.68f, 1.0f, 0.18f);
-	const Color Color::Honeydew = Color(0.94f, 1.0f, 0.94f);
-	const Color Color::HotPink = Color(1.0f, 0.41f, 0.71f);
-	const Color Color::IndianRed = Color(0.8f, 0.36f, 0.36f);
-	const Color Color::Indigo = Color(0.29f, 0.0f, 0.51f);
-	const Color Color::Ivory = Color(1.0f, 1.0f, 0.94f);
-	const Color Color::Khaki = Color(0.94f, 0.9f, 0.55f);
-	const Color Color::Lavender = Color(0.9f, 0.9f, 0.98f);
-	const Color Color::LavenderBlush = Color(1.0f, 0.94f, 0.96f);
-	const Color Color::LawnGreen = Color(0.49f, 0.99f, 0.0f);
-	const Color Color::LemonChiffon = Color(1.0f, 0.98f, 0.8f);
-	const Color Color::LightBlue = Color(0.68f, 0.85f, 0.9f);
-	const Color Color::LightCoral = Color(0.94f, 0.5f, 0.5f);
-	const Color Color::LightCyan = Color(0.88f, 1.0f, 1.0f);
-	const Color Color::LightGoldenrod = Color(0.98f, 0.98f, 0.82f);
-	const Color Color::LightGray = Color(0.83f, 0.83f, 0.83f);
-	const Color Color::LightGreen = Color(0.56f, 0.93f, 0.56f);
-	const Color Color::LightPink = Color(1.0f, 0.71f, 0.76f);
-	const Color Color::LightSalmon = Color(1.0f, 0.63f, 0.48f);
-	const Color Color::LightSeaGreen = Color(0.13f, 0.7f, 0.67f);
-	const Color Color::LightSkyBlue = Color(0.53f, 0.81f, 0.98f);
-	const Color Color::LightSlateGray = Color(0.47f, 0.53f, 0.6f);
-	const Color Color::LightSteelBlue = Color(0.69f, 0.77f, 0.87f);
-	const Color Color::LightYellow = Color(1.0f, 1.0f, 0.88f);
-	const Color Color::Lime = Color(0.0f, 1.0f, 0.0f);
-	const Color Color::LimeGreen = Color(0.2f, 0.8f, 0.2f);
-	const Color Color::Linen = Color(0.98f, 0.94f, 0.9f);
-	const Color Color::Magenta = Color(1.0f, 0.0f, 1.0f);
-	const Color Color::Maroon = Color(0.69f, 0.19f, 0.38f);
-	const Color Color::WebMaroon = Color(0.5f, 0.0f, 0.0f);
-	const Color Color::MediumAquamarine = Color(0.4f, 0.8f, 0.67f);
-	const Color Color::MediumBlue = Color(0.0f, 0.0f, 0.8f);
-	const Color Color::MediumOrchid = Color(0.73f, 0.33f, 0.83f);
-	const Color Color::MediumPurple = Color(0.58f, 0.44f, 0.86f);
-	const Color Color::MediumSeaGreen = Color(0.24f, 0.7f, 0.44f);
-	const Color Color::MediumSlateBlue = Color(0.48f, 0.41f, 0.93f);
-	const Color Color::MediumSpringGreen = Color(0.0f, 0.98f, 0.6f);
-	const Color Color::MediumTurquoise = Color(0.28f, 0.82f, 0.8f);
-	const Color Color::MediumVioletRed = Color(0.78f, 0.08f, 0.52f);
-	const Color Color::MidnightBlue = Color(0.1f, 0.1f, 0.44f);
-	const Color Color::MintCream = Color(0.96f, 1.0f, 0.98f);
-	const Color Color::MistyRose = Color(1.0f, 0.89f, 0.88f);
-	const Color Color::Moccasin = Color(1.0f, 0.89f, 0.71f);
-	const Color Color::NavajoWhite = Color(1.0f, 0.87f, 0.68f);
-	const Color Color::NavyBlue = Color(0.0f, 0.0f, 0.5f);
-	const Color Color::OldLace = Color(0.99f, 0.96f, 0.9f);
-	const Color Color::Olive = Color(0.5f, 0.5f, 0.0f);
-	const Color Color::OliveDrab = Color(0.42f, 0.56f, 0.14f);
-	const Color Color::Orange = Color(1.0f, 0.65f, 0.0f);
-	const Color Color::OrangeRed = Color(1.0f, 0.27f, 0.0f);
-	const Color Color::Orchid = Color(0.85f, 0.44f, 0.84f);
-	const Color Color::PaleGoldenrod = Color(0.93f, 0.91f, 0.67f);
-	const Color Color::PaleGreen = Color(0.6f, 0.98f, 0.6f);
-	const Color Color::PaleTurquoise = Color(0.69f, 0.93f, 0.93f);
-	const Color Color::PaleVioletRed = Color(0.86f, 0.44f, 0.58f);
-	const Color Color::PapayaWhip = Color(1.0f, 0.94f, 0.84f);
-	const Color Color::PeachPuff = Color(1.0f, 0.85f, 0.73f);
-	const Color Color::Peru = Color(0.8f, 0.52f, 0.25f);
-	const Color Color::Pink = Color(1.0f, 0.75f, 0.8f);
-	const Color Color::Plum = Color(0.87f, 0.63f, 0.87f);
-	const Color Color::PowderBlue = Color(0.69f, 0.88f, 0.9f);
-	const Color Color::Purple = Color(0.63f, 0.13f, 0.94f);
-	const Color Color::WebPurple = Color(0.5f, 0.0f, 0.5f);
-	const Color Color::RebeccaPurple = Color(0.4f, 0.2f, 0.6f);
-	const Color Color::Red = Color(1.0f, 0.0f, 0.0f);
-	const Color Color::RosyBrown = Color(0.74f, 0.56f, 0.56f);
-	const Color Color::RoyalBlue = Color(0.25f, 0.41f, 0.88f);
-	const Color Color::SaddleBrown = Color(0.55f, 0.27f, 0.07f);
-	const Color Color::Salmon = Color(0.98f, 0.5f, 0.45f);
-	const Color Color::SandyBrown = Color(0.96f, 0.64f, 0.38f);
-	const Color Color::SeaGreen = Color(0.18f, 0.55f, 0.34f);
-	const Color Color::Seashell = Color(1.0f, 0.96f, 0.93f);
-	const Color Color::Sienna = Color(0.63f, 0.32f, 0.18f);
-	const Color Color::Silver = Color(0.75f, 0.75f, 0.75f);
-	const Color Color::SkyBlue = Color(0.53f, 0.81f, 0.92f);
-	const Color Color::SlateBlue = Color(0.42f, 0.35f, 0.8f);
-	const Color Color::SlateGray = Color(0.44f, 0.5f, 0.56f);
-	const Color Color::Snow = Color(1.0f, 0.98f, 0.98f);
-	const Color Color::SpringGreen = Color(0.0f, 1.0f, 0.5f);
-	const Color Color::SteelBlue = Color(0.27f, 0.51f, 0.71f);
-	const Color Color::Tan = Color(0.82f, 0.71f, 0.55f);
-	const Color Color::Teal = Color(0.0f, 0.5f, 0.5f);
-	const Color Color::Thistle = Color(0.85f, 0.75f, 0.85f);
-	const Color Color::Tomato = Color(1.0f, 0.39f, 0.28f);
-	const Color Color::Turquoise = Color(0.25f, 0.88f, 0.82f);
-	const Color Color::Violet = Color(0.93f, 0.51f, 0.93f);
-	const Color Color::Wheat = Color(0.96f, 0.87f, 0.7f);
-	const Color Color::White = Color(1.0f, 1.0f, 1.0f);
-	const Color Color::WhiteSmoke = Color(0.96f, 0.96f, 0.96f);
-	const Color Color::Yellow = Color(1.0f, 1.0f, 0.0f);
-	const Color Color::YellowGreen = Color(0.6f, 0.8f, 0.2f);
+	const Color Color::ALICE_BLUE = Color(0.94f, 0.97f, 1.0f);
+	const Color Color::ANTIQUE_WHITE = Color(0.98f, 0.92f, 0.84f);
+	const Color Color::AQUA = Color(0.0f, 1.0f, 1.0f);
+	const Color Color::AQUAMARINE = Color(0.5f, 1.0f, 0.83f);
+	const Color Color::AZURE = Color(0.94f, 1.0f, 1.0f);
+	const Color Color::BEIGE = Color(0.96f, 0.96f, 0.86f);
+	const Color Color::BISQUE = Color(1.0f, 0.89f, 0.77f);
+	const Color Color::BLACK = Color(0.0f, 0.0f, 0.0f);
+	const Color Color::BLANCHED_ALMOND = Color(1.0f, 0.92f, 0.8f);
+	const Color Color::BLUE = Color(0.0f, 0.0f, 1.0f);
+	const Color Color::BLUE_VIOLET = Color(0.54f, 0.17f, 0.89f);
+	const Color Color::BROWN = Color(0.65f, 0.16f, 0.16f);
+	const Color Color::BURLYWOOD = Color(0.87f, 0.72f, 0.53f);
+	const Color Color::CADET_BLUE = Color(0.37f, 0.62f, 0.63f);
+	const Color Color::CHARTREUSE = Color(0.5f, 1.0f, 0.0f);
+	const Color Color::CHOCOLATE = Color(0.82f, 0.41f, 0.12f);
+	const Color Color::CORAL = Color(1.0f, 0.5f, 0.31f);
+	const Color Color::CORNFLOWER = Color(0.39f, 0.58f, 0.93f);
+	const Color Color::CORNSILK = Color(1.0f, 0.97f, 0.86f);
+	const Color Color::CRIMSON = Color(0.86f, 0.08f, 0.24f);
+	const Color Color::CYAN = Color(0.0f, 1.0f, 1.0f);
+	const Color Color::DARK_BLUE = Color(0.0f, 0.0f, 0.55f);
+	const Color Color::DARK_CYAN = Color(0.0f, 0.55f, 0.55f);
+	const Color Color::DARK_GOLDENROD = Color(0.72f, 0.53f, 0.04f);
+	const Color Color::DARK_GRAY = Color(0.66f, 0.66f, 0.66f);
+	const Color Color::DARK_GREEN = Color(0.0f, 0.39f, 0.0f);
+	const Color Color::DARK_KHAKI = Color(0.74f, 0.72f, 0.42f);
+	const Color Color::DARK_MAGENTA = Color(0.55f, 0.0f, 0.55f);
+	const Color Color::DARK_OLIVE_GREEN = Color(0.33f, 0.42f, 0.18f);
+	const Color Color::DARK_ORANGE = Color(1.0f, 0.55f, 0.0f);
+	const Color Color::DARK_ORCHID = Color(0.6f, 0.2f, 0.8f);
+	const Color Color::DARK_RED = Color(0.55f, 0.0f, 0.0f);
+	const Color Color::DARK_SALMON = Color(0.91f, 0.59f, 0.48f);
+	const Color Color::DARK_SEA_GREEN = Color(0.56f, 0.74f, 0.56f);
+	const Color Color::DARK_SLATE_BLUE = Color(0.28f, 0.24f, 0.55f);
+	const Color Color::DARK_SLATE_GRAY = Color(0.18f, 0.31f, 0.31f);
+	const Color Color::DARK_TURQUOISE = Color(0.0f, 0.81f, 0.82f);
+	const Color Color::DARK_VIOLET = Color(0.58f, 0.0f, 0.83f);
+	const Color Color::DEEP_PINK = Color(1.0f, 0.08f, 0.58f);
+	const Color Color::DEEP_SKY_BLUE = Color(0.0f, 0.75f, 1.0f);
+	const Color Color::DIM_GRAY = Color(0.41f, 0.41f, 0.41f);
+	const Color Color::DODGER_BLUE = Color(0.12f, 0.56f, 1.0f);
+	const Color Color::FIREBRICK = Color(0.7f, 0.13f, 0.13f);
+	const Color Color::FLORAL_WHITE = Color(1.0f, 0.98f, 0.94f);
+	const Color Color::FOREST_GREEN = Color(0.13f, 0.55f, 0.13f);
+	const Color Color::FUCHSIA = Color(1.0f, 0.0f, 1.0f);
+	const Color Color::GAINSBORO = Color(0.86f, 0.86f, 0.86f);
+	const Color Color::GHOST_WHITE = Color(0.97f, 0.97f, 1.0f);
+	const Color Color::GOLD = Color(1.0f, 0.84f, 0.0f);
+	const Color Color::GOLDENROD = Color(0.85f, 0.65f, 0.13f);
+	const Color Color::GRAY = Color(0.75f, 0.75f, 0.75f);
+	const Color Color::WEB_GRAY = Color(0.5f, 0.5f, 0.5f);
+	const Color Color::GREEN = Color(0.0f, 1.0f, 0.0f);
+	const Color Color::WEB_GREEN = Color(0.0f, 0.5f, 0.0f);
+	const Color Color::GREEN_YELLOW = Color(0.68f, 1.0f, 0.18f);
+	const Color Color::HONEYDEW = Color(0.94f, 1.0f, 0.94f);
+	const Color Color::HOT_PINK = Color(1.0f, 0.41f, 0.71f);
+	const Color Color::INDIAN_RED = Color(0.8f, 0.36f, 0.36f);
+	const Color Color::INDIGO = Color(0.29f, 0.0f, 0.51f);
+	const Color Color::IVORY = Color(1.0f, 1.0f, 0.94f);
+	const Color Color::KHAKI = Color(0.94f, 0.9f, 0.55f);
+	const Color Color::LAVENDER = Color(0.9f, 0.9f, 0.98f);
+	const Color Color::LAVENDER_BLUSH = Color(1.0f, 0.94f, 0.96f);
+	const Color Color::LAWN_GREEN = Color(0.49f, 0.99f, 0.0f);
+	const Color Color::LEMON_CHIFFON = Color(1.0f, 0.98f, 0.8f);
+	const Color Color::LIGHT_BLUE = Color(0.68f, 0.85f, 0.9f);
+	const Color Color::LIGHT_CORAL = Color(0.94f, 0.5f, 0.5f);
+	const Color Color::LIGHT_CYAN = Color(0.88f, 1.0f, 1.0f);
+	const Color Color::LIGHT_GOLDENROD = Color(0.98f, 0.98f, 0.82f);
+	const Color Color::LIGHT_GRAY = Color(0.83f, 0.83f, 0.83f);
+	const Color Color::LIGHT_GREEN = Color(0.56f, 0.93f, 0.56f);
+	const Color Color::LIGHT_PINK = Color(1.0f, 0.71f, 0.76f);
+	const Color Color::LIGHT_SALMON = Color(1.0f, 0.63f, 0.48f);
+	const Color Color::LIGHT_SEA_GREEN = Color(0.13f, 0.7f, 0.67f);
+	const Color Color::LIGHT_SKY_BLUE = Color(0.53f, 0.81f, 0.98f);
+	const Color Color::LIGHT_SLATE_GRAY = Color(0.47f, 0.53f, 0.6f);
+	const Color Color::LIGHT_STEEL_BLUE = Color(0.69f, 0.77f, 0.87f);
+	const Color Color::LIGHT_YELLOW = Color(1.0f, 1.0f, 0.88f);
+	const Color Color::LIME = Color(0.0f, 1.0f, 0.0f);
+	const Color Color::LIME_GREEN = Color(0.2f, 0.8f, 0.2f);
+	const Color Color::LINEN = Color(0.98f, 0.94f, 0.9f);
+	const Color Color::MAGENTA = Color(1.0f, 0.0f, 1.0f);
+	const Color Color::MAROON = Color(0.69f, 0.19f, 0.38f);
+	const Color Color::WEB_MAROON = Color(0.5f, 0.0f, 0.0f);
+	const Color Color::MEDIUM_AQUAMARINE = Color(0.4f, 0.8f, 0.67f);
+	const Color Color::MEDIUM_BLUE = Color(0.0f, 0.0f, 0.8f);
+	const Color Color::MEDIUM_ORCHID = Color(0.73f, 0.33f, 0.83f);
+	const Color Color::MEDIUM_PURPLE = Color(0.58f, 0.44f, 0.86f);
+	const Color Color::MEDIUM_SEA_GREEN = Color(0.24f, 0.7f, 0.44f);
+	const Color Color::MEDIUM_SLATE_BLUE = Color(0.48f, 0.41f, 0.93f);
+	const Color Color::MEDIUM_SPRING_GREEN = Color(0.0f, 0.98f, 0.6f);
+	const Color Color::MEDIUM_TURQUOISE = Color(0.28f, 0.82f, 0.8f);
+	const Color Color::MEDIUM_VIOLET_RED = Color(0.78f, 0.08f, 0.52f);
+	const Color Color::MIDNIGHT_BLUE = Color(0.1f, 0.1f, 0.44f);
+	const Color Color::MINT_CREAM = Color(0.96f, 1.0f, 0.98f);
+	const Color Color::MISTY_ROSE = Color(1.0f, 0.89f, 0.88f);
+	const Color Color::MOCCASIN = Color(1.0f, 0.89f, 0.71f);
+	const Color Color::NAVAJO_WHITE = Color(1.0f, 0.87f, 0.68f);
+	const Color Color::NAVY_BLUE = Color(0.0f, 0.0f, 0.5f);
+	const Color Color::OLD_LACE = Color(0.99f, 0.96f, 0.9f);
+	const Color Color::OLIVE = Color(0.5f, 0.5f, 0.0f);
+	const Color Color::OLIVE_DRAB = Color(0.42f, 0.56f, 0.14f);
+	const Color Color::ORANGE = Color(1.0f, 0.65f, 0.0f);
+	const Color Color::ORANGE_RED = Color(1.0f, 0.27f, 0.0f);
+	const Color Color::ORCHID = Color(0.85f, 0.44f, 0.84f);
+	const Color Color::PALE_GOLDENROD = Color(0.93f, 0.91f, 0.67f);
+	const Color Color::PALE_GREEN = Color(0.6f, 0.98f, 0.6f);
+	const Color Color::PALE_TURQUOISE = Color(0.69f, 0.93f, 0.93f);
+	const Color Color::PALE_VIOLET_RED = Color(0.86f, 0.44f, 0.58f);
+	const Color Color::PAPAYA_WHIP = Color(1.0f, 0.94f, 0.84f);
+	const Color Color::PEACH_PUFF = Color(1.0f, 0.85f, 0.73f);
+	const Color Color::PERU = Color(0.8f, 0.52f, 0.25f);
+	const Color Color::PINK = Color(1.0f, 0.75f, 0.8f);
+	const Color Color::PLUM = Color(0.87f, 0.63f, 0.87f);
+	const Color Color::POWDER_BLUE = Color(0.69f, 0.88f, 0.9f);
+	const Color Color::PURPLE = Color(0.63f, 0.13f, 0.94f);
+	const Color Color::WEB_PURPLE = Color(0.5f, 0.0f, 0.5f);
+	const Color Color::REBECCA_PURPLE = Color(0.4f, 0.2f, 0.6f);
+	const Color Color::RED = Color(1.0f, 0.0f, 0.0f);
+	const Color Color::ROSY_BROWN = Color(0.74f, 0.56f, 0.56f);
+	const Color Color::ROYAL_BLUE = Color(0.25f, 0.41f, 0.88f);
+	const Color Color::SADDLE_BROWN = Color(0.55f, 0.27f, 0.07f);
+	const Color Color::SALMON = Color(0.98f, 0.5f, 0.45f);
+	const Color Color::SANDY_BROWN = Color(0.96f, 0.64f, 0.38f);
+	const Color Color::SEA_GREEN = Color(0.18f, 0.55f, 0.34f);
+	const Color Color::SEASHELL = Color(1.0f, 0.96f, 0.93f);
+	const Color Color::SIENNA = Color(0.63f, 0.32f, 0.18f);
+	const Color Color::SILVER = Color(0.75f, 0.75f, 0.75f);
+	const Color Color::SKY_BLUE = Color(0.53f, 0.81f, 0.92f);
+	const Color Color::SLATE_BLUE = Color(0.42f, 0.35f, 0.8f);
+	const Color Color::SLATE_GRAY = Color(0.44f, 0.5f, 0.56f);
+	const Color Color::SNOW = Color(1.0f, 0.98f, 0.98f);
+	const Color Color::SPRING_GREEN = Color(0.0f, 1.0f, 0.5f);
+	const Color Color::STEEL_BLUE = Color(0.27f, 0.51f, 0.71f);
+	const Color Color::TAN = Color(0.82f, 0.71f, 0.55f);
+	const Color Color::TEAL = Color(0.0f, 0.5f, 0.5f);
+	const Color Color::THISTLE = Color(0.85f, 0.75f, 0.85f);
+	const Color Color::TOMATO = Color(1.0f, 0.39f, 0.28f);
+	const Color Color::TURQUOISE = Color(0.25f, 0.88f, 0.82f);
+	const Color Color::VIOLET = Color(0.93f, 0.51f, 0.93f);
+	const Color Color::WHEAT = Color(0.96f, 0.87f, 0.7f);
+	const Color Color::WHITE = Color(1.0f, 1.0f, 1.0f);
+	const Color Color::WHITE_SMOKE = Color(0.96f, 0.96f, 0.96f);
+	const Color Color::YELLOW = Color(1.0f, 1.0f, 0.0f);
+	const Color Color::YELLOW_GREEN = Color(0.6f, 0.8f, 0.2f);
+
+	const Color Color::TRANSPARENT = Color(0.0f, 0.0f, 0.0f, 0.0f);
 #pragma endregion
 
 
 	Color::Color(const float red, const float green, const float blue, const float alpha)
 	{
-		this->red = red;
-		this->green = green;
-		this->blue = blue;
-		this->alpha = alpha;
+		R = red;
+		G = green;
+		B = blue;
+		A = alpha;
 	}
 
 	Color Color::Lerp(const Color &start, const Color &end, const float value)
 	{
-		if (value <= 0) return start;
-		if (value >= 1) return end;
-
-		float red = Math::Lerp(start.red, end.red, value);
-		float green = Math::Lerp(start.green, end.green, value);
-		float blue = Math::Lerp(start.blue, end.blue, value);
-		float alpha = Math::Lerp(start.alpha, end.alpha, value);
+		float red = Math::Lerp(start.R, end.R, value, true);
+		float green = Math::Lerp(start.G, end.G, value, true);
+		float blue = Math::Lerp(start.B, end.B, value, true);
+		float alpha = Math::Lerp(start.A, end.A, value, true);
 
 		return Color(red, green, blue, alpha);
 	}
@@ -186,22 +185,27 @@ namespace KatanaEngine
 	const Color Color::operator*(const float scalar) const
 	{
 		Color color = Color(*this);
-		color.red *= scalar;
-		color.green *= scalar;
-		color.blue *= scalar;
-		color.alpha *= scalar;
+		color.A *= scalar;
 		return color;
 	}
 
 	bool Color::operator== (const Color& color) const
 	{
-		return ((red == color.red) && (green == color.green)
-			&& (blue == color.blue) && (alpha == color.alpha));
+		return ((R == color.R) && (G == color.G)
+			&& (B == color.B) && (A == color.A));
 	}
 
 	bool Color::operator!= (const Color& color) const
 	{
-		return !((red == color.red) && (green == color.green)
-			&& (blue == color.blue) && (alpha == color.alpha));
+		return !((R == color.R) && (G == color.G)
+			&& (B == color.B) && (A == color.A));
+	}
+
+	std::string Color::ToString() const
+	{
+		std::ostringstream ss;
+		ss << "{ " << "R: " << R << ", G: " << G
+			<< "B: " << B << ", A: " << A << " }";
+		return ss.str();
 	}
 }

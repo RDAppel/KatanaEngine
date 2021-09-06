@@ -67,7 +67,7 @@ namespace KatanaEngine
 
 			bool loadFrameTime = true;
 
-			while (getline(fileIn, line) && !line.empty())
+			while (getline(fileIn, line))
 			{
 				ParseComments(line);
 				if (line.empty()) continue;
@@ -119,15 +119,15 @@ namespace KatanaEngine
 
 	Resource *Animation::Clone()
 	{
-		Animation *clone = new Animation;
+		Animation *pClone = new Animation;
 
-		clone->m_pTexture = m_pTexture;
-		clone->m_frames = m_frames;
-		clone->m_secondsPerFrame = m_secondsPerFrame;
-		clone->m_isPlaying = m_isPlaying;
-		clone->m_currentFrameTime = m_currentFrameTime;
-		clone->m_currentIndex = m_currentIndex;
+		pClone->m_pTexture = m_pTexture;
+		pClone->m_frames = m_frames;
+		pClone->m_secondsPerFrame = m_secondsPerFrame;
+		pClone->m_isPlaying = m_isPlaying;
+		pClone->m_currentFrameTime = m_currentFrameTime;
+		pClone->m_currentIndex = m_currentIndex;
 
-		return clone;
+		return pClone;
 	}
 }

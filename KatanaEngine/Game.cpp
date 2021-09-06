@@ -44,7 +44,7 @@ namespace KatanaEngine
 
 		m_pResourceManager = new ResourceManager();
 		m_pScreenManager = nullptr;
-		m_pParticleManager = nullptr;
+		//m_pParticleManager = nullptr;
 
 		m_pSpriteBatch = new SpriteBatch();
 
@@ -70,11 +70,12 @@ namespace KatanaEngine
 			GetScreenManager()->HandleInput(m_pInput);
 			GetScreenManager()->Update(m_pGameTime);
 		}
-
+		/*
 		if (GetParticleManager())
 		{
 			GetParticleManager()->Update(m_pGameTime);
 		}
+		*/
 	}
 
 	void Game::Draw(SpriteBatch *pSpriteBatch)
@@ -101,8 +102,8 @@ namespace KatanaEngine
 		if (m_isFullScreen) al_set_new_display_flags(ALLEGRO_FULLSCREEN);
 		if (m_requireOpenGL) al_set_new_display_flags(ALLEGRO_OPENGL);
 
-		ALLEGRO_DISPLAY *pDisplay = al_create_display(GetScreenWidth(), GetScreenHeight());
-		if (!pDisplay)
+		m_pDisplay = al_create_display(GetScreenWidth(), GetScreenHeight());
+		if (!m_pDisplay)
 		{
 			const char message[] = "Failed to initialize display.";
 			al_show_native_message_box(nullptr, nullptr, nullptr, message, nullptr, 0);
@@ -111,11 +112,11 @@ namespace KatanaEngine
 
 
 		if (s_windowTitle.length() == 0) s_windowTitle = GetName();
-		al_set_window_title(pDisplay, s_windowTitle.c_str());
+		al_set_window_title(m_pDisplay, s_windowTitle.c_str());
 		al_set_blender(ALLEGRO_ADD, ALLEGRO_ALPHA, ALLEGRO_INVERSE_ALPHA);
 		al_inhibit_screensaver(true);
 
-		RenderTarget::SetDisplay(pDisplay);
+		RenderTarget::SetDisplay(m_pDisplay);
 		bool redraw = true;
 
 
@@ -124,7 +125,7 @@ namespace KatanaEngine
 		ALLEGRO_TIMER *pTimer = al_create_timer(m_inverseTargetFrames);
 
 		al_register_event_source(pEventQueue, al_get_timer_event_source(pTimer));
-		al_register_event_source(pEventQueue, al_get_display_event_source(pDisplay));
+		al_register_event_source(pEventQueue, al_get_display_event_source(m_pDisplay));
 
 		m_pInput = new InputState();
 
@@ -184,7 +185,7 @@ namespace KatanaEngine
 			{
 				redraw = false;
 
-				al_clear_to_color(al_map_rgb(0, 0, 0));
+				al_clear_to_color(m_clearColor.ToAllegroColor());
 
 				Draw(m_pSpriteBatch);
 
@@ -196,7 +197,7 @@ namespace KatanaEngine
 
 		UnloadContent();
 
-		al_destroy_display(pDisplay);
+		al_destroy_display(m_pDisplay);
 
 		return 0;
 	}
@@ -253,5 +254,13 @@ namespace KatanaEngine
 	{
 		m_targetFramesPerSecond = frames;
 		m_inverseTargetFrames = 1.0 / frames;
+	}
+
+	void Game::ChangeMouseCursor(MouseCursor cursor)
+	{
+		if (m_pDisplay)
+		{
+			al_set_system_mouse_cursor(m_pDisplay, (ALLEGRO_SYSTEM_MOUSE_CURSOR)cursor);
+		}
 	}
 }
