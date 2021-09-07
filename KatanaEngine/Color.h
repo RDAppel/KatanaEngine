@@ -38,6 +38,12 @@ namespace KatanaEngine
 			@return Returns a string displaying the components of the color. */
 		std::string ToString() const;
 
+		/** @brief Tries to parse a string of comma seperated values into a color.
+			@param text The string to parse.
+			@param color The color that will be set if parsing is successful.
+			@return True if the string can be parsed, false otherwise. */
+		static bool TryParse(const std::string &text, Color &color);
+
 		/** @brief Prints the color to the console. */
 		void Display() const { std::cout << ToString() << std::endl; }
 

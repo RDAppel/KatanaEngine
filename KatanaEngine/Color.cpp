@@ -172,6 +172,31 @@ namespace KatanaEngine
 		A = alpha;
 	}
 
+	bool Color::TryParse(const std::string &text, Color &color)
+	{
+		if (text.empty()) return false;
+
+		std::stringstream ss(text);
+		std::string element;
+		float floats[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
+
+		uint8_t index = 0;
+		while (std::getline(ss, element, ','))
+		{
+			floats[index] = atof(element.c_str());
+			index++;
+			if (index == 4) break;
+		}
+
+		if (index < 3) return false;
+		
+		color.R = floats[0];
+		color.G = floats[1];
+		color.B = floats[2];
+		color.A = floats[3];
+		return true;
+	}
+
 	Color Color::Lerp(const Color &start, const Color &end, const float value)
 	{
 		float red = Math::Lerp(start.R, end.R, value, true);

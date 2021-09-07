@@ -205,6 +205,11 @@
     <ClCompile Include="MenuItem.cpp" />
     <ClCompile Include="MenuScreen.cpp" />
     <ClCompile Include="Panel.cpp" />
+    <ClCompile Include="ParticleEmitter.cpp" />
+    <ClCompile Include="ParticleManager.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="Primitive.cpp" />
     <ClCompile Include="RenderTarget.cpp" />
@@ -223,10 +228,23 @@
     <ClCompile Include="Vector2.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AccelerationInitializer.h" />
+    <ClInclude Include="AccelerationUpdater.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="AlphaInitializer.h" />
+    <ClInclude Include="AlphaUpdater.h" />
+    <ClInclude Include="AngularVelocityUpdater.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Bezier.h" />
     <ClInclude Include="Circle.h" />
     <ClInclude Include="Color.h" />
+    <ClInclude Include="ColorInitializer.h" />
+    <ClInclude Include="ColorUpdater.h" />
     <ClInclude Include="Component.h">
       <SubType>
       </SubType>
@@ -235,11 +253,14 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="DefaultInitializer.h" />
+    <ClInclude Include="DefaultUpdater.h" />
     <ClInclude Include="EventHandlers.h" />
     <ClInclude Include="Font.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GamePadState.h" />
     <ClInclude Include="GameTime.h" />
+    <ClInclude Include="IComponentInterfaces.h" />
     <ClInclude Include="IService.h" />
     <ClInclude Include="InputState.h" />
     <ClInclude Include="KatanaEngine.h" />
@@ -250,14 +271,42 @@
     <ClInclude Include="MenuScreen.h" />
     <ClInclude Include="MouseState.h" />
     <ClInclude Include="Panel.h" />
+    <ClInclude Include="Particle.h" />
+    <ClInclude Include="ParticleEmitter.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="ParticleManager.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="ParticleTemplate.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Point.h" />
     <ClInclude Include="Primitive.h" />
+    <ClInclude Include="DefaultRenderer.h" />
+    <ClInclude Include="RandomAngularVelocityInitializer.h" />
+    <ClInclude Include="RandomLifespanInitializer.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="RandomPositionInitializer.h" />
+    <ClInclude Include="RandomRotationInitializer.h" />
+    <ClInclude Include="RandomVelocityInitializer.h" />
+    <ClInclude Include="RandomVelocityUpdater.h" />
     <ClInclude Include="Rectangle.h" />
     <ClInclude Include="Region.h" />
     <ClInclude Include="RenderTarget.h" />
     <ClInclude Include="ResizablePanel.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="ResourceManager.h" />
+    <ClInclude Include="RotationAlignUpdater.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="ScaleInitializer.h" />
     <ClInclude Include="Screen.h" />
     <ClInclude Include="ScreenManager.h" />
     <ClInclude Include="ServiceContainer.h" />
@@ -266,10 +315,17 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="SpriteBatch.h" />
+    <ClInclude Include="TargetUpdater.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Texture.h" />
+    <ClInclude Include="TextureRenderer.h" />
     <ClInclude Include="Theme.h" />
     <ClInclude Include="Toggle.h" />
     <ClInclude Include="Vector2.h" />
+    <ClInclude Include="VelocityInitializer.h" />
+    <ClInclude Include="VelocityUpdater.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

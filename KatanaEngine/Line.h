@@ -37,6 +37,16 @@ namespace KatanaEngine
 			End = end;
 		}
 
+		/** @brief Linearly interpolate between across the curve.
+			@param start The result when the value is zero.
+			@param end The result when the value is one.
+			@param value A value that will indicate the resulting weight between start and end vectors.
+			@return Returns the interpolated value. */
+		virtual Vector2 Lerp(const float value) const
+		{
+			return Vector2::Lerp(Start, End, value);
+		}
+
 		/** @brief Renders a white line segment to the target buffer. */
 		virtual void DrawPrimitive() const
 		{

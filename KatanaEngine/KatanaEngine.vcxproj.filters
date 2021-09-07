@@ -14,9 +14,6 @@
     <Filter Include="Source Files\Core\Math">
       <UniqueIdentifier>{76997c9d-3df0-4e5c-9834-e2711f7ebf4d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Screens">
-      <UniqueIdentifier>{b97a97e8-455e-43e0-9532-df2732fc9927}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Core\Graphics">
       <UniqueIdentifier>{c10780ca-6646-426a-87a5-c75f29f03ec7}</UniqueIdentifier>
     </Filter>
@@ -26,11 +23,29 @@
     <Filter Include="Source Files\Core\Math\Primitives">
       <UniqueIdentifier>{b7d2be99-3a25-424d-a638-f958a6c00d8e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Screens\Menu">
-      <UniqueIdentifier>{55f960e9-7df3-4773-9191-d0648631eb4f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\GUI">
       <UniqueIdentifier>{dd2b7479-3a4f-4485-b11a-8aa6dda33252}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core\Screens">
+      <UniqueIdentifier>{b97a97e8-455e-43e0-9532-df2732fc9927}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core\Screens\Menu">
+      <UniqueIdentifier>{55f960e9-7df3-4773-9191-d0648631eb4f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PE">
+      <UniqueIdentifier>{8c435212-44b3-4c26-940e-de4bd5288c2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PE\Components">
+      <UniqueIdentifier>{58320b3e-316b-4a04-90dd-2ca2aefb0116}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PE\Components\Initializers">
+      <UniqueIdentifier>{b079cea8-2dc8-48f8-8359-c413e13518f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PE\Components\Updaters">
+      <UniqueIdentifier>{694c7179-3be4-4bc4-9132-75d2be43f860}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PE\Components\Renderers">
+      <UniqueIdentifier>{8c84b764-1768-479c-8306-b083814dce9e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -80,16 +95,16 @@
       <Filter>Source Files\Core\Resources</Filter>
     </ClCompile>
     <ClCompile Include="Screen.cpp">
-      <Filter>Source Files\Screens</Filter>
+      <Filter>Source Files\Core\Screens</Filter>
     </ClCompile>
     <ClCompile Include="ScreenManager.cpp">
-      <Filter>Source Files\Screens</Filter>
+      <Filter>Source Files\Core\Screens</Filter>
     </ClCompile>
     <ClCompile Include="MenuItem.cpp">
-      <Filter>Source Files\Screens\Menu</Filter>
+      <Filter>Source Files\Core\Screens\Menu</Filter>
     </ClCompile>
     <ClCompile Include="MenuScreen.cpp">
-      <Filter>Source Files\Screens\Menu</Filter>
+      <Filter>Source Files\Core\Screens\Menu</Filter>
     </ClCompile>
     <ClCompile Include="Panel.cpp">
       <Filter>Source Files\GUI</Filter>
@@ -114,6 +129,12 @@
     </ClCompile>
     <ClCompile Include="ComponentCollection.cpp">
       <Filter>Source Files\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleManager.cpp">
+      <Filter>Source Files\PE</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleEmitter.cpp">
+      <Filter>Source Files\PE</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -172,10 +193,10 @@
       <Filter>Source Files\Core\Resources</Filter>
     </ClInclude>
     <ClInclude Include="Screen.h">
-      <Filter>Source Files\Screens</Filter>
+      <Filter>Source Files\Core\Screens</Filter>
     </ClInclude>
     <ClInclude Include="ScreenManager.h">
-      <Filter>Source Files\Screens</Filter>
+      <Filter>Source Files\Core\Screens</Filter>
     </ClInclude>
     <ClInclude Include="KeyState.h">
       <Filter>Source Files\Core\Input</Filter>
@@ -196,10 +217,10 @@
       <Filter>Source Files\Core\Math\Primitives</Filter>
     </ClInclude>
     <ClInclude Include="MenuItem.h">
-      <Filter>Source Files\Screens\Menu</Filter>
+      <Filter>Source Files\Core\Screens\Menu</Filter>
     </ClInclude>
     <ClInclude Include="MenuScreen.h">
-      <Filter>Source Files\Screens\Menu</Filter>
+      <Filter>Source Files\Core\Screens\Menu</Filter>
     </ClInclude>
     <ClInclude Include="Panel.h">
       <Filter>Source Files\GUI</Filter>
@@ -230,6 +251,87 @@
     </ClInclude>
     <ClInclude Include="ServiceContainer.h">
       <Filter>Source Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleManager.h">
+      <Filter>Source Files\PE</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleEmitter.h">
+      <Filter>Source Files\PE</Filter>
+    </ClInclude>
+    <ClInclude Include="IComponentInterfaces.h">
+      <Filter>Source Files\PE\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleTemplate.h">
+      <Filter>Source Files\PE</Filter>
+    </ClInclude>
+    <ClInclude Include="Particle.h">
+      <Filter>Source Files\PE</Filter>
+    </ClInclude>
+    <ClInclude Include="DefaultRenderer.h">
+      <Filter>Source Files\PE\Components\Renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureRenderer.h">
+      <Filter>Source Files\PE\Components\Renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="DefaultInitializer.h">
+      <Filter>Source Files\PE\Components\Initializers</Filter>
+    </ClInclude>
+    <ClInclude Include="DefaultUpdater.h">
+      <Filter>Source Files\PE\Components\Updaters</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomVelocityUpdater.h">
+      <Filter>Source Files\PE\Components\Updaters</Filter>
+    </ClInclude>
+    <ClInclude Include="VelocityUpdater.h">
+      <Filter>Source Files\PE\Components\Updaters</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomVelocityInitializer.h">
+      <Filter>Source Files\PE\Components\Initializers</Filter>
+    </ClInclude>
+    <ClInclude Include="AlphaUpdater.h">
+      <Filter>Source Files\PE\Components\Updaters</Filter>
+    </ClInclude>
+    <ClInclude Include="ColorUpdater.h">
+      <Filter>Source Files\PE\Components\Updaters</Filter>
+    </ClInclude>
+    <ClInclude Include="AccelerationInitializer.h">
+      <Filter>Source Files\PE\Components\Initializers</Filter>
+    </ClInclude>
+    <ClInclude Include="AlphaInitializer.h">
+      <Filter>Source Files\PE\Components\Initializers</Filter>
+    </ClInclude>
+    <ClInclude Include="ColorInitializer.h">
+      <Filter>Source Files\PE\Components\Initializers</Filter>
+    </ClInclude>
+    <ClInclude Include="ScaleInitializer.h">
+      <Filter>Source Files\PE\Components\Initializers</Filter>
+    </ClInclude>
+    <ClInclude Include="VelocityInitializer.h">
+      <Filter>Source Files\PE\Components\Initializers</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomAngularVelocityInitializer.h">
+      <Filter>Source Files\PE\Components\Initializers</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomPositionInitializer.h">
+      <Filter>Source Files\PE\Components\Initializers</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomRotationInitializer.h">
+      <Filter>Source Files\PE\Components\Initializers</Filter>
+    </ClInclude>
+    <ClInclude Include="AccelerationUpdater.h">
+      <Filter>Source Files\PE\Components\Updaters</Filter>
+    </ClInclude>
+    <ClInclude Include="AngularVelocityUpdater.h">
+      <Filter>Source Files\PE\Components\Updaters</Filter>
+    </ClInclude>
+    <ClInclude Include="RotationAlignUpdater.h">
+      <Filter>Source Files\PE\Components\Updaters</Filter>
+    </ClInclude>
+    <ClInclude Include="TargetUpdater.h">
+      <Filter>Source Files\PE\Components\Updaters</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomLifespanInitializer.h">
+      <Filter>Source Files\PE\Components\Initializers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

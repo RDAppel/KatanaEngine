@@ -20,17 +20,22 @@ namespace KatanaEngine
 
 	public:
 
-		/** @brief Instantiates a new Vector2 object.
-			@param x The X component.
-			@param y The Y component. */
-		Vector2(const float x = 0, const float y = 0);
-
 
 		static const Vector2 ZERO;		/**< @brief A vector with both of its components set to zero. */
 		static const Vector2 ONE;		/**< @brief A vector with both of its components set to one. */
 		static const Vector2 UNIT_X;	/**< @brief A unit vector on the x-axis. */
 		static const Vector2 UNIT_Y;	/**< @brief A unit vector on the y-axis. */
 
+		/** @brief Instantiates a new Vector2 object.
+			@param x The X component.
+			@param y The Y component. */
+		Vector2(const float x = 0, const float y = 0);
+
+		/** @brief Tries to parse a string of comma seperated values into a vector.
+			@param text The string to parse.
+			@param vector The vector that will be set if parsing is successful.
+			@return True if the string can be parsed, false otherwise. */
+		static bool TryParse(const std::string &text, Vector2 &vector);
 
 		/** @brief Calculates the length of the vector squared.
 			@return float The length of the vector squared. */

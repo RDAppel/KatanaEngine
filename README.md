@@ -13,13 +13,17 @@ To Add a Project:
 
  # To do
 
- TryParse for commonly loaded types!!
-  -- Color
-  -- Region -- done clean up?
-  -- Point
+ Fix Bug:
+	Test Project: GUI not rendering sometimes
 
   Helper function in resource?
-   -- parse ints and floats
+   -- parse ints and floats into arrays
+
+   -- constructors using array parameters
+     -- primitive types
+	 -- vec2/point
+	 -- region
+	 -- color
 
  Think through unloading resources...
 	specifically how cached resources can't be unloaded
@@ -38,15 +42,12 @@ To Add a Project:
 		-- look at Font as example
 	-- update to use Region::TryParse
 
- GUI Library
-	Inherit Theme from Resource
-		-- auto load image
-		-- auto load font
 
  Particles
 	Update to honor SRP (split updaters and initializers... and renderers?)
 
  Templates
+	PARTICLE COMPONENTS!!!
 	Game Project? (At least Game class)
 	Screen (Template for ALL callback functions) ...easier to delete than look them up
 	Menu   (Template for ALL callback functions)

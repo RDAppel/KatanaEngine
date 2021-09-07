@@ -80,12 +80,39 @@
 #include "IService.h"
 
 
+
 /* Particle Management */
-//#include "Particle.h"
-//#include "RotatingParticle.h"
-//#include "Emitter.h"
-//#include "ParticleTemplate.h"
-//#include "ParticleManager.h"
+#include "IComponentInterfaces.h"		// Core
+#include "Particle.h"
+
+#include "DefaultInitializer.h"			// Initializers
+#include "ColorInitializer.h"
+#include "AlphaInitializer.h"
+#include "ScaleInitializer.h"
+#include "VelocityInitializer.h"
+#include "AccelerationInitializer.h"
+#include "RandomLifespanInitializer.h"
+#include "RandomRotationInitializer.h"
+#include "RandomPositionInitializer.h"
+#include "RandomVelocityInitializer.h"
+#include "RandomAngularVelocityInitializer.h"
+
+#include "DefaultUpdater.h"				// Updaters
+#include "ColorUpdater.h"
+#include "AlphaUpdater.h"
+#include "VelocityUpdater.h"
+#include "AccelerationUpdater.h"
+#include "AngularVelocityUpdater.h"
+#include "RandomVelocityUpdater.h"
+#include "RotationAlignUpdater.h"
+#include "TargetUpdater.h"
+
+#include "DefaultRenderer.h"			// Renderers
+#include "TextureRenderer.h"
+
+#include "ParticleTemplate.h"			// Managment
+#include "ParticleManager.h"
+#include "ParticleEmitter.h"
 
 
 /* Screen Management */

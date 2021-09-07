@@ -109,16 +109,7 @@ namespace KatanaEngine
 
 		/** @brief Creates and adds a screen manager service.
 			@returns A pointer to the screen manager instance. */
-		virtual ScreenManager *InitializeScreenManager()
-		{
-			ScreenManager *pScreenManager = new ScreenManager;
-			bool added = AddService(pScreenManager);
-
-			if (added) return pScreenManager;
-
-			delete pScreenManager;
-			return nullptr;			
-		}
+		virtual ScreenManager *InitializeScreenManager();
 
 	private:
 

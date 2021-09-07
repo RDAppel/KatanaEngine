@@ -4,6 +4,7 @@
 #include "PCH.h"
 
 using namespace KatanaEngine;
+using namespace KatanaEngine::GUI;
 
 namespace Test
 {
@@ -13,12 +14,10 @@ namespace Test
 
 	public:
 
-		TestScreen() { }
+		TestScreen(ParticleManager *pParticleManager) { m_pParticleManager = pParticleManager; }
 		virtual ~TestScreen();
 
 		virtual void LoadContent(ResourceManager *pResourceManager);
-
-		virtual void UnloadContent();
 
 		virtual void HandleInput(const InputState *pInput);
 
@@ -26,17 +25,50 @@ namespace Test
 
 		virtual void Draw(SpriteBatch *pSpriteBatch);
 
+		enum class Demo
+		{
+			LINE,
+			COLOR,
+			TWO_LINE,
+			THREE_LINE,
+			THREE_LINE_WPT,
+			QUADRATIC,
+			FOUR_LINES,
+			FOUR_LINES_WPT,
+			FOUR_LINES_W1LERP,
+			FOUR_LINES_W1LERP_WPT,
+			FOUR_LINES_W2LERP,
+			FOUR_LINES_W2LERP_WPT,
+			CUBIC,
+			CUBIC_RM_LINES,
+			PARTICLES_ONLY,
+			END
+		};
+
 	private:
 
-		GUI::Theme *m_pTheme = nullptr;
+		Theme *m_pTheme = nullptr;
+		Panel *m_pPanel = nullptr;
+		Toggle *m_pToggle = nullptr;
+		Slider *m_pSlider = nullptr;
+		ComponentCollection *m_pComponents = nullptr;
 
-		GUI::Panel *m_pPanel = nullptr;
-		GUI::Toggle *m_pToggle = nullptr;
-		GUI::Slider *m_pSlider = nullptr;
+		static const uint8_t NUM_TEXTURES = 4;
+		Texture *m_pParticleTextures[NUM_TEXTURES] = { };
+		ParticleManager *m_pParticleManager = nullptr;
+		ParticleEmitter *m_pEmitter = nullptr;
+		ParticleTemplate *m_pTemplate = nullptr;
 
-		GUI::ComponentCollection *m_pComponents = nullptr;
+		Demo m_step = Demo::LINE;
 
-		Texture *m_pTexture = nullptr;
+		Line m_line;
+		Bezier m_spline;
+		Bezier m_spline2;
+		Circle m_selectionCircle;
+
+		int m_controlPoint = -1;
+
+		void resetSplines();
 
 	};
 }

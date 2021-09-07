@@ -71,7 +71,7 @@ namespace KatanaEngine
 			al_show_native_message_box(nullptr, nullptr, nullptr, message, nullptr, 0);
 			return -1;
 		}
-
+		al_set_new_display_option(ALLEGRO_SAMPLE_BUFFERS, 1, ALLEGRO_SUGGEST);
 		al_set_new_display_option(ALLEGRO_VSYNC, 1, ALLEGRO_REQUIRE);
 		if (m_isFullScreen) al_set_new_display_flags(ALLEGRO_FULLSCREEN);
 		if (m_requireOpenGL) al_set_new_display_flags(ALLEGRO_OPENGL);
@@ -235,5 +235,16 @@ namespace KatanaEngine
 		bool added = ServiceContainer::AddService(pService);
 		if (added) pService->SetGame(this);
 		return added;
+	}
+
+	ScreenManager *Game::InitializeScreenManager()
+	{
+		ScreenManager *pScreenManager = new ScreenManager;
+		bool added = AddService(pScreenManager);
+
+		if (added) return pScreenManager;
+
+		delete pScreenManager;
+		return nullptr;
 	}
 }

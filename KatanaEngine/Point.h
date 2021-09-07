@@ -21,14 +21,40 @@ namespace KatanaEngine
 
 	public:
 
+
+		static const Point ORIGIN;	/**< @brief A point located at the origin. */
+
 		/** @brief Instantiates a new point object.
 			@param x The X component
 			@param y The Y component */
 		Point(const int x = 0, const int y = 0);
 		~Point() { };
 
+		/** @brief Tries to parse a string of comma seperated values into a point.
+			@param text The string to parse.
+			@param point The point that will be set if parsing is successful.
+			@return True if the string can be parsed, false otherwise. */
+		static bool TryParse(const std::string &text, Point &point)
+		{
+			if (text.empty()) return false;
 
-		static const Point ORIGIN;	/**< @brief A point located at the origin. */
+			std::stringstream ss(text);
+			std::string element;
+			int ints[2];
+
+			uint8_t index = 0;
+			while (std::getline(ss, element, ','))
+			{
+				ints[index] = atoi(element.c_str());
+				index++;
+				if (index == 2) break;
+			}
+
+			if (index < 2) return false;
+
+			point.Set(ints[0], ints[1]);
+			return true;
+		}
 
 
 		/** @brief Sets the components of the point.

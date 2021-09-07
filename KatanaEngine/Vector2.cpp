@@ -24,6 +24,28 @@ namespace KatanaEngine
 		Y = y;
 	}
 
+	bool Vector2::TryParse(const std::string &text, Vector2 &vector)
+	{
+		if (text.empty()) return false;
+
+		std::stringstream ss(text);
+		std::string element;
+		float floats[2];
+
+		uint8_t index = 0;
+		while (std::getline(ss, element, ','))
+		{
+			floats[index] = atoi(element.c_str());
+			index++;
+			if (index == 2) break;
+		}
+
+		if (index < 2) return false;
+
+		vector.Set(floats[0], floats[1]);
+		return true;
+	}
+
 	float Vector2::LengthSquared() const
 	{
 		return ((X * X) + (Y * Y));
