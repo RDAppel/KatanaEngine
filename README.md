@@ -13,6 +13,11 @@ To Add a Project:
 
  # To do
 
+ Clean up Load<> Functions
+ Test TryParse on string array
+ Factory functions for GUI?
+
+
  Fix Bug:
 	Test Project: GUI not rendering sometimes
 

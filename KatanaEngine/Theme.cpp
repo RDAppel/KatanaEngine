@@ -47,6 +47,7 @@ namespace KatanaEngine
 					if (loadTexture)
 					{
 						Texture *pTexture = pManager->Load<Texture>(line);
+						if (!pTexture) return false;
 						SetTexture(pTexture);
 						loadTexture--;
 						continue;
@@ -62,6 +63,7 @@ namespace KatanaEngine
 						{
 							Font::SetLoadSize(fontSize, true);
 							Font *pFont = pManager->Load<Font>(line);
+							if (!pFont) return false;
 							SetFont(pFont);
 						}
 						loadFont--;
@@ -70,10 +72,14 @@ namespace KatanaEngine
 					
 					if (loadColors)
 					{
-						Split(line, ',', splitElements);
-						float n[4] = { };
+						//Split(line, ',', splitElements);
+						std::vector<float> n;
+						if (!TryParse<float>(line, n)) return false;
+						//float n[4] = { };
+						/*
 						for (uint8_t i = 0; i < 4; i++)
 							n[i] = atof(splitElements[i].c_str());
+							*/
 						colors[3 - loadColors].R = n[0];
 						colors[3 - loadColors].G = n[1];
 						colors[3 - loadColors].B = n[2];
@@ -84,10 +90,14 @@ namespace KatanaEngine
 					
 					if (loadPanelSettings)
 					{
-						Split(line, ',', splitElements);
-						int n[6] = { };
+						//Split(line, ',', splitElements);
+						std::vector<int> n;
+						if (!TryParse<int>(line, n)) return false;
+						//int n[6] = { };
+						/*
 						for (uint8_t i = 0; i < 6; i++)
 							n[i] = atoi(splitElements[i].c_str());
+							*/
 						SetupPanel(Point(n[0], n[1]), n[2], n[3], n[4], n[5]);
 						loadPanelSettings--;
 						continue;
@@ -105,12 +115,17 @@ namespace KatanaEngine
 						}
 						else if (loadToggleSettings == 1)
 						{
+							/*
 							Split(line, ',', splitElements);
 							int c0 = atoi(splitElements[0].c_str());
 							int c1 = atoi(splitElements[1].c_str());
-							
+							*/
+
+							std::vector<int> n;
+							if (!TryParse<int>(line, n)) return false;
+
 							SetupToggle(regions[0], regions[1],
-							colors[c0], colors[c1], regions[2]);
+							colors[n[0]], colors[n[1]], regions[2]);
 						}
 
 						loadToggleSettings--;
@@ -129,12 +144,15 @@ namespace KatanaEngine
 						}
 						else if (loadSliderSettings == 1)
 						{
-							Split(line, ',', splitElements);
-							int c0 = atoi(splitElements[0].c_str());
-							int c1 = atoi(splitElements[1].c_str());
+							//Split(line, ',', splitElements);
+							//int c0 = atoi(splitElements[0].c_str());
+							//int c1 = atoi(splitElements[1].c_str());
+
+							std::vector<int> n;
+							if (!TryParse<int>(line, n)) return false;
 
 							SetupSlider(regions[0], regions[1],
-								colors[c0], colors[c1], regions[2]);
+								colors[n[0]], colors[n[1]], regions[2]);
 						}
 
 						loadSliderSettings--;

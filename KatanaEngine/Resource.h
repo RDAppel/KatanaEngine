@@ -39,9 +39,23 @@ namespace KatanaEngine
 
 		/** @brief Splits a string into a vector of strings.
 			@param line The string that will be split.
-			@param delimeter The character that will determine the split locations.
-			@param elements The vector where the split string elements will be stored. */
-		void Split(const std::string &line, const char delimeter, std::vector<std::string> &elements);
+			@param elements The vector where the string elements will be stored.
+			@param delimeter The character that will determine the split locations. */
+		//void Split(const std::string &line, std::vector<std::string> &elements,
+			//const char delimeter = ',');
+
+		template <typename T>
+		bool TryParse(const std::string &text, std::vector<T> &elements,
+			const char delimeter = ',')
+		{
+			if (text.empty()) return false;
+			elements.clear();
+			std::stringstream ss(text);
+			std::string item;
+			while (std::getline(ss, item, delimeter))
+				elements.push_back(fromString<T>(item));
+			return true;
+		}
 
 		/** @brief Removes c-style, single-line comments from a line of text.
 			@param line The line to remove the comments from. */
@@ -74,5 +88,22 @@ namespace KatanaEngine
 		unsigned short m_id = 0;
 
 		ResourceManager *m_pResourceManager = nullptr;
+
+
+		template<typename T>
+		T fromString(const std::string &str);
+
+		// Implementations
+		template<>
+		int fromString(const std::string &str)
+		{
+			return std::stoi(str);
+		}
+
+		template<>
+		float fromString(const std::string &str)
+		{
+			return std::stof(str);
+		}
 	};
 }

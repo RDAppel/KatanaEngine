@@ -18,11 +18,6 @@ namespace KatanaEngine
 	const Vector2 Vector2::UNIT_X = Vector2(1, 0);
 	const Vector2 Vector2::UNIT_Y = Vector2(0, 1);
 	
-	Vector2::Vector2(const float x, const float y)
-	{
-		X = x;
-		Y = y;
-	}
 
 	bool Vector2::TryParse(const std::string &text, Vector2 &vector)
 	{

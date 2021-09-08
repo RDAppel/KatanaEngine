@@ -283,6 +283,8 @@ namespace Test
 		Line ln6(pt4, pt5);
 		Vector2 pt6 = ln6.Lerp(tValue);
 
+		Vector2 center = Game::GetScreenCenter() + Vector2::UNIT_Y * 100;
+
 		if (m_step == Demo::FOUR_LINES)
 		{
 			if (m_controlPoint >= 0)
@@ -421,6 +423,84 @@ namespace Test
 			Circle(8, pt6).DrawPrimitive();
 
 			position = Vector2(800, 750);
+		}
+
+		if (m_step == Demo::VECTORS1)
+		{
+			m_spline2.DrawPrimitive(Color::REBECCA_PURPLE, 4);
+			float w0 = m_spline2.GetWeightFor(0, tValue);
+			float w1 = m_spline2.GetWeightFor(1, tValue);
+			float w2 = m_spline2.GetWeightFor(2, tValue);
+			float w3 = m_spline2.GetWeightFor(3, tValue);
+			Line l0(center, m_spline2.P0);
+			Line l1(center, m_spline2.P1);
+			Line l2(center, m_spline2.P2);
+			Line l3(center, m_spline2.P3);
+			ln1.DrawPrimitive(2);
+			ln2.DrawPrimitive(2);
+			ln3.DrawPrimitive(2);
+			l0.DrawPrimitive(Color::RED, 4);
+			l1.DrawPrimitive(Color::GREEN, 4);
+			l2.DrawPrimitive(Color::BLUE, 4);
+			l3.DrawPrimitive(Color::YELLOW, 4);
+			Circle(8, center).DrawPrimitive();
+			Circle(8, pt6).DrawPrimitive();
+		}
+
+		if (m_step == Demo::VECTORS2)
+		{
+			m_spline2.DrawPrimitive(Color::REBECCA_PURPLE, 4);
+			float w0 = m_spline2.GetWeightFor(0, tValue);
+			float w1 = m_spline2.GetWeightFor(1, tValue);
+			float w2 = m_spline2.GetWeightFor(2, tValue);
+			float w3 = m_spline2.GetWeightFor(3, tValue);
+			Vector2 v0 = m_spline2.P0 - center;
+			Vector2 v1 = m_spline2.P1 - center;
+			Vector2 v2 = m_spline2.P2 - center;
+			Vector2 v3 = m_spline2.P3 - center;
+			Line l0(center, center + v0 * w0);
+			Line l1(center, center + v1 * w1);
+			Line l2(center, center + v2 * w2);
+			Line l3(center, center + v3 * w3);
+			ln1.DrawPrimitive(2);
+			ln2.DrawPrimitive(2);
+			ln3.DrawPrimitive(2);
+			l0.DrawPrimitive(Color::RED, 4);
+			l1.DrawPrimitive(Color::GREEN, 4);
+			l2.DrawPrimitive(Color::BLUE, 4);
+			l3.DrawPrimitive(Color::YELLOW, 4);
+			Circle(8, center).DrawPrimitive();
+			Circle(8, pt6).DrawPrimitive();
+		}
+
+		if (m_step == Demo::VECTORS3)
+		{
+			m_spline2.DrawPrimitive(Color::REBECCA_PURPLE, 4);
+			float w0 = m_spline2.GetWeightFor(0, tValue);
+			float w1 = m_spline2.GetWeightFor(1, tValue);
+			float w2 = m_spline2.GetWeightFor(2, tValue);
+			float w3 = m_spline2.GetWeightFor(3, tValue);
+			Vector2 v0 = m_spline2.P0 - center;
+			Vector2 v1 = m_spline2.P1 - center;
+			Vector2 v2 = m_spline2.P2 - center;
+			Vector2 v3 = m_spline2.P3 - center;
+			Line l0(center,
+				center + v0 * w0);
+			Line l1(center + v0 * w0,
+				center + v0 * w0 + v1 * w1);
+			Line l2(center + v0 * w0 + v1 * w1,
+				center + v0 * w0 + v1 * w1 + v2 * w2);
+			Line l3(center + v0 * w0 + v1 * w1 + v2 * w2,
+				center + v0 * w0 + v1 * w1 + v2 * w2 + v3 * w3);
+			ln1.DrawPrimitive(2);
+			ln2.DrawPrimitive(2);
+			ln3.DrawPrimitive(2);
+			l0.DrawPrimitive(Color::RED, 4);
+			l1.DrawPrimitive(Color::GREEN, 4);
+			l2.DrawPrimitive(Color::BLUE, 4);
+			l3.DrawPrimitive(Color::YELLOW, 4);
+			Circle(8, center).DrawPrimitive();
+			Circle(8, pt6).DrawPrimitive();
 		}
 
 		if (!position.IsZero())

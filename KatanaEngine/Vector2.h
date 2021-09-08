@@ -29,7 +29,14 @@ namespace KatanaEngine
 		/** @brief Instantiates a new Vector2 object.
 			@param x The X component.
 			@param y The Y component. */
-		Vector2(const float x = 0, const float y = 0);
+		Vector2(const float x = 0, const float y = 0) { X = x, Y = y; }
+
+		/** @brief Instantiates a new Vector2 object.
+			@param array An array which first two elements will be used to
+			initialize X, and Y respectively.
+			
+			@overload */
+		Vector2(const float array[2]) : Vector2(array[0], array[1]) { }
 
 		/** @brief Tries to parse a string of comma seperated values into a vector.
 			@param text The string to parse.

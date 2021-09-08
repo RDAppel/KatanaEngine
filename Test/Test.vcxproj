@@ -214,6 +214,7 @@
     <ClCompile Include="TestScreen.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BezierComp.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="PCH.h" />
     <ClInclude Include="TestScreen.h" />

@@ -20,7 +20,7 @@ namespace KatanaEngine
 	public:
 
 		/** @brief Instantiates a new Region object. */
-		Region() { X = Y = Width = Height = 0; }
+		Region() : Region(0, 0, 0, 0) { }
 
 
 		/** @brief Instantiates a new Region object.
@@ -28,16 +28,30 @@ namespace KatanaEngine
 			@param size The dimensions of the region.
 			
 			@overload */
-		Region(const Point position, const Point size)
+		Region(const Point &position, const Point &size)
 			: Region(position, size.X, size.Y) { }
 
 		/** @brief Instantiates a new Region object.
-			@param position the upper left corner of the region.
-			@param width The width of the region.
-			@param height The height of the region.
+			@param position An array which will be used to initialize the position.
+			@param size An array which will be used to initialize the size.
 
 			@overload */
-		Region(const Point position, const int width, const int height)
+		Region(const int position[2], const int size[2])
+			: Region(position[0], position[1], size[0], size[1]) { }
+
+		/** @brief Instantiates a new Region object.
+			@param array An array which first pair of elements will be used to
+			initialize the position, and the second pair to initialize the size.
+
+			@overload */
+		Region(const int array[4])
+			: Region(array[0], array[1], array[2], array[3]) { }
+
+		/** @brief Instantiates a new Region object.
+			@param position the upper left corner of the region.
+
+			@overload */
+		Region(const Point &position, const int width, const int height)
 			: Region(position.X, position.Y, width, height) { }
 
 		/** @brief Instantiates a new Region object.

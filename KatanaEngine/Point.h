@@ -27,7 +27,15 @@ namespace KatanaEngine
 		/** @brief Instantiates a new point object.
 			@param x The X component
 			@param y The Y component */
-		Point(const int x = 0, const int y = 0);
+		Point(const int x = 0, const int y = 0) { X = x; Y = y; }
+
+		/** @brief Instantiates a new point object.
+			@param array An array which first two elements will be used to
+			initialize X, and Y respectively.
+
+			@overload */
+		Point(const float array[2]) : Point(array[0], array[1]) { }
+
 		~Point() { };
 
 		/** @brief Tries to parse a string of comma seperated values into a point.

@@ -1,5 +1,5 @@
 ﻿
-/*	 ██╗  ██╗  █████╗  ████████╗  █████╗  ███╗   ██╗  █████╗ 
+/*	 ██╗  ██╗  █████╗  ████████╗  █████╗  ███╗   ██╗  █████╗
 	 ██║ ██╔╝ ██╔══██╗ ╚══██╔══╝ ██╔══██╗ ████╗  ██║ ██╔══██╗
 	 █████╔╝  ███████║    ██║    ███████║ ██╔██╗ ██║ ███████║
 	 ██╔═██╗  ██╔══██║    ██║    ██╔══██║ ██║╚██╗██║ ██╔══██║
@@ -7,26 +7,27 @@
 	 ╚═╝  ╚═╝ ╚═╝  ╚═╝/\  ╚═╝    ╚═╝  ╚═╝ ╚═╝  ╚═══╝ ╚═╝  ╚═╝
    /vvvvvvvvvvvvvvvvvvv \=========================================,
    `^^^^^^^^^^^^^^^^^^^ /---------------------------------------"
-        Katana Engine \/ © 2012 - Shuriken Studios LLC              */
+		Katana Engine \/ © 2012 - Shuriken Studios LLC              */
 
 #include "KatanaEngine.h"
 
 namespace KatanaEngine
 {
-	void Resource::Split(const std::string &line, const char delimeter, std::vector<std::string> &elements)
-	{
-		if (line.empty()) return;
+	//void Resource::Split(const std::string &line, std::vector<std::string> &elements,
+	//	const char delimeter)
+	//{
+	//	if (line.empty()) return;
 
-		elements.clear();
+	//	elements.clear();
 
-		std::stringstream ss(line);
-		std::string element;
+	//	std::stringstream ss(line);
+	//	std::string element;
 
-		while (std::getline(ss, element, delimeter))
-		{
-			elements.push_back(element);
-		}
-	}
+	//	while (std::getline(ss, element, delimeter))
+	//	{
+	//		elements.push_back(element);
+	//	}
+	//}
 
 	void Resource::ParseComments(std::string &line)
 	{

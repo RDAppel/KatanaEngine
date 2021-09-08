@@ -79,7 +79,8 @@ namespace KatanaEngine
 				}
 				else
 				{
-					Split(line, ',', splitElements);
+					//Split(line, ',', splitElements);
+					if (!TryParse<std::string>(line, splitElements)) return false;
 
 					Region *frame = new Region;
 					frame->X = atoi(splitElements[0].c_str());

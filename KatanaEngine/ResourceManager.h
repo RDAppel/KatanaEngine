@@ -60,7 +60,7 @@ namespace KatanaEngine
 
 				if (pResource->IsCloneable())
 				{
-					T *pClone = dynamic_cast<T*>(pResource->Clone());
+					T *pClone = dynamic_cast<T *>(pResource->Clone());
 
 					pClone->m_id = m_nextResourceID;
 					m_nextResourceID++;
@@ -95,6 +95,10 @@ namespace KatanaEngine
 
 				return pT;
 			}
+			
+			std::cout << "There was an error loading\n\""
+				<< fullPath
+				<< ".\"\nPlease check that the resource exists.\n";
 
 			delete pT;
 			return nullptr;

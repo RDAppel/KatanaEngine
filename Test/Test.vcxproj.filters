@@ -33,5 +33,8 @@
     <ClInclude Include="TestScreen.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="BezierComp.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

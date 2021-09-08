@@ -5,6 +5,7 @@
 
 using namespace KatanaEngine;
 using namespace KatanaEngine::GUI;
+using namespace KatanaEngine::PE;
 
 namespace Test
 {
@@ -42,6 +43,11 @@ namespace Test
 			CUBIC,
 			CUBIC_RM_LINES,
 			PARTICLES_ONLY,
+			VECTORS1,
+			VECTORS2,
+			VECTORS3,
+			VELOCITY,
+			LEFT,
 			END
 		};
 
@@ -63,7 +69,7 @@ namespace Test
 
 		Line m_line;
 		Bezier m_spline;
-		Bezier m_spline2;
+		BezierComp m_spline2;
 		Circle m_selectionCircle;
 
 		int m_controlPoint = -1;
