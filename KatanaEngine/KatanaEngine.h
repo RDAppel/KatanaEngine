@@ -26,6 +26,8 @@
 #include <algorithm>
 #include <limits>
 #include <map>
+#include <unordered_map>
+#include <typeindex>
 
 
 /* Allegro */

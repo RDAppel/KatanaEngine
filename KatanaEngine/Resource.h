@@ -37,19 +37,15 @@ namespace KatanaEngine
 
 	protected:
 
-		/** @brief Splits a string into a vector of strings.
+		/** @brief Splits a string into a vector of the specified type T.
 			@param line The string that will be split.
-			@param elements The vector where the string elements will be stored.
+			@param elements The vector where the elements will be stored.
 			@param delimeter The character that will determine the split locations. */
-		//void Split(const std::string &line, std::vector<std::string> &elements,
-			//const char delimeter = ',');
-
 		template <typename T>
 		bool TryParse(const std::string &text, std::vector<T> &elements,
 			const char delimeter = ',')
 		{
 			if (text.empty()) return false;
-			elements.clear();
 			std::stringstream ss(text);
 			std::string item;
 			while (std::getline(ss, item, delimeter))
@@ -57,9 +53,41 @@ namespace KatanaEngine
 			return true;
 		}
 
+
+		// todo: add comments
+		bool TryParseRegion(const std::string &text, Point &point)
+		{
+			std::vector<int> elements;
+			if (!TryParse<int>(text, elements)) return false;
+			if (elements.size() < 2) return false;
+			point.Set(&elements[0]);
+			return true;
+		}
+
+		bool TryParseRegion(const std::string &text, Region &region)
+		{
+			std::vector<int> elements;
+			if (!TryParse<int>(text, elements)) return false;
+			if (elements.size() < 4) return false;
+			region.Set(&elements[0]);
+			return true;
+		}
+
+		bool TryParseColor(const std::string &text, Color &color)
+		{
+			std::vector<float> elements;
+			if (!TryParse<float>(text, elements)) return false;
+			if (elements.size() < 3) return false;
+			// if there is no alpha value, default it to one
+			if (elements.size() == 3) elements.push_back(1.0f);
+			color.Set(&elements[0]);
+			return true;
+		}
+
+
 		/** @brief Removes c-style, single-line comments from a line of text.
 			@param line The line to remove the comments from. */
-		void ParseComments(std::string &line);
+		void StripComments(std::string &line);
 
 		/** @brief Removes WHITE-space at the front and end of a line of text.
 			@param line The line to remove the WHITE-space from. */
@@ -104,6 +132,12 @@ namespace KatanaEngine
 		float fromString(const std::string &str)
 		{
 			return std::stof(str);
+		}
+
+		template<>
+		std::string fromString(const std::string &str)
+		{
+			return str;
 		}
 	};
 }

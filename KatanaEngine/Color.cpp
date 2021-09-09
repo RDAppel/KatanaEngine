@@ -166,35 +166,17 @@ namespace KatanaEngine
 
 	Color::Color(const float red, const float green, const float blue, const float alpha)
 	{
-		R = red;
-		G = green;
-		B = blue;
-		A = alpha;
+		Set(red, green, blue, alpha);
 	}
 
-	bool Color::TryParse(const std::string &text, Color &color)
+	void Color::Set(const float red, const float green, const float blue, const float alpha)
 	{
-		if (text.empty()) return false;
+		R = red; G = green; B = blue; A = alpha;
+	}
 
-		std::stringstream ss(text);
-		std::string element;
-		float floats[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
-
-		uint8_t index = 0;
-		while (std::getline(ss, element, ','))
-		{
-			floats[index] = atof(element.c_str());
-			index++;
-			if (index == 4) break;
-		}
-
-		if (index < 3) return false;
-		
-		color.R = floats[0];
-		color.G = floats[1];
-		color.B = floats[2];
-		color.A = floats[3];
-		return true;
+	void Color::Set(const float array[4])
+	{
+		Set(array[0], array[1], array[2], array[3]);
 	}
 
 	Color Color::Lerp(const Color &start, const Color &end, const float value)

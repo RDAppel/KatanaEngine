@@ -28,7 +28,7 @@ namespace KatanaEngine
 		/** @brief Unloads all game resources. */
 		void UnloadAllResources()
 		{
-			std::map<std::string, Resource *>::iterator it;
+			std::unordered_map<std::string, Resource *>::iterator it;
 			for (it = m_resources.begin(); it != m_resources.end(); ++it)
 			{
 				Resource *resource = it->second;
@@ -106,7 +106,7 @@ namespace KatanaEngine
 
 	private:
 
-		std::map<std::string, Resource *> m_resources;
+		std::unordered_map<std::string, Resource *> m_resources;
 
 		std::vector<Resource *> m_clones;
 

@@ -47,7 +47,6 @@ namespace KatanaEngine
 	{
 		//double time = al_get_time();
 
-
 		if (m_sortMode != SpriteSortMode::IMMEDIATE)
 		{
 			if (m_pTransformation != NULL) al_use_transform(m_pTransformation);

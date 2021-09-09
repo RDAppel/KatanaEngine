@@ -68,32 +68,6 @@ namespace KatanaEngine
 
 		virtual ~Region() { }
 
-		/** @brief Tries to parse a string of comma seperated values into a region.
-			@param text The string to parse.
-			@param region The region that will be set if parsing is successful.
-			@return True if the string can be parsed, false otherwise. */
-		static bool TryParse(const std::string &text, Region &region)
-		{
-			if (text.empty()) return false;
-
-			std::stringstream ss(text);
-			std::string element;
-			int ints[4];
-
-			uint8_t index = 0;
-			while (std::getline(ss, element, ','))
-			{
-				ints[index] = atoi(element.c_str());
-				index++;
-				if (index == 4) break;
-			}
-
-			if (index < 4) return false;
-			
-			region.Set(ints[0], ints[1], ints[2], ints[3]);
-			return true;
-		}
-
 		/** @brief Sets the components of the region.
 			@param x The left side of the region.
 			@param y The top side of the region.
@@ -107,6 +81,17 @@ namespace KatanaEngine
 			Y = y;
 			Width = width;
 			Height = height;
+		}
+
+		// todo: comments
+		void Set(const int array[4])
+		{
+			Set(array[0], array[1], array[2], array[3]);
+		}
+
+		void Set(const int position[2], const int size[2])
+		{
+			Set(position[0], position[1], size[0], size[1]);
 		}
 
 		/** @brief The top of the region.

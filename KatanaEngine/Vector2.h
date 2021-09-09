@@ -38,12 +38,6 @@ namespace KatanaEngine
 			@overload */
 		Vector2(const float array[2]) : Vector2(array[0], array[1]) { }
 
-		/** @brief Tries to parse a string of comma seperated values into a vector.
-			@param text The string to parse.
-			@param vector The vector that will be set if parsing is successful.
-			@return True if the string can be parsed, false otherwise. */
-		static bool TryParse(const std::string &text, Vector2 &vector);
-
 		/** @brief Calculates the length of the vector squared.
 			@return float The length of the vector squared. */
 		float LengthSquared() const;

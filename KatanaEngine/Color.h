@@ -26,6 +26,16 @@ namespace KatanaEngine
 			@param alpha The alpha value (opacity) of the color. */
 		Color(const float red = 1.0f, const float green = 1.0f, const float blue = 1.0f, const float alpha = 1.0f);
 
+		/** @brief Sets the values of a color object.
+			@param red The red value of the color.
+			@param green The green value of the color.
+			@param blue The blue value of the color.
+			@param alpha The alpha value (opacity) of the color. */
+		void Set(const float red = 1.0f, const float green = 1.0f, const float blue = 1.0f, const float alpha = 1.0f);
+
+		/** @brief Sets the values of a color object.
+			@param array A float array containing the respective red, green, blue, and alpha values. */
+		void Set(const float array[4]);
 
 		/** @brief Linearly interpolate between two colors.
 			@param start The result when the value is zero.
@@ -37,12 +47,6 @@ namespace KatanaEngine
 		/** @brief Gets a string representation of the color.
 			@return Returns a string displaying the components of the color. */
 		std::string ToString() const;
-
-		/** @brief Tries to parse a string of comma seperated values into a color.
-			@param text The string to parse.
-			@param color The color that will be set if parsing is successful.
-			@return True if the string can be parsed, false otherwise. */
-		static bool TryParse(const std::string &text, Color &color);
 
 		/** @brief Prints the color to the console. */
 		void Display() const { std::cout << ToString() << std::endl; }
@@ -215,7 +219,6 @@ namespace KatanaEngine
 
 		static const Color TRANSPARENT;			/**< @brief Transparent */
 		#pragma endregion
-
 
 		float R = 1.0f;
 		float G = 1.0f;

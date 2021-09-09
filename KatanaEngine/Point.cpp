@@ -21,10 +21,14 @@ namespace KatanaEngine
 		Y = y;
 	}
 
-	void Point::Set(const Point point)
+	void Point::Set(const Point &point)
 	{
-		X = point.X;
-		Y = point.Y;
+		Set(point.X, point.Y);
+	}
+
+	void Point::Set(const int array[2])
+	{
+		Set(array[0], array[1]);
 	}
 
 	std::string Point::ToString() const

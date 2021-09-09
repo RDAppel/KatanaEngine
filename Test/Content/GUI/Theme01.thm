@@ -1,16 +1,19 @@
-GUI\Theme01.png // Texture Path
-18              // Font Size
-Fonts\arial.ttf // Font Path
+
+// Textures
+Textures\GUI\Theme01.png, -usecontentpath // -cache
+
+// Fonts
+1 // number of fonts to load
+18, Fonts\arial.ttf, -usecontentpath // size & path
 
 // Colors
+2 // number of colors
 0.176, 0.176, 0.196, 1.0 // 0
 0.98, 0.5, 0.45, 1.0     // 1
-0, 0, 0, 0               // UNUSED
 
 // Panel Settings
-// Image offset X, Y ... followed by
-// Border sizes (top, left, right, bottom)
-9, 54, 16, 16, 16, 16
+9, 54 // texture offset
+16, 16, 16, 16 // border sizes
 
 // Toggle Settings
 9, 9, 64, 32 // background source

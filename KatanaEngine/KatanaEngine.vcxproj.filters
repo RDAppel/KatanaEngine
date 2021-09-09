@@ -49,9 +49,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="KatanaEngine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -333,5 +330,8 @@
     <ClInclude Include="RandomLifespanInitializer.h">
       <Filter>Source Files\PE\Components\Initializers</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

@@ -15,8 +15,8 @@ namespace KatanaEngine
 {
 	Animation::Animation()
 	{
-		m_secondsPerFrame = 0.6f;
-		m_currentFrameTime = m_secondsPerFrame;
+		m_secondsPerFrame = 0;
+		m_currentFrameTime = 0;
 		m_currentIndex = 0;
 		m_loopCounter = -1;
 		m_isPlaying = true;
@@ -55,7 +55,6 @@ namespace KatanaEngine
 		}
 	}
 
-
 	bool Animation::Load(const std::string &path, ResourceManager *pManager)
 	{
 		std::ifstream fileIn(path.c_str(), std::ifstream::in);
@@ -63,40 +62,30 @@ namespace KatanaEngine
 		if (fileIn.is_open() && fileIn.good())
 		{
 			std::string line;
-			std::vector<std::string> splitElements;
-
-			bool loadFrameTime = true;
 
 			while (getline(fileIn, line))
 			{
-				ParseComments(line);
+				StripComments(line);
+				TrimLine(line);
 				if (line.empty()) continue;
 
-				if (loadFrameTime)
+				if (m_secondsPerFrame == 0)
 				{
 					m_secondsPerFrame = atof(line.c_str());
-					loadFrameTime = false;
+					if (m_secondsPerFrame == 0) m_secondsPerFrame = 1.0f / 30.0f;
+					SetCurrentFrame(0);
 				}
 				else
 				{
-					//Split(line, ',', splitElements);
-					if (!TryParse<std::string>(line, splitElements)) return false;
-
-					Region *frame = new Region;
-					frame->X = atoi(splitElements[0].c_str());
-					frame->Y = atoi(splitElements[1].c_str());
-					frame->Width = atoi(splitElements[2].c_str());
-					frame->Height = atoi(splitElements[3].c_str());
-					m_frames.push_back(frame);
+					std::vector<int> elements;
+					if (!TryParse<int>(line, elements)) return false;
+					m_frames.push_back(new Region(&elements[0]));
 				}
 			}
 
 			fileIn.close();
 		}
-		else
-		{
-			return false;
-		}
+		else return false;
 
 		return true;
 	}

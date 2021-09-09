@@ -13,23 +13,8 @@
 
 namespace KatanaEngine
 {
-	//void Resource::Split(const std::string &line, std::vector<std::string> &elements,
-	//	const char delimeter)
-	//{
-	//	if (line.empty()) return;
 
-	//	elements.clear();
-
-	//	std::stringstream ss(line);
-	//	std::string element;
-
-	//	while (std::getline(ss, element, delimeter))
-	//	{
-	//		elements.push_back(element);
-	//	}
-	//}
-
-	void Resource::ParseComments(std::string &line)
+	void Resource::StripComments(std::string &line)
 	{
 		if (line.empty()) return;
 
@@ -37,8 +22,6 @@ namespace KatanaEngine
 		if (position == std::string::npos) return;
 
 		line = line.substr(0, position);
-
-		TrimLine(line);
 	}
 
 	void Resource::TrimLine(std::string &line)

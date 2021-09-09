@@ -43,9 +43,9 @@ namespace KatanaEngine
 
 			virtual void SetTexture(Texture *pTexture) { m_pTexture = pTexture; }
 
-			virtual Font *GetFont() { return m_pFont; }
+			virtual Font *GetFont(const int index = 0) { return m_fonts[index]; }
 
-			virtual void SetFont(Font *pFont) { m_pFont = pFont; }
+			virtual void AddFont(Font *pFont) { m_fonts.push_back(pFont); }
 
 			virtual void SetupPanel(const Point &position, const int borderWidth = 16);
 
@@ -72,7 +72,7 @@ namespace KatanaEngine
 		private:
 
 			Texture *m_pTexture = nullptr;
-			Font *m_pFont = nullptr;
+			std::vector<Font *> m_fonts;
 
 			Panel::ThemeInfo m_panelInfo;
 			Toggle::ThemeInfo m_toggleInfo;

@@ -159,13 +159,13 @@ namespace KatanaEngine
 			{
 				redraw = false;
 
-				al_clear_to_color(m_clearColor.ToAllegroColor());
-
 				Draw(m_pSpriteBatch);
 
 				m_frameCounter++;
 
 				al_flip_display();
+
+				al_clear_to_color(m_clearColor.ToAllegroColor());
 			}
 		}
 

@@ -86,6 +86,12 @@ namespace KatanaEngine
 			make the animation loop infinitely. */
 		virtual void SetLoopCount(uint16_t loops = -1) { m_loopCounter = loops; }
 
+	protected:
+
+		// todo: add comments
+		virtual void AddFrame(Region *pRegion) { m_frames.push_back(pRegion); }
+
+		virtual void SetSecondsPerFrame(const float seconds) { m_secondsPerFrame = seconds; }
 
 	private:
 

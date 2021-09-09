@@ -21,73 +21,112 @@ namespace KatanaEngine
 	{
 		bool Theme::Load(const std::string &path, ResourceManager *pManager)
 		{
+			// todo: am I actually going to use this?
+			/*
 			std::ifstream fileIn(path.c_str(), std::ifstream::in);
 
 			if (fileIn.is_open() && fileIn.good())
 			{
 				std::string line;
-				std::vector<std::string> splitElements;
 
-				int loadTexture = 1;
-				int loadFont = 2;
-				int loadColors = 3;
-				int loadPanelSettings = 1;
-				int loadToggleSettings = 4;
-				int loadSliderSettings = 4;
+				enum class Step
+				{
+					LOAD_TEXTURE,
+					LOAD_FONTS,
+					LOAD_COLORS,
 
-				int fontSize = 10;
-				Color colors[3];
-				Region regions[3];
+					SETUP_PANEL,
+					SETUP_TOGGLE,
+					SETUP_SLIDER,
+
+					COMPLETE
+				};
+
+				int step = (int)Step::LOAD_TEXTURE;
+				int numFontsToLoad = -1;
+				int numColorsToLoad = -1;
+				int subStep = 0;
+				std::vector<Color> colors;
 
 				while (getline(fileIn, line))
 				{
-					ParseComments(line);
+					StripComments(line);
+					TrimLine(line);
 					if (line.empty()) continue;
 
-					if (loadTexture)
+					bool cache = line.find("-cache") != std::string::npos;
+					bool usecontentpath = line.find("-usecontentpath") != std::string::npos;
+
+					if (step == (int)Step::LOAD_TEXTURE)
 					{
-						Texture *pTexture = pManager->Load<Texture>(line);
+						std::vector<std::string> parts;
+						if (!TryParse<std::string>(line, parts)) return false;
+
+						Texture *pTexture = pManager->Load<Texture>(parts[0], cache, usecontentpath);
 						if (!pTexture) return false;
+
 						SetTexture(pTexture);
-						loadTexture--;
+				
+						step++;
 						continue;
 					}
-					
-					if (loadFont)
+
+					if (step == (int)Step::LOAD_FONTS)
 					{
-						if (loadFont == 2)
+						if (numFontsToLoad == -1)
 						{
-							fontSize = atoi(line.c_str());
+							numFontsToLoad = atoi(line.c_str());
+							continue;
 						}
-						else if (loadFont == 1)
-						{
-							Font::SetLoadSize(fontSize, true);
-							Font *pFont = pManager->Load<Font>(line);
-							if (!pFont) return false;
-							SetFont(pFont);
-						}
-						loadFont--;
+
+						std::vector<std::string> parts;
+						if (!TryParse<std::string>(line, parts)) return false;
+						if (parts.size() < 2) return false;
+							
+						int size = atoi(parts[0].c_str());
+						Font::SetLoadSize(size, true);
+						Font *pFont = pManager->Load<Font>(parts[1], cache, usecontentpath);
+
+						if (!pFont) return false;
+						m_fonts.push_back(pFont);
+						numFontsToLoad--;
+						if (numFontsToLoad > 0) continue;
+
+						step++;
 						continue;
 					}
-					
-					if (loadColors)
+
+					if (step == (int)Step::LOAD_COLORS)
 					{
-						//Split(line, ',', splitElements);
-						std::vector<float> n;
-						if (!TryParse<float>(line, n)) return false;
-						//float n[4] = { };
-						/*
-						for (uint8_t i = 0; i < 4; i++)
-							n[i] = atof(splitElements[i].c_str());
-							*/
-						colors[3 - loadColors].R = n[0];
-						colors[3 - loadColors].G = n[1];
-						colors[3 - loadColors].B = n[2];
-						colors[3 - loadColors].A = n[3];
-						loadColors--;
+						if (numColorsToLoad == -1)
+						{
+							numColorsToLoad = atoi(line.c_str());
+							continue;
+						}
+
+						Color color;
+						if (!TryParseColor(line, color)) return false;
+						colors.push_back(color);
+						numColorsToLoad--;
+						if (numColorsToLoad > 0) continue;
+
+						step++;
 						continue;
 					}
-					
+
+					if (step == (int)Step::SETUP_PANEL)
+					{
+						std::vector<int> elements;
+						if (!TryParse<int>(line, elements)) return false;
+
+						if (subStep == 0)
+						{
+							if (elements.size() != 2) return false;
+
+						}
+					}
+
+					/*
 					if (loadPanelSettings)
 					{
 						//Split(line, ',', splitElements);
@@ -97,30 +136,25 @@ namespace KatanaEngine
 						/*
 						for (uint8_t i = 0; i < 6; i++)
 							n[i] = atoi(splitElements[i].c_str());
-							*/
+
 						SetupPanel(Point(n[0], n[1]), n[2], n[3], n[4], n[5]);
 						loadPanelSettings--;
 						continue;
 					}
-					
+
 					if (loadToggleSettings)
 					{
 						if (loadToggleSettings > 1)
 						{
 							Region temp;
-							if (Region::TryParse(line, temp))
+							if (TryParseRegion(line, temp))
 							{
 								regions[4 - loadToggleSettings] = temp;
 							}
+							else return false;
 						}
 						else if (loadToggleSettings == 1)
 						{
-							/*
-							Split(line, ',', splitElements);
-							int c0 = atoi(splitElements[0].c_str());
-							int c1 = atoi(splitElements[1].c_str());
-							*/
-
 							std::vector<int> n;
 							if (!TryParse<int>(line, n)) return false;
 
@@ -131,23 +165,19 @@ namespace KatanaEngine
 						loadToggleSettings--;
 						continue;
 					}
-					
+
 					if (loadSliderSettings)
 					{
 						if (loadSliderSettings > 1)
 						{
 							Region temp;
-							if (Region::TryParse(line, temp))
+							if (TryParseRegion(line, temp))
 							{
 								regions[4 - loadSliderSettings] = temp;
 							}
 						}
 						else if (loadSliderSettings == 1)
 						{
-							//Split(line, ',', splitElements);
-							//int c0 = atoi(splitElements[0].c_str());
-							//int c1 = atoi(splitElements[1].c_str());
-
 							std::vector<int> n;
 							if (!TryParse<int>(line, n)) return false;
 
@@ -159,7 +189,7 @@ namespace KatanaEngine
 						continue;
 					}
 				}
-
+				}
 
 				fileIn.close();
 			}
@@ -168,7 +198,10 @@ namespace KatanaEngine
 				return false;
 			}
 
-			return true;
+			/***/
+			//return true;
+
+			return false;
 		}
 
 		void Theme::SetupPanel(const Point &position, const int borderWidth)
@@ -256,7 +289,7 @@ namespace KatanaEngine
 		{
 			Theme *pClone = new Theme;
 
-			pClone->m_pFont = m_pFont;
+			pClone->m_fonts = m_fonts;
 			pClone->m_pTexture = m_pTexture;
 			pClone->m_panelInfo = m_panelInfo;
 			pClone->m_sliderInfo = m_sliderInfo;

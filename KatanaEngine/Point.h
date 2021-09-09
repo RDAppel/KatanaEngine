@@ -34,47 +34,23 @@ namespace KatanaEngine
 			initialize X, and Y respectively.
 
 			@overload */
-		Point(const float array[2]) : Point(array[0], array[1]) { }
+		Point(const int array[2]) : Point(array[0], array[1]) { }
 
 		~Point() { };
-
-		/** @brief Tries to parse a string of comma seperated values into a point.
-			@param text The string to parse.
-			@param point The point that will be set if parsing is successful.
-			@return True if the string can be parsed, false otherwise. */
-		static bool TryParse(const std::string &text, Point &point)
-		{
-			if (text.empty()) return false;
-
-			std::stringstream ss(text);
-			std::string element;
-			int ints[2];
-
-			uint8_t index = 0;
-			while (std::getline(ss, element, ','))
-			{
-				ints[index] = atoi(element.c_str());
-				index++;
-				if (index == 2) break;
-			}
-
-			if (index < 2) return false;
-
-			point.Set(ints[0], ints[1]);
-			return true;
-		}
-
 
 		/** @brief Sets the components of the point.
 			@param x The X component.
 			@param y The Y component. */
 		void Set(const int x, const int y);
 
-		/** @brief Sets the components of the vecpointtor.
+		/** @brief Sets the components of the point.
 			@param point The point whose components to copy.
 			
 			@overload */
-		void Set(const Point point);
+		void Set(const Point &point);
+
+		// todo: comment
+		void Set(const int array[2]);
 
 		/** @brief Determines if the point is located at the origin.
 			@return Returns true if both components are zero, false otherwise. */

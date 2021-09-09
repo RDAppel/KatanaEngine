@@ -143,7 +143,7 @@ namespace KatanaEngine
 		GamePadState m_currentGamePadStates[MAX_NUM_GAMEPADSTATES];
 		GamePadState m_previousGamePadStates[MAX_NUM_GAMEPADSTATES];
 
-		std::map<ALLEGRO_JOYSTICK *, int> m_map;
+		std::unordered_map<ALLEGRO_JOYSTICK *, int> m_map;
 
 		void Update();
 
