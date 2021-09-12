@@ -43,7 +43,9 @@ namespace KatanaEngine
 
 	public:
 
+		/** @brief Instantiates a screen. */
 		Screen();
+
 		virtual ~Screen() { }
 
 

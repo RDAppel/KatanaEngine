@@ -19,6 +19,8 @@ namespace KatanaEngine
 {
 	namespace PE
 	{
+
+		/** @brief Emits particles. */
 		class ParticleEmitter
 		{
 

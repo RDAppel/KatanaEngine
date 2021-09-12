@@ -15,6 +15,7 @@ namespace KatanaEngine
 {
 	namespace PE
 	{
+		/** @brief Renders a particle as a circle primitive. */
 		class DefaultRenderer : public IRenderer
 		{
 
@@ -22,6 +23,14 @@ namespace KatanaEngine
 
 			virtual ~DefaultRenderer() { }
 
+			/** @brief Sets the radius of the circle primitive.
+				@param radius The radius of the circle. */
+			virtual void SetRadius(const float radius = 10) { m_circle.Radius = radius; }
+
+			/** @brief Draws a circle primitive for the given particle.
+				@param pParticle The particle to render.
+				@param pSpriteBatch Unused, but necessary to implement the IRenderer interface.
+				@see IRenderer */
 			virtual void Draw(Particle *pParticle, SpriteBatch *pSpriteBatch)
 			{
 				m_circle.Position = pParticle->CurrentPosition;

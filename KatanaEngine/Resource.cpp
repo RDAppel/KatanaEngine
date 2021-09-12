@@ -14,6 +14,11 @@
 namespace KatanaEngine
 {
 
+	void Resource::Unload()
+	{
+		m_pResourceManager->Unload(this);
+	}
+
 	void Resource::StripComments(std::string &line)
 	{
 		if (line.empty()) return;

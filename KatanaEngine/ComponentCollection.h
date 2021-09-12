@@ -19,7 +19,7 @@ namespace KatanaEngine
 {
 	namespace GUI
 	{
-		class ComponentCollection
+		class ComponentCollection : public ComponentContainer
 		{
 
 		public:
@@ -31,7 +31,7 @@ namespace KatanaEngine
 
 			virtual void SetTheme(Theme *pTheme) { m_pTheme = pTheme; }
 
-			virtual void AddComponent(Component *pComponent);
+			virtual void Add(Component *pComponent);
 
 			virtual void HandleInput(const InputState *pInput);
 

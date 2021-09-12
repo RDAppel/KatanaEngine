@@ -19,6 +19,7 @@ namespace KatanaEngine
 
 	public:
 
+		/** @brief Instantiates a resource manager. */
 		ResourceManager() { m_nextResourceID = 0; }
 
 		/** @brief Sets the location of the folder where game resources are stored.
@@ -104,13 +105,28 @@ namespace KatanaEngine
 			return nullptr;
 		}
 
+		void Unload(Resource *pResource)
+		{
+			std::unordered_map<std::string, Resource *>::iterator it;
+			it = m_resources.begin();
+			for (; it != m_resources.end(); it++)
+			{
+				if (it->second == pResource)
+				{
+					delete it->second;
+					m_resources.erase(it);
+					break;
+				}
+			}
+		}
+
+
 	private:
 
 		std::unordered_map<std::string, Resource *> m_resources;
-
 		std::vector<Resource *> m_clones;
 
-		std::string m_contentPath = "..\\KatanaEngine";
+		std::string m_contentPath = "..\\KatanaEngine\\";
 
 		unsigned short m_nextResourceID = 0;
 

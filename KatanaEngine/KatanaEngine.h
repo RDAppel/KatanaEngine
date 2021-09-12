@@ -103,9 +103,7 @@
 #include "ColorUpdater.h"
 #include "AlphaUpdater.h"
 #include "VelocityUpdater.h"
-#include "AccelerationUpdater.h"
-#include "AngularVelocityUpdater.h"
-#include "RandomVelocityUpdater.h"
+#include "RotationUpdater.h"
 #include "RotationAlignUpdater.h"
 #include "TargetUpdater.h"
 
@@ -127,8 +125,11 @@
 /* GUI */
 #include "EventHandlers.h"
 #include "Component.h"
+#include "ComponentContainer.h"
+#include "ComponentHandle.h"
 #include "ComponentCollection.h"
 #include "Panel.h"
+#include "PanelHeader.h"
 #include "Toggle.h"
 #include "Slider.h"
 #include "ResizablePanel.h"

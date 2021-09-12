@@ -15,6 +15,9 @@ namespace KatanaEngine
 {
 	class Game;
 
+	/** @brief Interface for a game service. Game services can be added to a Service Container
+		which will call all of the update and rendering functions.
+		@see ServiceContainer */
 	class IService
 	{
 
@@ -22,6 +25,8 @@ namespace KatanaEngine
 
 		virtual ~IService() { }
 
+		/** @brief Gets the service id.
+			@returns The id of the service. */
 		virtual std::string GetID() const = 0;
 
 		/** @brief Called when the game has determined that player input needs to be processed.

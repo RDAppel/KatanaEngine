@@ -13,13 +13,13 @@
 
 namespace KatanaEngine
 {
-	/** @brief Defines a Line Segment. */
+	/** @brief Defines a line segment. */
 	class Line : public Primitive
 	{
 
 	public:
 
-		/** @brief Instantiates a new Line segment.
+		/** @brief Instantiates a line segment.
 			@param start The starting point of the line segment.
 			@param end The end point of the line segment. */
 		Line(const Vector2 start = Vector2::ZERO, const Vector2 end = Vector2::ZERO)

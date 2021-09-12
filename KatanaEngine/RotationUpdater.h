@@ -15,15 +15,21 @@ namespace KatanaEngine
 {
 	namespace PE
 	{
-		class AngularVelocityUpdater : public IUpdater
+
+		/** @brief Updates particle rotations. */
+		class RotationUpdater : public IUpdater
 		{
 
 		public:
 
-			AngularVelocityUpdater() { }
+			/** @brief Creates a rotation updater. */
+			RotationUpdater() { }
 
-			virtual ~AngularVelocityUpdater() { }
+			virtual ~RotationUpdater() { }
 
+			/** @brief Updates the rotation of the specified particle.
+				@param pParticle The particle to update.
+				@param pGameTime The game's timing values. */
 			virtual void Update(Particle *pParticle, const GameTime *pGameTime)
 			{
 				pParticle->CurrentRotation += pParticle->AngularVelocity * pGameTime->GetTimeElapsed();

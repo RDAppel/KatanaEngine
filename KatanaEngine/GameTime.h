@@ -13,7 +13,7 @@
 
 namespace KatanaEngine
 {
-	/** @brief Contains timing values for game updates and rendering. */
+	/** @brief Contains timing values for game updates. */
 	class GameTime
 	{
 		friend class Game;

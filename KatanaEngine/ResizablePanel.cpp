@@ -89,7 +89,7 @@ namespace KatanaEngine
 
 			if (m_dragMask)
 			{
-				Point minSize = GetMinSize();
+				Point minSize = Point::ORIGIN;//GetMinSize();
 
 				if (m_dragMask & RIGHT_MASK)
 				{

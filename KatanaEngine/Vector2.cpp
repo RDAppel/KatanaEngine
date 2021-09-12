@@ -123,6 +123,22 @@ namespace KatanaEngine
 		return *this;
 	}
 
+	Vector2 &Vector2::operator*=(const Vector2 &vector)
+	{
+		X *= vector.X;
+		Y *= vector.Y;
+
+		return *this;
+	}
+
+	Vector2 &Vector2::operator/=(const Vector2 &vector)
+	{
+		X /= vector.X;
+		Y /= vector.Y;
+
+		return *this;
+	}
+
 	Vector2 &Vector2::operator*=(const float &scalar)
 	{
 		X *= scalar;

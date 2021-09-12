@@ -31,7 +31,7 @@ namespace KatanaEngine
 
 			Toggle(ComponentCollection *pCollection)
 			{
-				pCollection->AddComponent(this);
+				pCollection->Add(this);
 			}
 
 			virtual ~Toggle() { }

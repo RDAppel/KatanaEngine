@@ -19,8 +19,8 @@ namespace KatanaEngine
 
 	public:
 
-		/** @brief Instantiates a new Rectangle.
-			@param size The size of the Rectangle.
+		/** @brief Instantiates a rectangle.
+			@param size The size of the rectangle.
 			@param position The top left corner position. */
 		Rectangle(Vector2 size = Vector2::ONE, Vector2 position = Vector2::ZERO)
 		{
@@ -89,7 +89,7 @@ namespace KatanaEngine
 				al_draw_filled_rectangle(Position.X, Position.Y,
 					position2.X, position2.Y, color.ToAllegroColor());
 
-			if (strokeColor.A)
+			if (strokeColor.A > 0)
 				al_draw_rectangle(Position.X, Position.Y,
 					position2.X, position2.Y, strokeColor.ToAllegroColor(), width);
 		}

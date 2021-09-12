@@ -193,6 +193,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="ComponentContainer.cpp" />
     <ClCompile Include="Font.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameTime.cpp" />
@@ -202,11 +203,13 @@
     <ClCompile Include="MenuItem.cpp" />
     <ClCompile Include="MenuScreen.cpp" />
     <ClCompile Include="Panel.cpp" />
+    <ClCompile Include="PanelHeader.cpp" />
     <ClCompile Include="ParticleEmitter.cpp" />
     <ClCompile Include="ParticleManager.cpp">
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="ParticleTemplate.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="Primitive.cpp" />
     <ClCompile Include="RenderTarget.cpp" />
@@ -226,13 +229,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AccelerationInitializer.h" />
-    <ClInclude Include="AccelerationUpdater.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
     <ClInclude Include="AlphaInitializer.h" />
     <ClInclude Include="AlphaUpdater.h" />
-    <ClInclude Include="AngularVelocityUpdater.h">
+    <ClInclude Include="RotationUpdater.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -250,6 +249,7 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="ComponentHandle.h" />
     <ClInclude Include="DefaultInitializer.h" />
     <ClInclude Include="DefaultUpdater.h" />
     <ClInclude Include="EventHandlers.h" />
@@ -257,6 +257,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GamePadState.h" />
     <ClInclude Include="GameTime.h" />
+    <ClInclude Include="ComponentContainer.h" />
     <ClInclude Include="IComponentInterfaces.h" />
     <ClInclude Include="IService.h" />
     <ClInclude Include="InputState.h" />
@@ -268,6 +269,7 @@
     <ClInclude Include="MenuScreen.h" />
     <ClInclude Include="MouseState.h" />
     <ClInclude Include="Panel.h" />
+    <ClInclude Include="PanelHeader.h" />
     <ClInclude Include="Particle.h" />
     <ClInclude Include="ParticleEmitter.h">
       <SubType>
@@ -292,7 +294,6 @@
     <ClInclude Include="RandomPositionInitializer.h" />
     <ClInclude Include="RandomRotationInitializer.h" />
     <ClInclude Include="RandomVelocityInitializer.h" />
-    <ClInclude Include="RandomVelocityUpdater.h" />
     <ClInclude Include="Rectangle.h" />
     <ClInclude Include="Region.h" />
     <ClInclude Include="RenderTarget.h" />

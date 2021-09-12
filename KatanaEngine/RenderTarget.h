@@ -19,10 +19,11 @@ namespace KatanaEngine
 
 	public:
 
-		/** @brief Instantiate a render target object.
+		/** @brief Instantiate a render target.
 			@param width The width of the render target.
 			@param height The height of the render target. */
 		RenderTarget(const int width, const int height);
+
 		virtual ~RenderTarget() { }
 
 

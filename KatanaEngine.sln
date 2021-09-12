@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ToolKit", "ToolKit\ToolKit.vcxproj", "{97D3ED61-22C3-45C5-B8C9-ED2094FA9959}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -36,6 +38,14 @@ Global
 		{4D081966-FC7E-4137-A22F-31B44FC541A8}.Release|x64.Build.0 = Release|x64
 		{4D081966-FC7E-4137-A22F-31B44FC541A8}.Release|x86.ActiveCfg = Release|Win32
 		{4D081966-FC7E-4137-A22F-31B44FC541A8}.Release|x86.Build.0 = Release|Win32
+		{97D3ED61-22C3-45C5-B8C9-ED2094FA9959}.Debug|x64.ActiveCfg = Debug|x64
+		{97D3ED61-22C3-45C5-B8C9-ED2094FA9959}.Debug|x64.Build.0 = Debug|x64
+		{97D3ED61-22C3-45C5-B8C9-ED2094FA9959}.Debug|x86.ActiveCfg = Debug|Win32
+		{97D3ED61-22C3-45C5-B8C9-ED2094FA9959}.Debug|x86.Build.0 = Debug|Win32
+		{97D3ED61-22C3-45C5-B8C9-ED2094FA9959}.Release|x64.ActiveCfg = Release|x64
+		{97D3ED61-22C3-45C5-B8C9-ED2094FA9959}.Release|x64.Build.0 = Release|x64
+		{97D3ED61-22C3-45C5-B8C9-ED2094FA9959}.Release|x86.ActiveCfg = Release|Win32
+		{97D3ED61-22C3-45C5-B8C9-ED2094FA9959}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

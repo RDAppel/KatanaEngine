@@ -30,6 +30,11 @@ namespace KatanaEngine
 			@return Returns true if the resource was loaded, false otherwise. */
 		virtual bool Load(const std::string &path, ResourceManager *pManager) = 0;
 
+		/** @brief Unloads the resource from the resource manager.
+			@remark Unloading does not delete the object or it's clones. Unload should be called
+			before deleting any resources. */
+		virtual void Unload();
+
 		/** @brief Gets the ID of the resource.
 			@return The id of the resource. */
 		unsigned short GetResourceID() const { return m_id; }
@@ -54,8 +59,10 @@ namespace KatanaEngine
 		}
 
 
-		// todo: add comments
-		bool TryParseRegion(const std::string &text, Point &point)
+		/** @brief Splits a string of integers into a point.
+			@param line The string that will be parsed.
+			@param point The point reference that will be modified. */
+		bool TryParsePoint(const std::string &text, Point &point)
 		{
 			std::vector<int> elements;
 			if (!TryParse<int>(text, elements)) return false;
@@ -64,6 +71,10 @@ namespace KatanaEngine
 			return true;
 		}
 
+
+		/** @brief Splits a string of integers into a region.
+			@param line The string that will be parsed.
+			@param region The region reference that will be modified. */
 		bool TryParseRegion(const std::string &text, Region &region)
 		{
 			std::vector<int> elements;
@@ -73,6 +84,10 @@ namespace KatanaEngine
 			return true;
 		}
 
+
+		/** @brief Splits a string of floats into a color.
+			@param line The string that will be parsed.
+			@param color The color reference that will be modified. */
 		bool TryParseColor(const std::string &text, Color &color)
 		{
 			std::vector<float> elements;

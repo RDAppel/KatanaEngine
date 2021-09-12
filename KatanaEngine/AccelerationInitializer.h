@@ -15,17 +15,26 @@ namespace KatanaEngine
 {
 	namespace PE
 	{
+
+		/** @brief Initializes particle accelerations. */
 		class AccelerationInitializer : public IInitializer
 		{
 
 		public:
 
-			AccelerationInitializer(const Vector2 acceleration = Vector2::UNIT_Y * 20) { m_acceleration = acceleration; }
+			/** @brief Creates an acceleration initializer.
+				@param acceleration The acceleration to add to the particle. */
+			AccelerationInitializer(const Vector2 acceleration = 20 * Vector2::UNIT_Y) { m_acceleration = acceleration; }
 
 			virtual ~AccelerationInitializer() { }
 
-			virtual void SetVelocity(const Vector2 acceleration) { m_acceleration = acceleration; }
+			/** @brief Sets the acceleration.
+				@param acceleration The acceleration to add to the particle. */
+			virtual void SetAcceleration(const Vector2 acceleration) { m_acceleration = acceleration; }
 
+			/** @brief Initializes the accelration of the specified particle.
+				@param pParticle The particle to initialize.
+				@param position The position of the emitter when the particle was activated. */
 			virtual void Initialize(Particle *pParticle, Vector2 position)
 			{
 				pParticle->Acceleration += m_acceleration;
@@ -33,7 +42,7 @@ namespace KatanaEngine
 
 		private:
 
-			Vector2 m_acceleration = Vector2::UNIT_Y * 20;
+			Vector2 m_acceleration = 20 * Vector2::UNIT_Y;
 
 		};
 	}

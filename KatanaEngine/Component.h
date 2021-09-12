@@ -21,6 +21,8 @@ namespace KatanaEngine
 	{
 		class Theme;
 
+		class ComponentContainer;
+
 		class Component
 		{
 
@@ -34,7 +36,7 @@ namespace KatanaEngine
 
 			virtual void Update(const GameTime *pGameTime) { }
 
-			virtual void Draw(SpriteBatch *pSpriteBatch) = 0;
+			virtual void Draw(SpriteBatch *pSpriteBatch) { }
 
 			virtual bool IsMouseOver() const { return m_isMouseOver; }
 
@@ -62,6 +64,10 @@ namespace KatanaEngine
 
 			virtual void Translate(const Point &translation);
 
+			virtual void SetContainer(ComponentContainer *pContainer) { m_pContainer = pContainer; }
+
+			virtual ComponentContainer *GetContainer() { return m_pContainer; }
+
 		protected:
 
 			virtual void SetHasFocus(bool hasFocus = true) { m_hasFocus = hasFocus; }
@@ -79,6 +85,8 @@ namespace KatanaEngine
 			Point m_size;
 
 			Theme *m_pTheme = nullptr;
+
+			ComponentContainer *m_pContainer = nullptr;
 		};
 	}
 }

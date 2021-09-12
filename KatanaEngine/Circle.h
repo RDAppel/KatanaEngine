@@ -13,13 +13,13 @@
 
 namespace KatanaEngine
 {
-	/** @brief Defines a Circle. */
+	/** @brief Defines a circle. */
 	class Circle : public Primitive
 	{
 
 	public:
 
-		/** @brief Instantiates a new Circle.
+		/** @brief Instantiates a circle.
 			@param radius The radius of the circle.
 			@param position The position of the center of the circle. */
 		Circle(const float radius = 1, const Vector2 position = Vector2::ZERO)

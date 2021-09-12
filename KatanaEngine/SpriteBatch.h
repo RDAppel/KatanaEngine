@@ -46,7 +46,9 @@ namespace KatanaEngine
 
 	public:
 
+		/** @brief Instiantes a sprite batch. */
 		SpriteBatch() { m_isStarted = false; }
+
 		~SpriteBatch() { }
 
 		/** @brief Begins a sprite batch operation.

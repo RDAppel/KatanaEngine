@@ -19,7 +19,10 @@ namespace KatanaEngine
 
 	public:
 
+
+		/** @brief Instantiates a texture. */
 		Texture();
+
 		virtual ~Texture();
 
 		/** @brief Load the desired font into memory.

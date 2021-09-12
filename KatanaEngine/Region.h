@@ -19,11 +19,11 @@ namespace KatanaEngine
 
 	public:
 
-		/** @brief Instantiates a new Region object. */
+		/** @brief Instantiates a region. */
 		Region() : Region(0, 0, 0, 0) { }
 
 
-		/** @brief Instantiates a new Region object.
+		/** @brief Instantiates a region.
 			@param position the upper left corner of the region.
 			@param size The dimensions of the region.
 			

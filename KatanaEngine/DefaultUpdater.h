@@ -15,6 +15,8 @@ namespace KatanaEngine
 {
 	namespace PE
 	{
+
+		/** @brief Updates particle ages and interpolation values. */
 		class DefaultUpdater : public IUpdater
 		{
 
@@ -22,6 +24,9 @@ namespace KatanaEngine
 
 			virtual ~DefaultUpdater() { }
 
+			/** @brief Updates the age and interpolation value of the specified particle.
+				@param pParticle The particle to update.
+				@param pGameTime The game's timing values. */
 			virtual void Update(Particle *pParticle, const GameTime *pGameTime)
 			{
 				if (pParticle->LifeSpan <= 0) return;

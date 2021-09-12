@@ -19,8 +19,9 @@ namespace KatanaEngine
 
 	public:
 
-		/** @brief Instantiates a new Primitive shape. */
+		/** @brief Instantiates a primitive. */
 		Primitive() { if (!s_alAddonInitialized) { al_init_primitives_addon(); } }
+
 		virtual ~Primitive() { }
 
 		virtual void DrawPrimitive() const = 0;

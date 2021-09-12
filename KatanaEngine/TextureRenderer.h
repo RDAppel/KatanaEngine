@@ -15,19 +15,27 @@ namespace KatanaEngine
 {
 	namespace PE
 	{
+		/** @brief Renders the specified Texture for each particle. */
 		class TextureRenderer : public IRenderer
 		{
 
 		public:
 
+			/** @brief Instantiates a Texture Renderer object. */
 			TextureRenderer() { }
 
+			/** @brief Instantiates a Texture Renderer object, and sets the Texture. */
 			TextureRenderer(Texture *pTexture) { m_pTexture = pTexture; }
 
 			virtual ~TextureRenderer() { }
 
+			/** @brief Sets the texture to be rendered.
+				@param pTexture the texture to be rendered. */
 			virtual void SetTexture(Texture *pTexture) { m_pTexture = pTexture; }
 
+			/** @brief Draws the texture for the given particle.
+				@param pParticle The particle to render.
+				@param pSpriteBatch The sprite batch used to render the texture. */
 			virtual void Draw(Particle *pParticle, SpriteBatch *pSpriteBatch)
 			{
 				if (!m_pTexture) return;

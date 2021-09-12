@@ -21,6 +21,8 @@ namespace KatanaEngine
 	{
 		class ParticleTemplate;
 
+		/** @brief Contains particle properties that can be modified to affect 
+			it's rendering during it's lifespan. */
 		struct Particle
 		{
 			Vector2 StartPosition = Vector2::ZERO;

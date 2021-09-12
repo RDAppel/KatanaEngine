@@ -13,46 +13,16 @@ To Add a Project:
 
  # To do
 
- Clean up Load<> Functions
- Test TryParse on string array
  Factory functions for GUI?
 
-
- Fix Bug:
-	Test Project: GUI not rendering sometimes
-
-  Helper function in resource?
-   -- parse ints and floats into arrays
-
-   -- constructors using array parameters
-     -- primitive types
-	 -- vec2/point
-	 -- region
-	 -- color
-
- Think through unloading resources...
-	specifically how cached resources can't be unloaded
-	==> cached resources should be marked as cached = true
-		then when they are being destroyed they can have the
-		resource manager remove them
-    ==> what about clones then?
+commenting... make sure that all .h files have doxygen comments
 
  Shader Support
  -- Game.cpp -- ALLEGRO_PROGRAMMABLE_PIPELINE
  -- Create and use "default" shaders
  -- Function (or class ?) to load and use non-default shaders
 
- Animation class
-	-- auto load image (optional)
-		-- look at Font as example
-	-- update to use Region::TryParse
-
-
- Particles
-	Update to honor SRP (split updaters and initializers... and renderers?)
-
  Templates
-	PARTICLE COMPONENTS!!!
 	Game Project? (At least Game class)
 	Screen (Template for ALL callback functions) ...easier to delete than look them up
 	Menu   (Template for ALL callback functions)

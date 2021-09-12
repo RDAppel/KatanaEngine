@@ -19,96 +19,75 @@ namespace KatanaEngine
 {
 	namespace PE
 	{
+
+		/** @brief A collection of initializers, updaters and renderers that are applied to a particle
+			during it's lifespan. */
 		class ParticleTemplate
 		{
 		public:
 
-			// todo: separate functions into cpp
+			/** @brief Creates a particle template with no initializer, updater, or renderer.
+				@returns An empty particle template. */
+			static ParticleTemplate *CreateEmptyTemplate();
 
-			static ParticleTemplate *CreateBlankTemplate()
-			{
-				ParticleTemplate *pBlank = new ParticleTemplate;
-				pBlank->AddInitializer(new DefaultInitializer);
-				pBlank->AddUpdater(new DefaultUpdater);
-				return pBlank;
-			}
+			/** @brief Creates the default particle template, which contains a default initializer
+				and updater.
+				@returns A default particle template.
+				@see DefaultInitializer
+				@see DefaultUpdater */
+			static ParticleTemplate *CreateDefaultTemplate();
 
-			static ParticleTemplate *CreateSimpleTemplate()
-			{
-				ParticleTemplate *pSimple = CreateBlankTemplate();
-				pSimple->AddInitializer(new RandomVelocityInitializer);
-				pSimple->AddUpdater(new VelocityUpdater);
-				pSimple->AddRenderer(new DefaultRenderer);
-				return pSimple;
-			}
+			/** @brief Creates a simple working template, which contains a Default Initializer,
+				Random Velocity Initializer, Default Updater, Velocity Updater, and a Default Renderer.
+				@returns A simple particle template.
+				@see DefaultInitializer
+				@see RandomVelocityInitializer
+				@see DefaultUpdater
+				@see VelocityUpdater
+				@see DefaultRenderer */
+			static ParticleTemplate *CreateSimpleTemplate();
 
-			virtual ~ParticleTemplate()
-			{
-				ClearInitializers();
-				ClearUpdaters();
-				ClearRenderers();
-			}
+			virtual ~ParticleTemplate();
 
+			/** @brief Adds an initializer to the vector of components.
+				@param pInitializer The initializer to add. */
 			virtual void AddInitializer(IInitializer *pInitializer) { m_initializers.push_back(pInitializer); }
 
+			/** @brief Adds an updater to the vector of components.
+				@param pUpdater The updater to add. */
 			virtual void AddUpdater(IUpdater *pUpdater) { m_updaters.push_back(pUpdater); }
 
+			/** @brief Adds a render to the vector of components.
+				@param pRenderer The renderer to add. */
 			virtual void AddRenderer(IRenderer *pRenderer) { m_renderers.push_back(pRenderer); }
 
-			virtual void Initialize(Particle *pParticle, Vector2 position)
-			{
-				m_iIt = m_initializers.begin();
-				for (; m_iIt != m_initializers.end(); m_iIt++)
-				{
-					(*m_iIt)->Initialize(pParticle, position);
-				}
-			}
+			/** @brief Initializes the specified particle using the templates initializer components.
+				@param pParticle The particle to be initialized.
+				@param position The emitter position when the particle became active. */
+			virtual void Initialize(Particle *pParticle, Vector2 position);
 
-			virtual void Update(Particle *pParticle, const GameTime *pGameTime)
-			{
-				m_uIt = m_updaters.begin();
-				for (; m_uIt != m_updaters.end(); m_uIt++)
-				{
-					(*m_uIt)->Update(pParticle, pGameTime);
-				}
-			}
+			/** @brief Updates the specified particle using the templates updater components.
+				@param pParticle The particle to be updated.
+				@param pGameTime A reference to the game's timing values. */
+			virtual void Update(Particle *pParticle, const GameTime *pGameTime);
 
-			virtual void Draw(Particle *pParticle, SpriteBatch *pSpriteBatch)
-			{
-				m_rIt = m_renderers.begin();
-				for (; m_rIt != m_renderers.end(); m_rIt++)
-				{
-					(*m_rIt)->Draw(pParticle, pSpriteBatch);
-				}
-			}
+			/** @brief Draws the specified particle using the templates renderer components.
+				@param pParticle The particle to be rendered.
+				@param pSpriteBatch The sprite batch instance that will be used to render. */
+			virtual void Draw(Particle *pParticle, SpriteBatch *pSpriteBatch);
 
-			virtual void ClearComponents(bool initializers = true, bool updaters = true, bool renderers = true)
-			{
-				if (initializers) ClearInitializers();
-				if (updaters) ClearUpdaters();
-				if (renderers) ClearRenderers();
-			}
+			/** @brief Deletes and clears the specified components. */
+			virtual void ClearComponents(bool initializers = true, bool updaters = true,
+				bool renderers = true);
 
-			virtual void ClearInitializers()
-			{
-				m_iIt = m_initializers.begin();
-				for (; m_iIt != m_initializers.end(); m_iIt++) delete *m_iIt;
-				m_initializers.clear();
-			}
+			/** @brief Deletes and clears the vector of initializers. */
+			virtual void ClearInitializers();
 
-			virtual void ClearUpdaters()
-			{
-				m_uIt = m_updaters.begin();
-				for (; m_uIt != m_updaters.end(); m_uIt++) delete *m_uIt;
-				m_updaters.clear();
-			}
+			/** @brief Deletes and clears the vector of updaters. */
+			virtual void ClearUpdaters();
 
-			virtual void ClearRenderers()
-			{
-				m_rIt = m_renderers.begin();
-				for (; m_rIt != m_renderers.end(); m_rIt++) delete *m_rIt;
-				m_renderers.clear();
-			}
+			/** @brief Deletes and clears the vector of renderers. */
+			virtual void ClearRenderers();
 
 		private:
 

@@ -29,15 +29,8 @@ namespace KatanaEngine
 
 			ResizablePanel();
 
-			ResizablePanel(ComponentCollection *pCollection)
-				: Panel(pCollection)
-			{ }
-
 			virtual ~ResizablePanel() { }
 
-
-			/** @brief Called when the game has determined that player input needs to be processed.
-				@param pInput The current state of all player input devices. */
 			virtual void HandleInput(const InputState *pInput);
 
 		private:

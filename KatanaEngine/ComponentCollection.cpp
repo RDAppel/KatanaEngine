@@ -26,7 +26,7 @@ namespace KatanaEngine
 			for (; m_it != m_components.end(); m_it++) delete *m_it;
 		}
 
-		void ComponentCollection::AddComponent(Component * pComponent)
+		void ComponentCollection::Add(Component * pComponent)
 		{
 			m_components.push_back(pComponent);
 			pComponent->SetTheme(m_pTheme);

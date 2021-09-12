@@ -13,20 +13,20 @@
 
 namespace KatanaEngine
 {
-	/** @brief Defines a Cubic Bezier curve. */
+	/** @brief Defines a cubic bezier curve. */
 	class Bezier : public Primitive
 	{
 
 	public:
 
-		/** @brief Instantiates a new bezier curve object.
+		/** @brief Instantiates a bezier curve.
 			@param points An array of four points that define the
 			start, end, and two control points of the curve. */
 		Bezier(Vector2 points[4])
 			: Bezier(points[0], points[1], points[2], points[3])
 		{ }
 
-		/** @brief Instantiates a new bezier curve object.
+		/** @brief Instantiates a bezier curve.
 			@param p0 The starting point of the curve.
 			@param p1 The first control point.
 			@param p2 The second control point.

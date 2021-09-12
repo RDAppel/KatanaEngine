@@ -37,6 +37,7 @@ namespace KatanaEngine
 
 		void Toggle::Update(const GameTime *pGameTime)
 		{
+			/*
 			Component::Update(pGameTime);
 			ThemeInfo *pInfo = GetTheme()->GetToggleInfo();
 
@@ -66,10 +67,12 @@ namespace KatanaEngine
 			}
 
 			m_buttonPosition = Vector2::Lerp(left, right, m_interpolationValue, true);
+			*/
 		}
 
 		void Toggle::Draw(SpriteBatch *pSpriteBatch)
 		{
+			/*
 			ThemeInfo *pInfo = GetTheme()->GetToggleInfo();
 			Texture *pTexture = pInfo->pTexture;
 
@@ -84,7 +87,7 @@ namespace KatanaEngine
 			pSpriteBatch->Draw(pTexture, position, pInfo->backgroundSource);
 			pSpriteBatch->Draw(pTexture, position + m_buttonPosition, pInfo->buttonSource, color);
 			pSpriteBatch->Draw(pTexture, position + m_buttonPosition, pInfo->overlaySource);
-
+			*/
 		}
 	}
 }

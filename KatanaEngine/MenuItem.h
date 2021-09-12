@@ -31,10 +31,10 @@ namespace KatanaEngine
 	public:
 
 
-		/** @brief Instantiate a menu item. */
+		/** @brief Instantiates a menu item. */
 		MenuItem();
 
-		/** @brief Instantiate a menu item.
+		/** @brief Instantiates a menu item.
 			@param text The text that the item will display.
 			
 			@overload */

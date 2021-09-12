@@ -133,6 +133,15 @@
     <ClCompile Include="ParticleEmitter.cpp">
       <Filter>Source Files\PE</Filter>
     </ClCompile>
+    <ClCompile Include="ComponentContainer.cpp">
+      <Filter>Source Files\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="PanelHeader.cpp">
+      <Filter>Source Files\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleTemplate.cpp">
+      <Filter>Source Files\PE</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="KatanaEngine.h">
@@ -276,9 +285,6 @@
     <ClInclude Include="DefaultUpdater.h">
       <Filter>Source Files\PE\Components\Updaters</Filter>
     </ClInclude>
-    <ClInclude Include="RandomVelocityUpdater.h">
-      <Filter>Source Files\PE\Components\Updaters</Filter>
-    </ClInclude>
     <ClInclude Include="VelocityUpdater.h">
       <Filter>Source Files\PE\Components\Updaters</Filter>
     </ClInclude>
@@ -315,10 +321,7 @@
     <ClInclude Include="RandomRotationInitializer.h">
       <Filter>Source Files\PE\Components\Initializers</Filter>
     </ClInclude>
-    <ClInclude Include="AccelerationUpdater.h">
-      <Filter>Source Files\PE\Components\Updaters</Filter>
-    </ClInclude>
-    <ClInclude Include="AngularVelocityUpdater.h">
+    <ClInclude Include="RotationUpdater.h">
       <Filter>Source Files\PE\Components\Updaters</Filter>
     </ClInclude>
     <ClInclude Include="RotationAlignUpdater.h">
@@ -329,6 +332,15 @@
     </ClInclude>
     <ClInclude Include="RandomLifespanInitializer.h">
       <Filter>Source Files\PE\Components\Initializers</Filter>
+    </ClInclude>
+    <ClInclude Include="ComponentContainer.h">
+      <Filter>Source Files\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="ComponentHandle.h">
+      <Filter>Source Files\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="PanelHeader.h">
+      <Filter>Source Files\GUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

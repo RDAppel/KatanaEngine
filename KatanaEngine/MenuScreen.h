@@ -24,7 +24,9 @@ namespace KatanaEngine
 
 	public:
 
+		/** @brief Instantiates a menu screen. */
 		MenuScreen();
+
 		virtual ~MenuScreen();
 
 		/** @brief Called when the game has determined that player input needs to be processed.

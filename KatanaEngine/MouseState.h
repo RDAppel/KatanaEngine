@@ -24,28 +24,30 @@ namespace KatanaEngine
 		FORWARD	= 1 << 4	/**< Represents the Foreward mouse button. */
 	};
 
+	/** @brief Defines the system cursors for the mouse pointer. */
 	enum class MouseCursor
 	{
-		NONE = 0,
-		DEFAULT = 1,
-		ARROW = 2,
-		BUSY = 3,
-		QUESTION = 4,
-		EDIT = 5,
-		MOVE = 6,
-		RESIZE_N = 7,
-		RESIZE_W = 8,
-		RESIZE_S = 9,
-		RESIZE_E = 10,
-		RESIZE_NW = 11,
-		RESIZE_SW = 12,
-		RESIZE_SE = 13,
-		RESIZE_NE = 14,
-		PROGRESS = 15,
-		PRECISION = 16,
-		LINK = 17,
-		ALT_SELECT = 18,
-		UNAVAILABLE = 19,
-		MAX
+		NONE = 0,		/**< Represents the no cursor. */
+		DEFAULT,		/**< Represents the default cursor. */
+		ARROW,			/**< Represents the arrow cursor. */
+		BUSY,			/**< Represents the busy cursor. */
+		QUESTION,		/**< Represents the question cursor. */
+		EDIT,			/**< Represents the edit cursor. */
+		MOVE,			/**< Represents the move cursor. */
+		RESIZE_N,		/**< Represents the resize north cursor. */
+		RESIZE_W,		/**< Represents the resize west cursor. */
+		RESIZE_S,		/**< Represents the resize south cursor. */
+		RESIZE_E,		/**< Represents the resize east cursor. */
+		RESIZE_NW,		/**< Represents the resize north-west cursor. */
+		RESIZE_SW,		/**< Represents the resize south-west cursor. */
+		RESIZE_SE,		/**< Represents the resize south-east cursor. */
+		RESIZE_NE,		/**< Represents the resize north-east cursor. */
+		PROGRESS,		/**< Represents the progress cursor. */
+		PRECISION,		/**< Represents the precision cursor. */
+		LINK,			/**< Represents the link hand cursor. */
+		ALT_SELECT,		/**< Represents the alternate select cursor. */
+		UNAVAILABLE,	/**< Represents the unavailable cursor. */
+
+		MAX				/**< Represents the Max value for all cursors. */
 	};
 }

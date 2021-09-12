@@ -21,15 +21,18 @@ namespace KatanaEngine
 	{
 		void Slider::SetValue(const float value)
 		{
+			/*
 			m_value = value;
 
 			int buttonWidth = GetTheme()->GetSliderInfo()->buttonSource.Width;
 			int scrollableWidth = GetSize().X - buttonWidth;
 			m_buttonPosition.X = Math::Lerp(0, scrollableWidth, value);
+			*/
 		}
 
 		void Slider::HandleInput(const InputState *pInput)
 		{
+			/*
 			Component::HandleInput(pInput);
 			ThemeInfo *pInfo = GetTheme()->GetSliderInfo();
 			Vector2 mouse = pInput->GetMousePosition();
@@ -70,11 +73,13 @@ namespace KatanaEngine
 			if (pInput->IsNewMouseButtonRelease(MouseButton::LEFT))
 			{
 				m_isDragging = false;
-			}
+			}*/
 		}
 
 		void Slider::Draw(SpriteBatch *pSpriteBatch)
 		{
+
+			/*
 			ThemeInfo *pInfo = GetTheme()->GetSliderInfo();
 			Texture *pTexture = pInfo->pTexture;
 
@@ -100,6 +105,7 @@ namespace KatanaEngine
 
 			pSpriteBatch->Draw(pTexture, positions[2], pInfo->buttonSource, color);
 			pSpriteBatch->Draw(pTexture, positions[2], pInfo->overlaySource);
+			*/
 		}
 	}
 }

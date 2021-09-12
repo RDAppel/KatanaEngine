@@ -31,7 +31,7 @@ namespace KatanaEngine
 
 			Slider(ComponentCollection *pCollection)
 			{
-				pCollection->AddComponent(this);
+				pCollection->Add(this);
 			}
 
 			virtual ~Slider() { }

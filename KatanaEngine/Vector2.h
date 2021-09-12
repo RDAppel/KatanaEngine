@@ -147,6 +147,16 @@ namespace KatanaEngine
 			@return Returns the resulting vector. */
 		Vector2 &operator-=(const Vector2 &vector);
 
+		/** @brief Multiplies a vector.
+			@param vector The vector to multiply by.
+			@return Returns the resulting vector. */
+		Vector2 &operator*=(const Vector2 &vector);
+
+		/** @brief Divides a vector.
+			@param vector The vector to multiply by.
+			@return Returns the resulting vector. */
+		Vector2 &operator/=(const Vector2 &vector);
+
 		/** @brief Multiplies by a scalar.
 			@param scalar The scalar to multiply by.
 			@return Returns the resulting vector. */

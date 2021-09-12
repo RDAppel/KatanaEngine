@@ -63,20 +63,10 @@ namespace KatanaEngine
 			virtual void SetupSlider(const Region &backgroundSource, const Region &buttonSource,
 				const Color &buttonColor, const Color &activeButtonColor, const Region &overlaySource);
 
-			virtual Panel::ThemeInfo *GetPanelInfo() { return &m_panelInfo; }
-
-			virtual Toggle::ThemeInfo *GetToggleInfo() { return &m_toggleInfo; }
-
-			virtual Slider::ThemeInfo *GetSliderInfo() { return &m_sliderInfo; }
-
 		private:
 
 			Texture *m_pTexture = nullptr;
 			std::vector<Font *> m_fonts;
-
-			Panel::ThemeInfo m_panelInfo;
-			Toggle::ThemeInfo m_toggleInfo;
-			Slider::ThemeInfo m_sliderInfo;
 		};
 	}
 }

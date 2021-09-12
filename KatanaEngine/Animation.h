@@ -19,7 +19,9 @@ namespace KatanaEngine
 
 	public:
 
+		/** @brief Instantiates an animation. */
 		Animation();
+
 		virtual ~Animation();
 
 
@@ -88,9 +90,12 @@ namespace KatanaEngine
 
 	protected:
 
-		// todo: add comments
+		/** @brief Adds a frame to the animation.
+			@param pRegion The region that defines the frame position and size. */
 		virtual void AddFrame(Region *pRegion) { m_frames.push_back(pRegion); }
 
+		/** @brief Sets the frame rate of the animation.
+			@param seconds The number of [usually fractional] seconds to display each frame. */
 		virtual void SetSecondsPerFrame(const float seconds) { m_secondsPerFrame = seconds; }
 
 	private:

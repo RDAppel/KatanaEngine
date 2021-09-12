@@ -25,9 +25,9 @@ namespace KatanaEngine
 
 	public:
 
-		/** @brief Instantiate a screen manager object.
-			@param pGame A pointer to the game instance. */
+		/** @brief Instantiate a screen manager object. */
 		ScreenManager() { }
+
 		virtual ~ScreenManager() { }
 
 		virtual std::string GetID() const { return "ScreenManager"; }

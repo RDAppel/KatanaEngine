@@ -19,7 +19,6 @@ namespace KatanaEngine
 
 	public:
 
-		Font() { }
 		virtual ~Font() { al_destroy_font(m_pFont); }
 
 		/** @brief Specifies the size of the font when loaded.

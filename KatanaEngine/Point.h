@@ -15,7 +15,7 @@ namespace KatanaEngine
 {
 	class Vector2;
 
-	/** @brief 	Defines a point in 2D space. */
+	/** @brief 	Defines a point in 2d space. */
 	class Point
 	{
 
@@ -24,19 +24,17 @@ namespace KatanaEngine
 
 		static const Point ORIGIN;	/**< @brief A point located at the origin. */
 
-		/** @brief Instantiates a new point object.
+		/** @brief Instantiates a point.
 			@param x The X component
 			@param y The Y component */
 		Point(const int x = 0, const int y = 0) { X = x; Y = y; }
 
-		/** @brief Instantiates a new point object.
+		/** @brief Instantiates a point.
 			@param array An array which first two elements will be used to
 			initialize X, and Y respectively.
 
 			@overload */
 		Point(const int array[2]) : Point(array[0], array[1]) { }
-
-		~Point() { };
 
 		/** @brief Sets the components of the point.
 			@param x The X component.
@@ -105,7 +103,7 @@ namespace KatanaEngine
 
 		/** @brief Allows for implicit cast to Vector2 type.
 			@return Returns true if the points are not equal, false otherwise. */
-		virtual operator Vector2() const;
+		operator Vector2() const;
 
 
 		int X = 0;	/**< @brief The x-coordinate of the point. */
