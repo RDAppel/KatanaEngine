@@ -1,13 +1,16 @@
 ﻿
-/*	 ██╗  ██╗  █████╗  ████████╗  █████╗  ███╗   ██╗  █████╗ 
+/* ---------------------------------------------------------------  /
+
+	 ██╗  ██╗  █████╗  ████████╗  █████╗  ███╗   ██╗  █████╗
 	 ██║ ██╔╝ ██╔══██╗ ╚══██╔══╝ ██╔══██╗ ████╗  ██║ ██╔══██╗
 	 █████╔╝  ███████║    ██║    ███████║ ██╔██╗ ██║ ███████║
 	 ██╔═██╗  ██╔══██║    ██║    ██╔══██║ ██║╚██╗██║ ██╔══██║
 	 ██║  ██╗ ██║  ██║    ██║    ██║  ██║ ██║ ╚████║ ██║  ██║
 	 ╚═╝  ╚═╝ ╚═╝  ╚═╝/\  ╚═╝    ╚═╝  ╚═╝ ╚═╝  ╚═══╝ ╚═╝  ╚═╝
-   /vvvvvvvvvvvvvvvvvvv \=========================================,
-   `^^^^^^^^^^^^^^^^^^^ /---------------------------------------"
-        Katana Engine \/ © 2012 - Shuriken Studios LLC              */
+   /vvvvvvvvvvvvvvvvvvv \====================== Game Engine ======,
+   `^^^^^^^^^^^^^^^^^^^ /----------------- © 2012 - Ryan Appel -"
+					  \/
+/  --------------------------------------------------------------- */
 
 #pragma once
 
@@ -83,7 +86,6 @@ namespace KatanaEngine
 			@param button The button to test.
 			@return Returns true if the button was just released, false otherwise. */
 		bool IsNewMouseButtonRelease(MouseButton button) const { return (WasMouseButtonDown(button) && IsMouseButtonUp(button)); }
-
 
 		/** @brief Determines if a the button on an Xbox controller is up.
 			@param button The button to test.

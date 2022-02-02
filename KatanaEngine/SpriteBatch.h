@@ -1,13 +1,16 @@
 ﻿
-/*	 ██╗  ██╗  █████╗  ████████╗  █████╗  ███╗   ██╗  █████╗ 
+/* ---------------------------------------------------------------  /
+
+	 ██╗  ██╗  █████╗  ████████╗  █████╗  ███╗   ██╗  █████╗
 	 ██║ ██╔╝ ██╔══██╗ ╚══██╔══╝ ██╔══██╗ ████╗  ██║ ██╔══██╗
 	 █████╔╝  ███████║    ██║    ███████║ ██╔██╗ ██║ ███████║
 	 ██╔═██╗  ██╔══██║    ██║    ██╔══██║ ██║╚██╗██║ ██╔══██║
 	 ██║  ██╗ ██║  ██║    ██║    ██║  ██║ ██║ ╚████║ ██║  ██║
 	 ╚═╝  ╚═╝ ╚═╝  ╚═╝/\  ╚═╝    ╚═╝  ╚═╝ ╚═╝  ╚═══╝ ╚═╝  ╚═╝
-   /vvvvvvvvvvvvvvvvvvv \=========================================,
-   `^^^^^^^^^^^^^^^^^^^ /---------------------------------------"
-        Katana Engine \/ © 2012 - Shuriken Studios LLC              */
+   /vvvvvvvvvvvvvvvvvvv \====================== Game Engine ======,
+   `^^^^^^^^^^^^^^^^^^^ /----------------- © 2012 - Ryan Appel -"
+					  \/
+/  --------------------------------------------------------------- */
 
 #pragma once
 
@@ -80,7 +83,7 @@ namespace KatanaEngine
 		/** @brief Adds a sprite to a batch of sprites to be rendered. 
 			@param pTexture A pointer to the texture to render.
 			@param position The screen position of the sprite.
-			@param region The region of the texture to render.
+			@param source The source region of the texture to render.
 			@param color The color to tint the sprite. The default is Color::WHITE (no tint).
 			@param origin The sprite's origin. The default is Vector2::Zero, which is the
 			upper left corner of the sprite.
@@ -89,10 +92,39 @@ namespace KatanaEngine
 			@param drawDepth The depth at which to render the sprite. This is determined
 			by the SpriteSortMode arguement that is passed to SpriteBatch::Begin(). The
 			default is zero.*/
-		void Draw(const Texture *pTexture, const Vector2 position, const Region region,
+		void Draw(const Texture *pTexture, const Vector2 position, const Region source,
 			const Color color = Color::WHITE, const Vector2 origin = Vector2::ZERO, 
 			const Vector2 scale = Vector2::ONE, const float rotation = 0, 
 			const float drawDepth = 0);
+
+		/** @brief Adds a sprite to a batch of sprites to be rendered.
+			@param pTexture A pointer to the texture to render.
+			@param destination The destionation region that will be rendered to.
+			@param color The color to tint the sprite. The default is Color::WHITE (no tint).
+			@param origin The sprite's origin. The default is Vector2::Zero, which is the
+			upper left corner of the sprite.
+			@param rotation The rotation angle in radians. The default is zero.
+			@param drawDepth The depth at which to render the sprite. This is determined
+			by the SpriteSortMode arguement that is passed to SpriteBatch::Begin(). The
+			default is zero.*/
+		void Draw(const Texture *pTexture, const Region destination,
+			const Color color = Color::WHITE, const Vector2 origin = Vector2::ZERO,
+			const float rotation = 0, const float drawDepth = 0);
+
+		/** @brief Adds a sprite to a batch of sprites to be rendered.
+			@param pTexture A pointer to the texture to render.
+			@param destination The destionation region that will be rendered to.
+			@param source The source region of the texture to render.
+			@param color The color to tint the sprite. The default is Color::WHITE (no tint).
+			@param origin The sprite's origin. The default is Vector2::Zero, which is the
+			upper left corner of the sprite.
+			@param rotation The rotation angle in radians. The default is zero.
+			@param drawDepth The depth at which to render the sprite. This is determined
+			by the SpriteSortMode arguement that is passed to SpriteBatch::Begin(). The
+			default is zero.*/
+		void Draw(const Texture *pTexture, const Region destination, const Region source,
+			const Color color = Color::WHITE, const Vector2 origin = Vector2::ZERO,
+			const float rotation = 0, const float drawDepth = 0);
 
 		/** @brief Adds a sprite to a batch of sprites to be rendered.
 			@param pTexture A pointer to the texture to render.

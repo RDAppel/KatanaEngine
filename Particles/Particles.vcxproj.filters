@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;h</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Components">
+      <UniqueIdentifier>{54ae750d-6ec9-4cee-9313-622f82995ba8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components\Initializers">
+      <UniqueIdentifier>{72598f0c-405f-4c4f-bef8-c14fe3b8e777}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components\Updaters">
+      <UniqueIdentifier>{b898fe3b-3c23-4846-9e81-d8efef0bca9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components\Renderers">
+      <UniqueIdentifier>{a7fc68a8-e3dc-4fc9-abf6-3e68899d852d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Particles.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Particle.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleEmitter.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleManager.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IComponentInterfaces.h">
+      <Filter>Source Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="AccelerationInitializer.h">
+      <Filter>Source Files\Components\Initializers</Filter>
+    </ClInclude>
+    <ClInclude Include="AlphaInitializer.h">
+      <Filter>Source Files\Components\Initializers</Filter>
+    </ClInclude>
+    <ClInclude Include="ColorInitializer.h">
+      <Filter>Source Files\Components\Initializers</Filter>
+    </ClInclude>
+    <ClInclude Include="DefaultInitializer.h">
+      <Filter>Source Files\Components\Initializers</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomAngularVelocityInitializer.h">
+      <Filter>Source Files\Components\Initializers</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomLifespanInitializer.h">
+      <Filter>Source Files\Components\Initializers</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomPositionInitializer.h">
+      <Filter>Source Files\Components\Initializers</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomRotationInitializer.h">
+      <Filter>Source Files\Components\Initializers</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomVelocityInitializer.h">
+      <Filter>Source Files\Components\Initializers</Filter>
+    </ClInclude>
+    <ClInclude Include="ScaleInitializer.h">
+      <Filter>Source Files\Components\Initializers</Filter>
+    </ClInclude>
+    <ClInclude Include="VelocityInitializer.h">
+      <Filter>Source Files\Components\Initializers</Filter>
+    </ClInclude>
+    <ClInclude Include="AlphaUpdater.h">
+      <Filter>Source Files\Components\Updaters</Filter>
+    </ClInclude>
+    <ClInclude Include="ColorUpdater.h">
+      <Filter>Source Files\Components\Updaters</Filter>
+    </ClInclude>
+    <ClInclude Include="DefaultUpdater.h">
+      <Filter>Source Files\Components\Updaters</Filter>
+    </ClInclude>
+    <ClInclude Include="RotationUpdater.h">
+      <Filter>Source Files\Components\Updaters</Filter>
+    </ClInclude>
+    <ClInclude Include="ScaleUpdater.h">
+      <Filter>Source Files\Components\Updaters</Filter>
+    </ClInclude>
+    <ClInclude Include="TargetUpdater.h">
+      <Filter>Source Files\Components\Updaters</Filter>
+    </ClInclude>
+    <ClInclude Include="VelocityUpdater.h">
+      <Filter>Source Files\Components\Updaters</Filter>
+    </ClInclude>
+    <ClInclude Include="RotationAlignUpdater.h">
+      <Filter>Source Files\Components\Updaters</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureRenderer.h">
+      <Filter>Source Files\Components\Renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="DefaultRenderer.h">
+      <Filter>Source Files\Components\Renderers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Particles.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleEmitter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

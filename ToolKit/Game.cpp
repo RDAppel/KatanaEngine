@@ -8,7 +8,7 @@ namespace KatanaEngine
 		Game::Game()
 		{
 			SetScreenResolution(1600, 900);
-			//SetClearColor(Color(0.92578125f, 0.5625f, 0.06640625f));
+			SetClearColor(Color(0.92578125f, 0.5625f, 0.06640625f));
 
 			SetResourceDirectory("..\\ToolKit\\Content\\");
 

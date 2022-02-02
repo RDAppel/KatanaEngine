@@ -1,13 +1,16 @@
 ﻿
-/*	 ██╗  ██╗  █████╗  ████████╗  █████╗  ███╗   ██╗  █████╗ 
+/* ---------------------------------------------------------------  /
+
+	 ██╗  ██╗  █████╗  ████████╗  █████╗  ███╗   ██╗  █████╗
 	 ██║ ██╔╝ ██╔══██╗ ╚══██╔══╝ ██╔══██╗ ████╗  ██║ ██╔══██╗
 	 █████╔╝  ███████║    ██║    ███████║ ██╔██╗ ██║ ███████║
 	 ██╔═██╗  ██╔══██║    ██║    ██╔══██║ ██║╚██╗██║ ██╔══██║
 	 ██║  ██╗ ██║  ██║    ██║    ██║  ██║ ██║ ╚████║ ██║  ██║
 	 ╚═╝  ╚═╝ ╚═╝  ╚═╝/\  ╚═╝    ╚═╝  ╚═╝ ╚═╝  ╚═══╝ ╚═╝  ╚═╝
-   /vvvvvvvvvvvvvvvvvvv \=========================================,
-   `^^^^^^^^^^^^^^^^^^^ /---------------------------------------"
-        Katana Engine \/ © 2012 - Shuriken Studios LLC              */
+   /vvvvvvvvvvvvvvvvvvv \====================== Game Engine ======,
+   `^^^^^^^^^^^^^^^^^^^ /----------------- © 2012 - Ryan Appel -"
+					  \/
+/  --------------------------------------------------------------- */
 
 #pragma once
 
@@ -124,12 +127,12 @@ namespace KatanaEngine
 	    @see GamePadButtons */
 	struct GamePadState
 	{
-		bool IsConnected;				/**< @brief True if the GamePad is connected, false otherwise. */
-		GamePadButtons Buttons;			/**< @brief The current state of the GamePad's Buttons. */
-		GamePadThumbSticks Thumbsticks;	/**< @brief The current state of the GamePad's Thumbsticks. */
-		GamePadTriggers Triggers;		/**< @brief The current state of the GamePad's Triggers. */
-		GamePadDPad DPad;				/**< @brief The current state of the GamePad's DPad. */
-		ALLEGRO_JOYSTICK *ID;			/**< @brief The underlaying allegro joystick id. */
+		bool IsConnected = false;				/**< @brief True if the GamePad is connected, false otherwise. */
+		GamePadButtons Buttons = { };			/**< @brief The current state of the GamePad's Buttons. */
+		GamePadThumbSticks Thumbsticks = { };	/**< @brief The current state of the GamePad's Thumbsticks. */
+		GamePadTriggers Triggers = { };			/**< @brief The current state of the GamePad's Triggers. */
+		GamePadDPad DPad = { };					/**< @brief The current state of the GamePad's DPad. */
+		ALLEGRO_JOYSTICK *ID = nullptr;			/**< @brief The underlaying allegro joystick id. */
 
 		/** @brief Determines if a button is pressed down.
 			@param button The button to test.

@@ -1,4 +1,5 @@
-﻿/* ---------------------------------------------------------------  /
+﻿
+/* ---------------------------------------------------------------  /
 
 	 ██╗  ██╗  █████╗  ████████╗  █████╗  ███╗   ██╗  █████╗
 	 ██║ ██╔╝ ██╔══██╗ ╚══██╔══╝ ██╔══██╗ ████╗  ██║ ██╔══██╗
@@ -6,23 +7,17 @@
 	 ██╔═██╗  ██╔══██║    ██║    ██╔══██║ ██║╚██╗██║ ██╔══██║
 	 ██║  ██╗ ██║  ██║    ██║    ██║  ██║ ██║ ╚████║ ██║  ██║
 	 ╚═╝  ╚═╝ ╚═╝  ╚═╝/\  ╚═╝    ╚═╝  ╚═╝ ╚═╝  ╚═══╝ ╚═╝  ╚═╝
-   /vvvvvvvvvvvvvvvvvvv \=========================================,
-   `^^^^^^^^^^^^^^^^^^^ /---------------------------------------"
-		Katana Engine \/ © 2012 - Shuriken Studios LLC
-
+   /vvvvvvvvvvvvvvvvvvv \====================== Game Engine ======,
+   `^^^^^^^^^^^^^^^^^^^ /----------------- © 2012 - Ryan Appel -"
+					  \/
 /  --------------------------------------------------------------- */
 
 #pragma once
 
 namespace KatanaEngine
 {
-
 	class MenuScreen;
-
-	/** @brief Callback function for when a menu item is selected.
-		@see MenuItem */
-	typedef void(*OnSelect)(MenuScreen *pMenuScreen);
-	
+		
 	/** @brief Class for menu items contained in a MenuScreen. */
 	class MenuItem
 	{
@@ -50,9 +45,8 @@ namespace KatanaEngine
 			@param pSpriteBatch The game's sprite batch, used for rendering. */
 		virtual void Draw(SpriteBatch *pSpriteBatch);
 
-		/** @brief Called when the picks this menu option.
-			@param pMenuScreen A pointer to the menu screen. */
-		virtual void Select(MenuScreen *pMenuScreen);
+		/** @brief Called when the picks this menu option. */
+		virtual void Select();
 
 		/** @brief Sets the text of the menu item.
 			@param text The text. */
@@ -92,6 +86,10 @@ namespace KatanaEngine
 			@param color The color. */
 		virtual void SetColor(const Color color) { m_color = color; }
 
+		/** @brief Sets the color of the menu item.
+			@param color The color. */
+		virtual void SetSelectedColor(const Color color) { m_selectedColor = color; }
+
 		/** @brief Sets the alpha value (opacity) of the menu item.
 			@param alpha The alpha value. */
 		virtual void SetAlpha(const float alpha) { m_alpha = alpha; }
@@ -114,9 +112,6 @@ namespace KatanaEngine
 		/** @brief Gets the index of the menu item.
 			@return Returns the menu item's index. */
 		virtual int GetIndex() const { return m_index; }
-
-
-	protected:
 
 		/** @brief Sets the index of the menu item.
 			@param index The index value. */
@@ -147,6 +142,7 @@ namespace KatanaEngine
 
 		Font *m_pFont = nullptr;
 		Color m_color = Color::WHITE;
+		Color m_selectedColor = Color::BLUE;
 		float m_alpha = 1.0f;
 		Vector2 m_position = Vector2::ZERO;
 		Vector2 m_textOffset = Vector2::ZERO;

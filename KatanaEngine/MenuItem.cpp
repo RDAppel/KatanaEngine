@@ -1,4 +1,5 @@
-﻿/* ---------------------------------------------------------------  /
+﻿
+/* ---------------------------------------------------------------  /
 
 	 ██╗  ██╗  █████╗  ████████╗  █████╗  ███╗   ██╗  █████╗
 	 ██║ ██╔╝ ██╔══██╗ ╚══██╔══╝ ██╔══██╗ ████╗  ██║ ██╔══██╗
@@ -6,10 +7,9 @@
 	 ██╔═██╗  ██╔══██║    ██║    ██╔══██║ ██║╚██╗██║ ██╔══██║
 	 ██║  ██╗ ██║  ██║    ██║    ██║  ██║ ██║ ╚████║ ██║  ██║
 	 ╚═╝  ╚═╝ ╚═╝  ╚═╝/\  ╚═╝    ╚═╝  ╚═╝ ╚═╝  ╚═══╝ ╚═╝  ╚═╝
-   /vvvvvvvvvvvvvvvvvvv \=========================================,
-   `^^^^^^^^^^^^^^^^^^^ /---------------------------------------"
-		Katana Engine \/ © 2012 - Shuriken Studios LLC
-
+   /vvvvvvvvvvvvvvvvvvv \====================== Game Engine ======,
+   `^^^^^^^^^^^^^^^^^^^ /----------------- © 2012 - Ryan Appel -"
+					  \/
 /  --------------------------------------------------------------- */
 
 #include "KatanaEngine.h"
@@ -37,14 +37,15 @@ namespace KatanaEngine
 
 	void MenuItem::Draw(SpriteBatch *pSpriteBatch)
 	{
-		if (m_pFont && m_text.compare("") != 0)
+		if (m_pFont && m_text != "")
 		{
-			pSpriteBatch->DrawString(m_pFont, &m_text, m_position + m_textOffset, m_color * m_alpha, m_textAlign);
+			Color color = m_isSelected ? m_selectedColor : m_color;
+			pSpriteBatch->DrawString(m_pFont, &m_text, m_position + m_textOffset, color * m_alpha, m_textAlign);
 		}
 	}
 
-	void MenuItem::Select(MenuScreen *pMenuScreen)
+	void MenuItem::Select()
 	{
-		if (m_onSelect) ((OnSelect)m_onSelect)(pMenuScreen);
+		if (m_onSelect) ((OnSelect)m_onSelect)(this);
 	}
 }

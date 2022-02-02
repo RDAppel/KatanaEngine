@@ -1,13 +1,16 @@
 ﻿
-/*	 ██╗  ██╗  █████╗  ████████╗  █████╗  ███╗   ██╗  █████╗ 
+/* ---------------------------------------------------------------  /
+
+	 ██╗  ██╗  █████╗  ████████╗  █████╗  ███╗   ██╗  █████╗
 	 ██║ ██╔╝ ██╔══██╗ ╚══██╔══╝ ██╔══██╗ ████╗  ██║ ██╔══██╗
 	 █████╔╝  ███████║    ██║    ███████║ ██╔██╗ ██║ ███████║
 	 ██╔═██╗  ██╔══██║    ██║    ██╔══██║ ██║╚██╗██║ ██╔══██║
 	 ██║  ██╗ ██║  ██║    ██║    ██║  ██║ ██║ ╚████║ ██║  ██║
 	 ╚═╝  ╚═╝ ╚═╝  ╚═╝/\  ╚═╝    ╚═╝  ╚═╝ ╚═╝  ╚═══╝ ╚═╝  ╚═╝
-   /vvvvvvvvvvvvvvvvvvv \=========================================,
-   `^^^^^^^^^^^^^^^^^^^ /---------------------------------------"
-        Katana Engine \/ © 2012 - Shuriken Studios LLC              */
+   /vvvvvvvvvvvvvvvvvvv \====================== Game Engine ======,
+   `^^^^^^^^^^^^^^^^^^^ /----------------- © 2012 - Ryan Appel -"
+					  \/
+/  --------------------------------------------------------------- */
 
 #include "KatanaEngine.h"
 
@@ -16,6 +19,8 @@ namespace KatanaEngine
 	void SpriteBatch::Begin(const SpriteSortMode sortMode, 
 		const BlendState blendState, ALLEGRO_TRANSFORM *pTransformation)
 	{
+		assert(!m_isStarted && "End must be called before Begin is called again!");
+
 		m_isStarted = true;
 		m_it = m_inactiveDrawables.begin();
 
@@ -206,7 +211,7 @@ namespace KatanaEngine
 
 
 	void SpriteBatch::Draw(const Texture *pTexture, const Vector2 position,
-		const Region region, const Color color, const Vector2 origin, const Vector2 scale,
+		const Region source, const Color color, const Vector2 origin, const Vector2 scale,
 		const float rotation, const float drawDepth)
 	{
 		assert(m_isStarted && "Begin must be called before a Draw function can be run!");
@@ -238,10 +243,108 @@ namespace KatanaEngine
 		pDrawable->y = position.Y;
 		pDrawable->depth = drawDepth;
 
-		pDrawable->Union.sx = (&region)->X;
-		pDrawable->Union.sy = (&region)->Y;
-		pDrawable->Union.sw = (&region)->Width;
-		pDrawable->Union.sh = (&region)->Height;
+		pDrawable->Union.sx = (&source)->X;
+		pDrawable->Union.sy = (&source)->Y;
+		pDrawable->Union.sw = (&source)->Width;
+		pDrawable->Union.sh = (&source)->Height;
+
+		if (m_sortMode == SpriteSortMode::IMMEDIATE)
+		{
+			DrawBitmap(pDrawable);
+		}
+		else
+		{
+			m_drawables.push_back(pDrawable);
+		}
+	}
+
+
+	void SpriteBatch::Draw(const Texture *pTexture, const Region destination,
+		const Color color, const Vector2 origin, const float rotation,
+		const float drawDepth)
+	{
+		assert(m_isStarted && "Begin must be called before a Draw function can be run!");
+
+		Drawable *pDrawable;
+
+		if (m_it != m_inactiveDrawables.end())
+		{
+			pDrawable = *m_it;
+			m_it++;
+		}
+		else
+		{
+			pDrawable = new Drawable();
+			m_inactiveDrawables.push_back(pDrawable);
+			m_it = m_inactiveDrawables.end();
+		}
+
+		pDrawable->isBitmap = true;
+		pDrawable->Union.pBitmap = pTexture->GetAllegroBitmap();
+		pDrawable->Union.cx = origin.X;
+		pDrawable->Union.cy = origin.Y;
+		pDrawable->Union.scx = destination.Width / (float)pTexture->GetWidth();
+		pDrawable->Union.scy = destination.Height / (float)pTexture->GetHeight();
+		pDrawable->Union.rotation = rotation;
+		pDrawable->Union.id = pTexture->GetResourceID();
+		pDrawable->color = color.ToAllegroColor();
+		pDrawable->x = destination.X;
+		pDrawable->y = destination.Y;
+		pDrawable->depth = drawDepth;
+
+		pDrawable->Union.sx = 0;
+		pDrawable->Union.sy = 0;
+		pDrawable->Union.sw = pTexture->GetWidth();
+		pDrawable->Union.sh = pTexture->GetHeight();
+
+		if (m_sortMode == SpriteSortMode::IMMEDIATE)
+		{
+			DrawBitmap(pDrawable);
+		}
+		else
+		{
+			m_drawables.push_back(pDrawable);
+		}
+	}
+
+
+	void SpriteBatch::Draw(const Texture *pTexture, const Region destination,
+		const Region source, const Color color, const Vector2 origin,
+		const float rotation, const float drawDepth)
+	{
+		assert(m_isStarted && "Begin must be called before a Draw function can be run!");
+
+		Drawable *pDrawable;
+
+		if (m_it != m_inactiveDrawables.end())
+		{
+			pDrawable = *m_it;
+			m_it++;
+		}
+		else
+		{
+			pDrawable = new Drawable();
+			m_inactiveDrawables.push_back(pDrawable);
+			m_it = m_inactiveDrawables.end();
+		}
+
+		pDrawable->isBitmap = true;
+		pDrawable->Union.pBitmap = pTexture->GetAllegroBitmap();
+		pDrawable->Union.cx = origin.X;
+		pDrawable->Union.cy = origin.Y;
+		pDrawable->Union.scx = destination.Width / (float)pTexture->GetWidth();
+		pDrawable->Union.scy = destination.Height / (float)pTexture->GetHeight();
+		pDrawable->Union.rotation = rotation;
+		pDrawable->Union.id = pTexture->GetResourceID();
+		pDrawable->color = color.ToAllegroColor();
+		pDrawable->x = destination.X;
+		pDrawable->y = destination.Y;
+		pDrawable->depth = drawDepth;
+
+		pDrawable->Union.sx = (&source)->X;
+		pDrawable->Union.sy = (&source)->Y;
+		pDrawable->Union.sw = (&source)->Width;
+		pDrawable->Union.sh = (&source)->Height;
 
 		if (m_sortMode == SpriteSortMode::IMMEDIATE)
 		{

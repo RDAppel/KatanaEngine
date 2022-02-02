@@ -24,10 +24,15 @@ namespace KatanaEngine
 
 			virtual void Draw(SpriteBatch *pSpriteBatch);
 
+			virtual void PrintYay() { std::cout << "YAY"; }
+
+			virtual GUI::Slider *GetSlider() { return &m_slider; }
+
 
 		private:
 
 			GUI::Panel m_panel;
+			GUI::Slider m_slider;
 
 			Texture *m_pBackgroundGradient = nullptr;
 			Color m_backgroundColor = Color(0.796875f, 0.32421875f, 0.17578125f);

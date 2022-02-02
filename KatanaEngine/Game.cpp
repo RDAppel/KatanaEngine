@@ -1,13 +1,16 @@
 ﻿
-/*	 ██╗  ██╗  █████╗  ████████╗  █████╗  ███╗   ██╗  █████╗ 
+/* ---------------------------------------------------------------  /
+
+	 ██╗  ██╗  █████╗  ████████╗  █████╗  ███╗   ██╗  █████╗
 	 ██║ ██╔╝ ██╔══██╗ ╚══██╔══╝ ██╔══██╗ ████╗  ██║ ██╔══██╗
 	 █████╔╝  ███████║    ██║    ███████║ ██╔██╗ ██║ ███████║
 	 ██╔═██╗  ██╔══██║    ██║    ██╔══██║ ██║╚██╗██║ ██╔══██║
 	 ██║  ██╗ ██║  ██║    ██║    ██║  ██║ ██║ ╚████║ ██║  ██║
 	 ╚═╝  ╚═╝ ╚═╝  ╚═╝/\  ╚═╝    ╚═╝  ╚═╝ ╚═╝  ╚═══╝ ╚═╝  ╚═╝
-   /vvvvvvvvvvvvvvvvvvv \=========================================,
-   `^^^^^^^^^^^^^^^^^^^ /---------------------------------------"
-        Katana Engine \/ © 2012 - Shuriken Studios LLC              */
+   /vvvvvvvvvvvvvvvvvvv \====================== Game Engine ======,
+   `^^^^^^^^^^^^^^^^^^^ /----------------- © 2012 - Ryan Appel -"
+					  \/
+/  --------------------------------------------------------------- */
 
 #include "KatanaEngine.h"
 
@@ -71,8 +74,13 @@ namespace KatanaEngine
 			al_show_native_message_box(nullptr, nullptr, nullptr, message, nullptr, 0);
 			return -1;
 		}
-		al_set_new_display_option(ALLEGRO_SAMPLE_BUFFERS, 1, ALLEGRO_SUGGEST);
+		
+		// for shaders
+		al_set_new_display_flags(ALLEGRO_PROGRAMMABLE_PIPELINE);
+
+		// vsync on
 		al_set_new_display_option(ALLEGRO_VSYNC, 1, ALLEGRO_REQUIRE);
+
 		if (m_isFullScreen) al_set_new_display_flags(ALLEGRO_FULLSCREEN);
 		if (m_requireOpenGL) al_set_new_display_flags(ALLEGRO_OPENGL);
 
@@ -87,7 +95,10 @@ namespace KatanaEngine
 
 		if (s_windowTitle.length() == 0) s_windowTitle = GetName();
 		al_set_window_title(m_pDisplay, s_windowTitle.c_str());
+
+		// default to alpha blending
 		al_set_blender(ALLEGRO_ADD, ALLEGRO_ALPHA, ALLEGRO_INVERSE_ALPHA);
+		
 		al_inhibit_screensaver(true);
 
 		RenderTarget::SetDisplay(m_pDisplay);
@@ -130,7 +141,7 @@ namespace KatanaEngine
 			{
 			case ALLEGRO_EVENT_DISPLAY_CLOSE:
 				al_stop_timer(pTimer);
-				Quit();
+				Exit();
 				break;
 
 			case ALLEGRO_EVENT_JOYSTICK_CONFIGURATION:

@@ -1,4 +1,5 @@
-﻿/* ---------------------------------------------------------------  /
+﻿
+/* ---------------------------------------------------------------  /
 
 	 ██╗  ██╗  █████╗  ████████╗  █████╗  ███╗   ██╗  █████╗
 	 ██║ ██╔╝ ██╔══██╗ ╚══██╔══╝ ██╔══██╗ ████╗  ██║ ██╔══██╗
@@ -6,10 +7,9 @@
 	 ██╔═██╗  ██╔══██║    ██║    ██╔══██║ ██║╚██╗██║ ██╔══██║
 	 ██║  ██╗ ██║  ██║    ██║    ██║  ██║ ██║ ╚████║ ██║  ██║
 	 ╚═╝  ╚═╝ ╚═╝  ╚═╝/\  ╚═╝    ╚═╝  ╚═╝ ╚═╝  ╚═══╝ ╚═╝  ╚═╝
-   /vvvvvvvvvvvvvvvvvvv \=========================================,
-   `^^^^^^^^^^^^^^^^^^^ /---------------------------------------"
-		Katana Engine \/ © 2012 - Shuriken Studios LLC
-
+   /vvvvvvvvvvvvvvvvvvv \====================== Game Engine ======,
+   `^^^^^^^^^^^^^^^^^^^ /----------------- © 2012 - Ryan Appel -"
+					  \/
 /  --------------------------------------------------------------- */
 
 #pragma once
@@ -17,24 +17,7 @@
 namespace KatanaEngine
 {
 	class ScreenManager;
-	class Screen;
 	class Game;
-
-	/** @brief Callback function for when Exit() is called on a screen and
-		it begins to transition out.
-		@remark This callback is run automatically when Exit() is called.
-		@see Screen::Exit()
-		@see OnRemove */
-	typedef void(*OnExit)(Screen *pScreen);
-
-	/** @brief Callback function for when a screen has completely exited
-		and is about to be removed by the screen manager.
-		@remark This callback will be run before UnloadContent(). Therefore
-		resourses can be passed before the screen is removed.
-		@see ScreenManager
-		@see Screen::UnloadContent()
-		@see OnExit */
-	typedef void(*OnRemove)(Screen *pScreen);
 
 	/** @brief Base class for all game screens and menus. */
 	class Screen
@@ -180,8 +163,8 @@ namespace KatanaEngine
 
 	private:
 
-		void *m_onExit = nullptr;
-		void *m_onRemove = nullptr;
+		OnExit m_onExit = nullptr;
+		OnRemove m_onRemove = nullptr;
 
 		bool m_handleInputBelow = false;
 		bool m_updateBelow = false;

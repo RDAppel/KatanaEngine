@@ -1,4 +1,5 @@
-﻿/* ---------------------------------------------------------------  /
+﻿
+/* ---------------------------------------------------------------  /
 
 	 ██╗  ██╗  █████╗  ████████╗  █████╗  ███╗   ██╗  █████╗
 	 ██║ ██╔╝ ██╔══██╗ ╚══██╔══╝ ██╔══██╗ ████╗  ██║ ██╔══██╗
@@ -6,10 +7,9 @@
 	 ██╔═██╗  ██╔══██║    ██║    ██╔══██║ ██║╚██╗██║ ██╔══██║
 	 ██║  ██╗ ██║  ██║    ██║    ██║  ██║ ██║ ╚████║ ██║  ██║
 	 ╚═╝  ╚═╝ ╚═╝  ╚═╝/\  ╚═╝    ╚═╝  ╚═╝ ╚═╝  ╚═══╝ ╚═╝  ╚═╝
-   /vvvvvvvvvvvvvvvvvvv \=========================================,
-   `^^^^^^^^^^^^^^^^^^^ /---------------------------------------"
-		Katana Engine \/ © 2012 - Shuriken Studios LLC
-
+   /vvvvvvvvvvvvvvvvvvv \====================== Game Engine ======,
+   `^^^^^^^^^^^^^^^^^^^ /----------------- © 2012 - Ryan Appel -"
+					  \/
 /  --------------------------------------------------------------- */
 
 #include "KatanaEngine.h"
@@ -122,18 +122,6 @@ namespace KatanaEngine
 			m_transition = ScreenTransition::OUT;
 		}
 	}
-
-	//Game *Screen::GetGame() const
-	//{
-	//	return m_pScreenManager->GetGame();
-	//}
-
-	/*
-	ParticleManager *Screen::GetParticleManager() const
-	{
-		return GetGame()->GetParticleManager();
-	}
-	*/
 
 	void Screen::SetPassthroughFlags(const bool draw, const bool update, const bool handleInput)
 	{

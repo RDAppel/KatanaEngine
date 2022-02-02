@@ -1,13 +1,16 @@
 ﻿
-/*	 ██╗  ██╗  █████╗  ████████╗  █████╗  ███╗   ██╗  █████╗ 
+/* ---------------------------------------------------------------  /
+
+	 ██╗  ██╗  █████╗  ████████╗  █████╗  ███╗   ██╗  █████╗
 	 ██║ ██╔╝ ██╔══██╗ ╚══██╔══╝ ██╔══██╗ ████╗  ██║ ██╔══██╗
 	 █████╔╝  ███████║    ██║    ███████║ ██╔██╗ ██║ ███████║
 	 ██╔═██╗  ██╔══██║    ██║    ██╔══██║ ██║╚██╗██║ ██╔══██║
 	 ██║  ██╗ ██║  ██║    ██║    ██║  ██║ ██║ ╚████║ ██║  ██║
 	 ╚═╝  ╚═╝ ╚═╝  ╚═╝/\  ╚═╝    ╚═╝  ╚═╝ ╚═╝  ╚═══╝ ╚═╝  ╚═╝
-   /vvvvvvvvvvvvvvvvvvv \=========================================,
-   `^^^^^^^^^^^^^^^^^^^ /---------------------------------------"
-        Katana Engine \/ © 2012 - Shuriken Studios LLC              */
+   /vvvvvvvvvvvvvvvvvvv \====================== Game Engine ======,
+   `^^^^^^^^^^^^^^^^^^^ /----------------- © 2012 - Ryan Appel -"
+					  \/
+/  --------------------------------------------------------------- */
 
 #pragma once
 
@@ -36,8 +39,12 @@ namespace KatanaEngine
 		static int GetScreenHeight() { return s_screenHeight; }
 
 		/** @brief Gets the screen size in pixels.
-			@return A Point representing the width and height of the screen. */
-		static Vector2 GetScreenCenter() { return (Vector2(s_screenWidth / 2, s_screenHeight / 2)); }
+			@return A Vector2 representing the width and height of the screen. */
+		static Vector2 GetScreenSize() { return (Vector2(s_screenWidth, s_screenHeight)); }
+
+		/** @brief Gets the screen center in pixels.
+			@return A Vector2 representing the center of the screen. */
+		static Vector2 GetScreenCenter() { return (Vector2(s_screenWidth, s_screenHeight) / 2); }
 
 		/** @brief Gets the name of the game.
 			@return The name of the game. */
@@ -55,8 +62,8 @@ namespace KatanaEngine
 			any game-specific resources. */
 		virtual void UnloadContent() { }
 
-		/** @brief Quits the game. */
-		virtual void Quit() { m_isRunning = false; }
+		/** @brief Exits the game. */
+		virtual void Exit() { m_isRunning = false; }
 
 		/** @brief Add a service to the service container.
 			@remark This is an overload of ServiceContainer::AddService, so that

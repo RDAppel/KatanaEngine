@@ -12,19 +12,8 @@ To Add a Project:
 
 
 # To do
+
+Themes for GUI?
 Factory functions for GUI?
-Decorator pattern for Particle Initializers, Updaters, Renderers
-
-Shader Support
- - Game.cpp -- ALLEGRO_PROGRAMMABLE_PIPELINE
- - Create and use "default" shaders
- - Function (or class ?) to load and use non-default shaders
-
-Templates
- - Game Project? (At least Game class)
- - Screen (Template for ALL callback functions) ...easier to delete than look them up
- - Menu   (Template for ALL callback functions)
-
-
-
+Decorator pattern for Particle Initializers, Updaters, Renderers?
 
